@@ -7,8 +7,8 @@ describe('defaultReducer', () => {
   // Test that the initial state is returning correctly
   it('should return the initial state', () => {
     expect(homeReducer(undefined, {})).toEqual({
-      projectName: 'React.js Boilerplate',
-      ownerName: 'mxstbr'
+      projectName: 'doneit2',
+      ownerName: 'evilmike'
     });
   });
 

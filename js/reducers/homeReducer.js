@@ -17,8 +17,8 @@ import { CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../constants/AppConstant
 import assignToEmpty from '../utils/assign';
 
 const initialState = {
-  projectName: 'React.js Boilerplate',
-  ownerName: 'mxstbr'
+  projectName: 'doneit2',
+  ownerName: 'evilmike'
 };
 
 function homeReducer(state = initialState, action) {

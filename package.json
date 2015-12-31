@@ -1,7 +1,7 @@
 {
-  "name": "reactjs-boilerplate",
-  "version": "2.4.0",
-  "description": "Quick setup for new React.js applications featuring Redux, hot–reloading, PostCSS, react-router and Mocha.",
+  "name": "doneit",
+  "version": "0.1.0",
+  "description": "TODO app with daily summaries",
   "dependencies": {
     "fontfaceobserver": "^1.5.1",
     "history": "1.17.0",
@@ -55,11 +55,12 @@
   "scripts": {
     "lint": "eslint .",
     "test": "mocha --compilers js:babel-core/register --recursive",
+    "mytest": "node mytest.js",
     "test:watch": "npm test -- --watch",
     "start": "cross-env NODE_ENV=development node server.dev.js",
     "build": "npm run test && cross-env NODE_ENV=production webpack --config webpack.prod.config.js --progress --colors -p",
     "serve": "cross-env NODE_ENV=production node server.prod.js"
   },
-  "author": "Max Stoiber",
+  "author": "Michael Smith",
   "license": "MIT"
 }
