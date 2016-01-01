@@ -7,6 +7,7 @@ import { asyncChangeProjectName, asyncChangeOwnerName } from '../../actions/AppA
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import TodoList from '../TodoList.react';
 
 class HomePage extends Component {
   render() {
@@ -22,6 +23,7 @@ class HomePage extends Component {
         <label className="home__label">Change to your name:
           <input className="home__input" type="text" onChange={(evt) => { dispatch(asyncChangeOwnerName(evt.target.value)); }} defaultValue="mxstbr" value={ownerName} />
         </label>
+        <TodoList>Hi</TodoList>
         <Link className="btn" to="/readme">Setup</Link>
       </div>
     );
