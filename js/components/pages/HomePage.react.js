@@ -3,7 +3,7 @@
  * This is the first thing users see of our App
  */
 
-import { asyncChangeProjectName, asyncChangeOwnerName, asyncAddTodoItem } from '../../actions/AppActions';
+import { asyncAddTodoItem } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -15,7 +15,7 @@ let nextTodoId = 3;
 class HomePage extends Component {
   render() {
     const dispatch = this.props.dispatch;
-    const { projectName, ownerName, todos } = this.props.data;
+    const { todos } = this.props.data;
     return (
       <div>
         <h1>To Do</h1>

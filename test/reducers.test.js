@@ -7,36 +7,29 @@ describe('defaultReducer', () => {
   // Test that the initial state is returning correctly
   it('should return the initial state', () => {
     expect(homeReducer(undefined, {})).toEqual({
-      projectName: 'doneit2',
-      ownerName: 'evilmike'
+      todos: []
     });
   });
 
-  // Test that it handles changing the owner correctly
-  it('should handle the CHANGE_OWNER_NAME action', () => {
-    const name = 'samsmith';
+  // Test that it handles adding a todo correctly
+  it('should handle the ADD_TODO action', () => {
+    const id = 42;
+    const text = 'wash the dog';
 
     expect(
-      homeReducer({}, {
-        type: constants.CHANGE_OWNER_NAME,
-        name
+      homeReducer({todos: []}, {
+        type: constants.ADD_TODO,
+        id,
+        text
       })
     ).toEqual({
-      ownerName: name
-    });
-  });
-
-  // Test that it handles changing the project name correctly
-  it('should handle the CHANGE_PROJECT_NAME action', () => {
-    const name = 'Webapplication Boilerplate';
-
-    expect(
-      homeReducer({}, {
-        type: constants.CHANGE_PROJECT_NAME,
-        name
-      })
-    ).toEqual({
-      projectName: name
+      todos: [
+        {
+          completed: false,
+          id,
+          text
+        }
+      ]
     });
   });
 });

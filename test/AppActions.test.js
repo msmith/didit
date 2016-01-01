@@ -1,32 +1,22 @@
 import expect from 'expect';
-import { changeOwnerName, changeProjectName } from '../js/actions/AppActions';
-import { CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../js/constants/AppConstants';
+import { addTodoItem } from '../js/actions/AppActions';
+import { ADD_TODO } from '../js/constants/AppConstants';
 
 // Test actions from AppActions.js
 describe('AppActions', () => {
-  // Test changeOwnerName action
-  describe('changeOwnerName', () => {
-    it('should change the owner name', () => {
-      const name = 'samsmith';
+  // Test addTodoItem action
+  describe('addTodoItem', () => {
+    it('should add a new item', () => {
+      const id = 1;
+      const text = 'wash the dog';
       const expectedResult = {
-        type: CHANGE_OWNER_NAME,
-        name
+        type: ADD_TODO,
+        id,
+        text
       };
 
-      expect(changeOwnerName(name)).toEqual(expectedResult);
+      expect(addTodoItem(id, text)).toEqual(expectedResult);
     });
   });
 
-  // Test changeProjectName action
-  describe('changeProjectName', () => {
-    it('should change the project name', () => {
-      const name = 'Webapplication Boilerplate';
-      const expectedResult = {
-        type: CHANGE_PROJECT_NAME,
-        name
-      };
-
-      expect(changeProjectName(name)).toEqual(expectedResult);
-    });
-  });
 });
