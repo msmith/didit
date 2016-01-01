@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import TodoList from '../TodoList.react';
+import AddTodo from '../AddTodo.react';
 
 let nextTodoId = 3;
 
@@ -18,14 +19,9 @@ class HomePage extends Component {
     return (
       <div>
         <h1>To Do</h1>
-        <input ref={node => {
-          this.input = node;
-        }} />
-        <button onClick={() => {
-          dispatch(asyncAddTodoItem(nextTodoId++, this.input.value));
-        }}>
-          Add
-        </button>
+        <AddTodo onAdd={(text) => {
+          dispatch(asyncAddTodoItem(nextTodoId++, text))
+        }} ></AddTodo>
         <TodoList todos={todos}></TodoList>
         <Link className="btn" to="/readme">Setup</Link>
       </div>
