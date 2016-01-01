@@ -13,12 +13,22 @@
  * add it in the rootReducer.js.
  */
 
-import { CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../constants/AppConstants';
+import { CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME, ADD_TODO } from '../constants/AppConstants';
 import assignToEmpty from '../utils/assign';
 
 const initialState = {
   projectName: 'doneit2',
-  ownerName: 'evilmike'
+  ownerName: 'evilmike',
+  todos: [
+    {
+      id: 0,
+      text: 'Wash the dog'
+    },
+    {
+      id: 1,
+      text: 'Walk the car'
+    },
+  ]
 };
 
 function homeReducer(state = initialState, action) {
@@ -31,6 +41,18 @@ function homeReducer(state = initialState, action) {
     case CHANGE_PROJECT_NAME:
       return assignToEmpty(state, {
         projectName: action.name
+      });
+    case ADD_TODO:
+      const todos = [
+        ...state.todos,
+        {
+          id: action.id,
+          text: action.text,
+          completed: false
+        }
+      ];
+      return assignToEmpty(state, {
+        todos: todos
       });
     default:
       return state;
