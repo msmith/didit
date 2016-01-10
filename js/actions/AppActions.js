@@ -40,5 +40,5 @@ export function asyncAddTodoItem(id, text) {
 }
 
 export function addTodoItem(id, text, addedAt) {
-  return { type: ADD_TODO, id: id, text: text, addedAt: addedAt };
+  return { type: ADD_TODO, id, text, addedAt };
 }
