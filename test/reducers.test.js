@@ -35,4 +35,52 @@ describe('defaultReducer', () => {
       ]
     });
   });
+
+  // Test that it handles completing a todo correctly
+  it('should handle the COMPLETE_TODO action', () => {
+    const id = 42;
+    const text = 'wash the dog';
+    const addedAt = new Date();
+
+    const initialTodos = [
+      {
+        completed: false,
+        id,
+        addedAt,
+        text
+      }
+    ];
+
+    expect(
+      homeReducer({todos: initialTodos}, {
+        type: constants.COMPLETE_TODO,
+        id
+      })
+    ).toEqual({
+      todos: [
+        {
+          completed: true,
+          id,
+          addedAt,
+          text
+        }
+      ]
+    });
+  });
+
+  // Test that it handles completing a todo correctly
+  it('should handle a COMPLETE_TODO with an invalid id', () => {
+    const id = 42;
+
+    expect(
+      homeReducer({todos: []}, {
+        type: constants.COMPLETE_TODO,
+        id
+      })
+    ).toEqual({
+      todos: []
+    });
+  });
+
+
 });

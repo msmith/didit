@@ -13,7 +13,7 @@
  * add it in the rootReducer.js.
  */
 
-import { ADD_TODO } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO } from '../constants/AppConstants';
 import assignToEmpty from '../utils/assign';
 
 const initialState = {
@@ -36,6 +36,22 @@ function homeReducer(state = initialState, action) {
       return assignToEmpty(state, {
         todos: todos
       });
+    case COMPLETE_TODO:
+      var index = state.todos.findIndex((t) => {
+        return action.id == t.id;
+      });
+      if (index == -1) {
+        return { todos: state.todos };
+      }
+      return Object.assign({}, state, {
+        todos: [
+          ...state.todos.slice(0, index),
+          Object.assign({}, state.todos[index], {
+            completed: true
+          }),
+          ...state.todos.slice(index + 1)
+        ]
+      })
     default:
       return state;
   }
