@@ -46,7 +46,7 @@ function homeReducer(state = initialState, action) {
       return Object.assign({}, state, {
         todos: [
           ...state.todos.slice(0, index),
-          Object.assign({}, state.todos[index], {
+          assignToEmpty(state.todos[index], {
             completed: true
           }),
           ...state.todos.slice(index + 1)
