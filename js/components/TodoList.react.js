@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 export default class TodoList extends Component {
   render() {
-    const { todos } = this.props;
+    const { todos, onComplete } = this.props;
     return (
       <ul>
         {todos.map(todo =>
-          <li key={todo.id}>
-            {todo.text} ({todo.addedAt.toString()})
+          <li key={todo.id} onClick={(e) => onComplete(todo)}>
+            {todo.text} ({todo.addedAt.toString()}) ({todo.completed.toString()})
           </li>
         )}
       </ul>

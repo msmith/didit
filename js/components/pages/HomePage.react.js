@@ -3,7 +3,7 @@
  * This is the first thing users see of our App
  */
 
-import { asyncAddTodoItem } from '../../actions/AppActions';
+import { asyncAddTodoItem, asyncCompleteTodoItem } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -22,7 +22,9 @@ class HomePage extends Component {
         <AddTodo onAdd={(text) => {
           dispatch(asyncAddTodoItem(nextTodoId++, text))
         }} ></AddTodo>
-        <TodoList todos={todos}></TodoList>
+        <TodoList todos={todos} onComplete={(todo) => {
+          dispatch(asyncCompleteTodoItem(todo.id));
+        }}></TodoList>
         <Link className="btn" to="/readme">Setup</Link>
       </div>
     );
