@@ -15,18 +15,21 @@ describe('defaultReducer', () => {
   it('should handle the ADD_TODO action', () => {
     const id = 42;
     const text = 'wash the dog';
+    const addedAt = new Date();
 
     expect(
       homeReducer({todos: []}, {
         type: constants.ADD_TODO,
         id,
-        text
+        text,
+        addedAt
       })
     ).toEqual({
       todos: [
         {
           completed: false,
           id,
+          addedAt,
           text
         }
       ]

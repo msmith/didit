@@ -9,13 +9,15 @@ describe('AppActions', () => {
     it('should add a new item', () => {
       const id = 1;
       const text = 'wash the dog';
+      const addedAt = new Date();
       const expectedResult = {
         type: ADD_TODO,
         id,
-        text
+        text,
+        addedAt
       };
 
-      expect(addTodoItem(id, text)).toEqual(expectedResult);
+      expect(addTodoItem(id, text, addedAt)).toEqual(expectedResult);
     });
   });
 

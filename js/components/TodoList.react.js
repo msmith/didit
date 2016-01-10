@@ -7,7 +7,7 @@ export default class TodoList extends Component {
       <ul>
         {todos.map(todo =>
           <li key={todo.id}>
-            {todo.text}
+            {todo.text} ({todo.addedAt.toString()})
           </li>
         )}
       </ul>

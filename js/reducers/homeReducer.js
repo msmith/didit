@@ -29,6 +29,7 @@ function homeReducer(state = initialState, action) {
         {
           id: action.id,
           text: action.text,
+          addedAt: action.addedAt,
           completed: false
         }
       ];

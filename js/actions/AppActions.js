@@ -34,10 +34,11 @@ export function asyncAddTodoItem(id, text) {
     // You can do async stuff here!
     // API fetching, Animations,...
     // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk
-    return dispatch(addTodoItem(id, text));
+    var addedAt = new Date();
+    return dispatch(addTodoItem(id, text, addedAt));
   };
 }
 
-export function addTodoItem(id, text) {
-  return { type: ADD_TODO, id: id, text: text };
+export function addTodoItem(id, text, addedAt) {
+  return { type: ADD_TODO, id: id, text: text, addedAt: addedAt };
 }
