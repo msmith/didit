@@ -27,7 +27,7 @@
 // It makes more sense to have the asnyc actions before the non-async ones
 /* eslint-disable no-use-before-define */
 
-import { ADD_TODO } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO } from '../constants/AppConstants';
 
 export function asyncAddTodoItem(id, text) {
   return (dispatch) => {
@@ -41,4 +41,18 @@ export function asyncAddTodoItem(id, text) {
 
 export function addTodoItem(id, text, addedAt) {
   return { type: ADD_TODO, id, text, addedAt };
+}
+
+export function asyncCompleteTodoItem(id) {
+  return (dispatch) => {
+    // You can do async stuff here!
+    // API fetching, Animations,...
+    // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk
+    var addedAt = new Date();
+    return dispatch(completeTodoItem(id));
+  };
+}
+
+export function completeTodoItem(id) {
+  return { type: COMPLETE_TODO, id };
 }
