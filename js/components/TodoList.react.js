@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 
 export default class TodoList extends Component {
   render() {
-    const { todos, onComplete } = this.props;
+    const { todos, onToggle } = this.props;
     const formatTime = (date) => dateFormat(date, 'ddd, mmm d')
     const completedTime = (date) => {
       if (date) {
-        return (<span className='date'>{formatTime(date)}</span>);
+        return (<button className='date'>{formatTime(date)}</button>);
       } else {
         return (<button className='incomplete'>-</button>);
       }
@@ -15,7 +15,7 @@ export default class TodoList extends Component {
     return (
       <ul className='todo_list'>
         {todos.map(todo =>
-          <li key={todo.id} onClick={(e) => onComplete(todo)}>
+          <li key={todo.id} onClick={(e) => onToggle(todo)}>
             <span className='date'>
               {formatTime(todo.addedAt)}
             </span>
