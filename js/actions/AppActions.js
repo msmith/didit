@@ -47,16 +47,12 @@ export function asyncUncompleteTodoItem(id) {
   };
 }
 
-export function addTodoItem(id, text, addedAt) {
-  return { type: ADD_TODO, id, text,
-    addedAt: addedAt || new Date()
-  };
+export function addTodoItem(id, text, addedAt = new Date()) {
+  return { type: ADD_TODO, id, text, addedAt };
 }
 
-export function completeTodoItem(id, completedAt) {
-  return { type: COMPLETE_TODO, id,
-    completedAt: completedAt || new Date()
-  };
+export function completeTodoItem(id, completedAt = new Date()) {
+  return { type: COMPLETE_TODO, id, completedAt };
 }
 
 export function uncompleteTodoItem(id) {
