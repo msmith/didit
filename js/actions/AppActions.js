@@ -31,9 +31,6 @@ import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO } from '../constants/AppConsta
 
 export function asyncAddTodoItem(id, text) {
   return (dispatch) => {
-    // You can do async stuff here!
-    // API fetching, Animations,...
-    // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk
     var addedAt = new Date();
     return dispatch(addTodoItem(id, text, addedAt));
   };
@@ -41,9 +38,6 @@ export function asyncAddTodoItem(id, text) {
 
 export function asyncCompleteTodoItem(id) {
   return (dispatch) => {
-    // You can do async stuff here!
-    // API fetching, Animations,...
-    // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk
     var completedAt = new Date();
     return dispatch(completeTodoItem(id, completedAt));
   };
@@ -51,9 +45,6 @@ export function asyncCompleteTodoItem(id) {
 
 export function asyncUncompleteTodoItem(id) {
   return (dispatch) => {
-    // You can do async stuff here!
-    // API fetching, Animations,...
-    // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk
     return dispatch(uncompleteTodoItem(id));
   };
 }
