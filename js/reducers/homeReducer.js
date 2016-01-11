@@ -14,7 +14,7 @@
  */
 
 import { ADD_TODO, COMPLETE_TODO } from '../constants/AppConstants';
-import assignToEmpty from '../utils/assign';
+import { assignToEmpty, modifyItemInList } from '../utils/assign';
 
 const initialState = {
   todos: []
@@ -37,21 +37,12 @@ function homeReducer(state = initialState, action) {
         todos: todos
       });
     case COMPLETE_TODO:
-      var index = state.todos.findIndex((t) => {
-        return action.id == t.id;
+      var byId = (t) => action.id == t.id;
+      return assignToEmpty(state, {
+        todos: modifyItemInList(state.todos, byId, {
+          completedAt: action.completedAt
+        })
       });
-      if (index == -1) {
-        return { todos: state.todos };
-      }
-      return Object.assign({}, state, {
-        todos: [
-          ...state.todos.slice(0, index),
-          assignToEmpty(state.todos[index], {
-            completedAt: action.completedAt
-          }),
-          ...state.todos.slice(index + 1)
-        ]
-      })
     default:
       return state;
   }
