@@ -39,10 +39,6 @@ export function asyncAddTodoItem(id, text) {
   };
 }
 
-export function addTodoItem(id, text, addedAt) {
-  return { type: ADD_TODO, id, text, addedAt };
-}
-
 export function asyncCompleteTodoItem(id) {
   return (dispatch) => {
     // You can do async stuff here!
@@ -53,10 +49,6 @@ export function asyncCompleteTodoItem(id) {
   };
 }
 
-export function completeTodoItem(id, completedAt) {
-  return { type: COMPLETE_TODO, id, completedAt };
-}
-
 export function asyncUncompleteTodoItem(id) {
   return (dispatch) => {
     // You can do async stuff here!
@@ -64,6 +56,14 @@ export function asyncUncompleteTodoItem(id) {
     // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk
     return dispatch(uncompleteTodoItem(id));
   };
+}
+
+export function addTodoItem(id, text, addedAt) {
+  return { type: ADD_TODO, id, text, addedAt };
+}
+
+export function completeTodoItem(id, completedAt) {
+  return { type: COMPLETE_TODO, id, completedAt };
 }
 
 export function uncompleteTodoItem(id) {
