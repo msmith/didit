@@ -13,7 +13,7 @@
  * add it in the rootReducer.js.
  */
 
-import { ADD_TODO, COMPLETE_TODO } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO } from '../constants/AppConstants';
 import { assignToEmpty, modifyItemInList } from '../utils/assign';
 
 const initialState = {
@@ -42,6 +42,12 @@ function homeReducer(state = initialState, action) {
       return assignToEmpty(state, {
         todos: modifyItemInList(state.todos, withId(action.id), {
           completedAt: action.completedAt
+        })
+      });
+    case UNCOMPLETE_TODO:
+      return assignToEmpty(state, {
+        todos: modifyItemInList(state.todos, withId(action.id), {
+          completedAt: undefined
         })
       });
     default:

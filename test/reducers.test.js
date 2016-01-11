@@ -85,4 +85,53 @@ describe('defaultReducer', () => {
   });
 
 
+  // Test that it handles uncompleting a todo correctly
+  it('should handle the UNCOMPLETE_TODO action', () => {
+    const id = 43;
+    const text = 'wash the dog';
+    const addedAt = new Date();
+    const completedAt = new Date();
+
+    const initialTodos = [
+      {
+        id,
+        text,
+        addedAt,
+        completedAt
+      }
+    ];
+
+    expect(
+      homeReducer({todos: initialTodos}, {
+        type: constants.UNCOMPLETE_TODO,
+        id,
+        completedAt
+      })
+    ).toEqual({
+      todos: [
+        {
+          id,
+          text,
+          addedAt,
+          completedAt: undefined
+        }
+      ]
+    });
+  });
+
+  // Test that it handles uncompleting a todo correctly
+  it('should handle a UNCOMPLETE_TODO with an invalid id', () => {
+    const id = 43;
+
+    expect(
+      homeReducer({todos: []}, {
+        type: constants.UNCOMPLETE_TODO,
+        id
+      })
+    ).toEqual({
+      todos: []
+    });
+  });
+
+
 });

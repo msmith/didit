@@ -1,6 +1,6 @@
 import expect from 'expect';
-import { addTodoItem, completeTodoItem } from '../js/actions/AppActions';
-import { ADD_TODO, COMPLETE_TODO } from '../js/constants/AppConstants';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem } from '../js/actions/AppActions';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO } from '../js/constants/AppConstants';
 
 // Test actions from AppActions.js
 describe('AppActions', () => {
@@ -33,6 +33,19 @@ describe('AppActions', () => {
       };
 
       expect(completeTodoItem(id, completedAt)).toEqual(expectedResult);
+    });
+  });
+
+  // Test uncompleteTodoItem action
+  describe('uncompleteTodoItem', () => {
+    it('should mark item as not completed', () => {
+      const id = 3;
+      const expectedResult = {
+        type: UNCOMPLETE_TODO,
+        id
+      };
+
+      expect(uncompleteTodoItem(id)).toEqual(expectedResult);
     });
   });
 
