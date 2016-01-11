@@ -5,6 +5,7 @@
 
 .add_todo input {
 	width: 100%;
+	padding: 5px;
 }
 
 .todo_list .date, .todo_list .incomplete {

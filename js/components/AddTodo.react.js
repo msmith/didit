@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 export default class AddTodo extends Component {
   render() {
     const { onAdd } = this.props;
+    const inputPlaceholder = "What're you doing today?";
     return (
       <form className='add_todo' onSubmit={(e) => {
         e.preventDefault();
@@ -13,7 +14,7 @@ export default class AddTodo extends Component {
       }}>
         <input ref={node => {
           this.input = node;
-        }} />
+        }} placeholder={inputPlaceholder}/>
       </form>
     )
   }
