@@ -29,16 +29,14 @@
 
 import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO } from '../constants/AppConstants';
 
-export function asyncAddTodoItem(id, text) {
+export function asyncAddTodoItem(id, text, addedAt) {
   return (dispatch) => {
-    var addedAt = new Date();
     return dispatch(addTodoItem(id, text, addedAt));
   };
 }
 
-export function asyncCompleteTodoItem(id) {
+export function asyncCompleteTodoItem(id, completedAt) {
   return (dispatch) => {
-    var completedAt = new Date();
     return dispatch(completeTodoItem(id, completedAt));
   };
 }
@@ -50,11 +48,15 @@ export function asyncUncompleteTodoItem(id) {
 }
 
 export function addTodoItem(id, text, addedAt) {
-  return { type: ADD_TODO, id, text, addedAt };
+  return { type: ADD_TODO, id, text,
+    addedAt: addedAt || new Date()
+  };
 }
 
 export function completeTodoItem(id, completedAt) {
-  return { type: COMPLETE_TODO, id, completedAt };
+  return { type: COMPLETE_TODO, id,
+    completedAt: completedAt || new Date()
+  };
 }
 
 export function uncompleteTodoItem(id) {
