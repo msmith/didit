@@ -30,7 +30,7 @@ function homeReducer(state = initialState, action) {
           id: action.id,
           text: action.text,
           addedAt: action.addedAt,
-          completed: false
+          completedAt: undefined
         }
       ];
       return assignToEmpty(state, {
@@ -47,7 +47,7 @@ function homeReducer(state = initialState, action) {
         todos: [
           ...state.todos.slice(0, index),
           assignToEmpty(state.todos[index], {
-            completed: true
+            completedAt: action.completedAt
           }),
           ...state.todos.slice(index + 1)
         ]

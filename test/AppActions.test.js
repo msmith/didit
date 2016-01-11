@@ -25,12 +25,14 @@ describe('AppActions', () => {
   describe('completeTodoItem', () => {
     it('should mark item as completed', () => {
       const id = 3;
+      const completedAt = new Date();
       const expectedResult = {
         type: COMPLETE_TODO,
-        id
+        id,
+        completedAt
       };
 
-      expect(completeTodoItem(id)).toEqual(expectedResult);
+      expect(completeTodoItem(id, completedAt)).toEqual(expectedResult);
     });
   });
 

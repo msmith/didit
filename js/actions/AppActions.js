@@ -48,11 +48,11 @@ export function asyncCompleteTodoItem(id) {
     // You can do async stuff here!
     // API fetching, Animations,...
     // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk
-    var addedAt = new Date();
-    return dispatch(completeTodoItem(id));
+    var completedAt = new Date();
+    return dispatch(completeTodoItem(id, completedAt));
   };
 }
 
-export function completeTodoItem(id) {
-  return { type: COMPLETE_TODO, id };
+export function completeTodoItem(id, completedAt) {
+  return { type: COMPLETE_TODO, id, completedAt };
 }

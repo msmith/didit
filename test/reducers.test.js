@@ -27,7 +27,7 @@ describe('defaultReducer', () => {
     ).toEqual({
       todos: [
         {
-          completed: false,
+          completedAt: undefined,
           id,
           addedAt,
           text
@@ -41,28 +41,30 @@ describe('defaultReducer', () => {
     const id = 42;
     const text = 'wash the dog';
     const addedAt = new Date();
+    const completedAt = new Date();
 
     const initialTodos = [
       {
-        completed: false,
         id,
+        text,
         addedAt,
-        text
+        completedAt: undefined
       }
     ];
 
     expect(
       homeReducer({todos: initialTodos}, {
         type: constants.COMPLETE_TODO,
-        id
+        id,
+        completedAt
       })
     ).toEqual({
       todos: [
         {
-          completed: true,
           id,
+          text,
           addedAt,
-          text
+          completedAt
         }
       ]
     });
