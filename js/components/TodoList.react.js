@@ -4,11 +4,8 @@ import React, { Component } from 'react';
 export default class TodoList extends Component {
   render() {
     const { todos, onToggle } = this.props;
-    const formatTime = (date) => {
-      if (date) {
-        return dateFormat(date, 'ddd, mmm d');
-      }
-    };
+    const format = 'ddd, mmm d';
+    const formatTime = (date) => date ? dateFormat(date, format) : undefined;
     return (
       <ul className='todo_list'>
         {todos.map(todo =>
