@@ -22,6 +22,12 @@ const initialState = {
 
 const withId = (id) => (t) => id === t.id;
 
+const modifyTodoItem = (state, id, newObject) => {
+  return assignToEmpty(state, {
+    todos: modifyItemInList(state.todos, withId(id), newObject)
+  });
+}
+
 function homeReducer(state = initialState, action) {
   Object.freeze(state); // Don't mutate state directly, always use assign()!
   switch (action.type) {
@@ -39,16 +45,12 @@ function homeReducer(state = initialState, action) {
         todos: todos
       });
     case COMPLETE_TODO:
-      return assignToEmpty(state, {
-        todos: modifyItemInList(state.todos, withId(action.id), {
-          completedAt: action.completedAt
-        })
+      return modifyTodoItem(state, action.id, {
+        completedAt: action.completedAt
       });
     case UNCOMPLETE_TODO:
-      return assignToEmpty(state, {
-        todos: modifyItemInList(state.todos, withId(action.id), {
-          completedAt: undefined
-        })
+      return modifyTodoItem(state, action.id, {
+        completedAt: undefined
       });
     default:
       return state;
