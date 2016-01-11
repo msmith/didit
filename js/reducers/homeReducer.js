@@ -20,6 +20,8 @@ const initialState = {
   todos: []
 };
 
+const withId = (id) => (t) => id == t.id;
+
 function homeReducer(state = initialState, action) {
   Object.freeze(state); // Don't mutate state directly, always use assign()!
   switch (action.type) {
@@ -37,9 +39,8 @@ function homeReducer(state = initialState, action) {
         todos: todos
       });
     case COMPLETE_TODO:
-      var byId = (t) => action.id == t.id;
       return assignToEmpty(state, {
-        todos: modifyItemInList(state.todos, byId, {
+        todos: modifyItemInList(state.todos, withId(action.id), {
           completedAt: action.completedAt
         })
       });
