@@ -25,7 +25,6 @@ class HomePage extends Component {
         <TodoList todos={todos} onComplete={(todo) => {
           dispatch(asyncCompleteTodoItem(todo.id));
         }}></TodoList>
-        <Link className="btn" to="/readme">Setup</Link>
       </div>
     );
   }
