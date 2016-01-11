@@ -4,15 +4,16 @@ const assignToEmpty = (oldObject, newObject) => {
   return assign({}, oldObject, newObject);
 };
 
-const modifyItemInList = (objects, finder, newObject) => {
-  const index = objects.findIndex(finder);
+const modifyItemInList = (list, itemFinder, newObject) => {
+  const index = list.findIndex(itemFinder);
   if (index === -1) {
-    return objects;
+    // item wasn't found, return unmodified list
+    return list;
   }
   return [
-    ...objects.slice(0, index),
-    assignToEmpty(objects[index], newObject),
-    ...objects.slice(index + 1)
+    ...list.slice(0, index),
+    assignToEmpty(list[index], newObject),
+    ...list.slice(index + 1)
   ];
 };
 

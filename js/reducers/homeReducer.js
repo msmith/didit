@@ -26,7 +26,7 @@ const modifyTodoItem = (state, id, newObject) => {
   return assignToEmpty(state, {
     todos: modifyItemInList(state.todos, withId(id), newObject)
   });
-}
+};
 
 function homeReducer(state = initialState, action) {
   Object.freeze(state); // Don't mutate state directly, always use assign()!
