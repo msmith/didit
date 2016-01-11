@@ -7,15 +7,15 @@ export default class TodoList extends Component {
     const format = 'ddd, mmm d';
     const formatTime = (date) => date ? dateFormat(date, format) : undefined;
     return (
-      <ul className='todo_list'>
+      <ul className="todo_list">
         {todos.map(todo =>
           <li key={todo.id}>
-            <span className='date'>
+            <span className="date">
               {formatTime(todo.addedAt)}
             </span>
             <button
               className={todo.completedAt ? 'date' : 'incomplete'}
-              onClick={(e) => onToggle(todo)}>
+              onClick={() => onToggle(todo)}>
               {formatTime(todo.completedAt) || '-'}
             </button>
             {todo.text}
@@ -24,4 +24,4 @@ export default class TodoList extends Component {
       </ul>
     );
   }
-};
+}

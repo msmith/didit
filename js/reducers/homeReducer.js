@@ -20,7 +20,7 @@ const initialState = {
   todos: []
 };
 
-const withId = (id) => (t) => id == t.id;
+const withId = (id) => (t) => id === t.id;
 
 function homeReducer(state = initialState, action) {
   Object.freeze(state); // Don't mutate state directly, always use assign()!

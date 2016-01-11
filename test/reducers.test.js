@@ -132,6 +132,4 @@ describe('defaultReducer', () => {
       todos: []
     });
   });
-
-
 });

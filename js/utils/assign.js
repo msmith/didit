@@ -5,8 +5,8 @@ const assignToEmpty = (oldObject, newObject) => {
 };
 
 const modifyItemInList = (objects, finder, newObject) => {
-  var index = objects.findIndex(finder);
-  if (index == -1) {
+  const index = objects.findIndex(finder);
+  if (index === -1) {
     return objects;
   }
   return [

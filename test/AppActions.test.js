@@ -48,5 +48,4 @@ describe('AppActions', () => {
       expect(uncompleteTodoItem(id)).toEqual(expectedResult);
     });
   });
-
 });

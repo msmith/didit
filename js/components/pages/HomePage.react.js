@@ -6,7 +6,6 @@
 import { asyncAddTodoItem, asyncCompleteTodoItem, asyncUncompleteTodoItem } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import TodoList from '../TodoList.react';
 import AddTodo from '../AddTodo.react';
 
@@ -19,17 +18,17 @@ class HomePage extends Component {
     return (
       <div>
         <h1>To Do</h1>
-        <AddTodo onAdd={(text) => {
+        <AddTodo onAdd={(text) =>
           dispatch(asyncAddTodoItem(nextTodoId++, text))
-        }} ></AddTodo>
+        } />
         <TodoList todos={todos} onToggle={(todo) => {
-          if (todo.completedAt)
+          if (todo.completedAt) {
             dispatch(asyncUncompleteTodoItem(todo.id));
-          else
+          } else {
             dispatch(asyncCompleteTodoItem(todo.id));
-        }}></TodoList>
-      </div>
-    );
+          }
+        }} />
+      </div>);
   }
 }
 
