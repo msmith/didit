@@ -7,16 +7,20 @@ export default class TodoList extends Component {
     const formatTime = (date) => dateFormat(date, 'ddd, mmm d')
     const completedTime = (date) => {
       if (date) {
-        return formatTime(date);
+        return (<span className='date'>{formatTime(date)}</span>);
       } else {
-        return "";
+        return (<button className='incomplete'>-</button>);
       }
     }
     return (
       <ul className='todo_list'>
         {todos.map(todo =>
           <li key={todo.id} onClick={(e) => onComplete(todo)}>
-            {todo.text} ({formatTime(todo.addedAt)}) ({completedTime(todo.completedAt)})
+            <span className='date'>
+              {formatTime(todo.addedAt)}
+            </span>
+            {completedTime(todo.completedAt)}
+            {todo.text}
           </li>
         )}
       </ul>

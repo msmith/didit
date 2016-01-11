@@ -3,5 +3,23 @@
 	padding-left: 0;
 }
 
-.todo_list li {
+.add_todo input {
+	width: 100%;
+}
+
+.todo_list .date, .todo_list .incomplete {
+	margin: 0 5px 10px 0;
+	display: inline-block;
+	width: 120px;
+
+	background-color: #ececec;
+	border-radius: 4px;
+	padding: 5px;
+	text-align: center;
+
+	border: none;
+}
+
+.todo_list .incomplete {
+	color: #777;
 }

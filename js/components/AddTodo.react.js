@@ -4,7 +4,7 @@ export default class AddTodo extends Component {
   render() {
     const { onAdd } = this.props;
     return (
-      <form onSubmit={(e) => {
+      <form className='add_todo' onSubmit={(e) => {
         e.preventDefault();
         if (this.input.value) {
           onAdd(this.input.value)
