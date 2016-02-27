@@ -17,10 +17,6 @@ class HomePage extends Component {
     const { todos } = this.props.data;
     return (
       <div>
-        <h1>To Do</h1>
-        <AddTodo onAdd={(text) =>
-          dispatch(asyncAddTodoItem(nextTodoId++, text))
-        } />
         <TodoList todos={todos} onToggle={(todo) => {
           if (todo.completedAt) {
             dispatch(asyncUncompleteTodoItem(todo.id));
@@ -28,6 +24,9 @@ class HomePage extends Component {
             dispatch(asyncCompleteTodoItem(todo.id));
           }
         }} />
+        <AddTodo onAdd={(text) =>
+          dispatch(asyncAddTodoItem(nextTodoId++, text))
+        } />
       </div>);
   }
 }
