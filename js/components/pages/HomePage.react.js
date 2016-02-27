@@ -18,15 +18,17 @@ class HomePage extends Component {
     return (
       <div>
         <TodoGroups todos={todos} onToggle={(todo) => {
+          const today = new Date(2016, 2, 7 * Math.random());
           if (todo.completedAt) {
             dispatch(asyncUncompleteTodoItem(todo.id));
           } else {
-            dispatch(asyncCompleteTodoItem(todo.id));
+            dispatch(asyncCompleteTodoItem(todo.id, today));
           }
         }} />
-        <AddTodo onAdd={(text) =>
-          dispatch(asyncAddTodoItem(nextTodoId++, text, new Date(2016, 2, 7 * Math.random())))
-        } />
+        <AddTodo onAdd={(text) => {
+          const today = new Date(2016, 2, 7 * Math.random());
+          dispatch(asyncAddTodoItem(nextTodoId++, text, today));
+        }} />
       </div>);
   }
 }
