@@ -1,4 +1,3 @@
-import dateFormat from 'dateformat';
 import React, { Component } from 'react';
 var lodash = require('lodash');
 var moment = require('moment');
@@ -6,8 +5,8 @@ var moment = require('moment');
 export default class TodoList extends Component {
   render() {
     const { todos, onToggle } = this.props;
-    const format = 'ddd, mmm d';
-    const formatTime = (date) => date ? dateFormat(date, format) : undefined;
+    const format = 'ddd, MMM D';
+    const formatTime = (date) => date ? moment(date).format(format) : undefined;
     return (
       <ul className="todo_list">
         {todos.map(todo =>
