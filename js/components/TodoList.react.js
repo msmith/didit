@@ -1,5 +1,7 @@
 import dateFormat from 'dateformat';
 import React, { Component } from 'react';
+var lodash = require('lodash');
+var moment = require('moment');
 
 export default class TodoList extends Component {
   render() {

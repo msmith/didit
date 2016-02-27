@@ -6,7 +6,7 @@
 import { asyncAddTodoItem, asyncCompleteTodoItem, asyncUncompleteTodoItem } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TodoList from '../TodoList.react';
+import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
 
 let nextTodoId = 3;
@@ -17,7 +17,7 @@ class HomePage extends Component {
     const { todos } = this.props.data;
     return (
       <div>
-        <TodoList todos={todos} onToggle={(todo) => {
+        <TodoGroups todos={todos} onToggle={(todo) => {
           if (todo.completedAt) {
             dispatch(asyncUncompleteTodoItem(todo.id));
           } else {
@@ -25,7 +25,7 @@ class HomePage extends Component {
           }
         }} />
         <AddTodo onAdd={(text) =>
-          dispatch(asyncAddTodoItem(nextTodoId++, text))
+          dispatch(asyncAddTodoItem(nextTodoId++, text, new Date(2016, 2, 7 * Math.random())))
         } />
       </div>);
   }
