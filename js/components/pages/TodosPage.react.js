@@ -1,15 +1,10 @@
-/*
- * HomePage
- * This is the first thing users see of our App
- */
-
 import { addTodoItem, completeTodoItem, uncompleteTodoItem, removeTodoItem } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
 
-class HomePage extends Component {
+class TodosPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
@@ -43,4 +38,4 @@ function select(state) {
 }
 
 // Wrap the component to inject dispatch and state into it
-export default connect(select)(HomePage);
+export default connect(select)(TodosPage);

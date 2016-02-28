@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import FaIcon from './FaIcon.react';
-import Link from './Link.react';
+import TodoItem from './TodoItem.react';
 
 export default class TodoList extends Component {
   render() {
@@ -8,21 +7,7 @@ export default class TodoList extends Component {
     return (
       <ul className='todo-list'>
         {todos.map(todo =>
-          <li key={todo.id} className='checkbox'>
-            <label>
-              <input
-                type='checkbox'
-                defaultChecked={todo.completedAt}
-                onClick={() => onToggle(todo)}
-              />
-              {todo.text}
-            </label>
-            <div className='actions'>
-              <Link action={() => onDestroy(todo)}>
-                <FaIcon icon='trash'/>
-              </Link>
-            </div>
-          </li>
+          <TodoItem key={todo.id} todo={todo} onToggle={onToggle} onDestroy={onDestroy} />
         )}
       </ul>
     );
