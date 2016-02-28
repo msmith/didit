@@ -9,6 +9,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import MyTheme from './theme';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
+
+@ThemeDecorator(ThemeManager.getMuiTheme(MyTheme))
 class App extends Component {
   render() {
     return (

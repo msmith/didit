@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "TODO app with daily summaries",
   "dependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "fontfaceobserver": "^1.5.1",
     "history": "1.17.0",
     "lodash": "^4.5.1",
