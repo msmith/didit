@@ -16,13 +16,13 @@ export default class TodoItem extends Component {
           onCheck={() => onToggle(todo)}
         />
         <div className='actions'>
-        <IconButton onClick={() => onDateChange(todo, -1)}>
+        <IconButton onClick={() => onDateChange(todo, -1)} tooltip='-1 day'>
           <NavigationArrowUpward />
         </IconButton>
-        <IconButton onClick={() => onDateChange(todo, 1)}>
+        <IconButton onClick={() => onDateChange(todo, 1)} tooltip='+1 day'>
           <NavigationArrowDownward />
         </IconButton>
-        <IconButton onClick={() => onDestroy(todo)}>
+        <IconButton onClick={() => onDestroy(todo)} tooltip='Delete'>
           <ActionDelete />
         </IconButton>
         </div>

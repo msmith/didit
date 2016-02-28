@@ -1,17 +1,19 @@
-import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems } from '../../actions/AppActions';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems, toggleDebug } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
+import StateDump from '../StateDump.react';
 import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
+import FlatButton from 'material-ui/lib/flat-button';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
 var moment = require('moment');
 
 class TodosPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
-    const { todos } = this.props.data;
+    const { todos, debug } = this.props.data;
     const onArchive = () => dispatch(archiveTodoItems());
     const onDestroy = (todo) => dispatch(removeTodoItem(todo.id));
     const onAdd = (text) => {
@@ -23,10 +25,11 @@ class TodosPage extends Component {
       const newDate = moment(todo.addedAt).add(change, 'days');
       dispatch(moveTodoItem(todo.id, newDate));
     }
-    const onToggle = (todo) => {
+    const onTodoToggle = (todo) => {
       const toggle = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
       dispatch(toggle(todo.id));
     };
+    const onDebugToggle = () => dispatch(toggleDebug())
     const sweepButton = (
       <IconButton onClick={onArchive}>
         <ActionDoneAll />
@@ -36,16 +39,18 @@ class TodosPage extends Component {
       <div>
         <AppBar
           title='Did it 2'
+          iconElementLeft={<IconButton onClick={onDebugToggle}/>}
           iconElementRight={sweepButton}
         />
         <div className='page-content'>
           <TodoGroups
             todos={todos}
             onDestroy={onDestroy}
-            onToggle={onToggle}
+            onToggle={onTodoToggle}
             onDateChange={onDateChange}
           />
           <AddTodo onAdd={onAdd} />
+          {debug ? <StateDump data={this.props.data} /> : '' }
         </div>
       </div>);
   }

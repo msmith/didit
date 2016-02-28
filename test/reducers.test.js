@@ -7,7 +7,8 @@ describe('defaultReducer', () => {
   // Test that the initial state is returning correctly
   it('should return the initial state', () => {
     expect(homeReducer(undefined, {})).toEqual({
-      todos: []
+      todos: [],
+      debug: false
     });
   });
 
@@ -201,6 +202,28 @@ describe('defaultReducer', () => {
         { id: 4, addedAt: tue },
         { id: 5, addedAt: wed }
       ]
+    });
+  });
+
+  // Test that it handles toggling debug mode correctly
+  it('should handle the TOGGLE_DEBUG action to disable debug mode', () => {
+    expect(
+      homeReducer({debug: true}, {
+        type: constants.TOGGLE_DEBUG
+      })
+    ).toEqual({
+      debug: false
+    });
+  });
+
+  // Test that it handles toggling debug mode correctly
+  it('should handle the TOGGLE_DEBUG action to enable debug mode', () => {
+    expect(
+      homeReducer({debug: false}, {
+        type: constants.TOGGLE_DEBUG
+      })
+    ).toEqual({
+      debug: true
     });
   });
 

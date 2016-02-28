@@ -18,6 +18,7 @@ export default class AddTodo extends Component {
             input.value = '';
           }
         }}
+        className = 'add-todo'
         style={textFieldStyle}
       />
     );
