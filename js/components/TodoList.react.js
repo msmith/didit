@@ -6,7 +6,7 @@ export default class TodoList extends Component {
   render() {
     const { todos, onToggle, onDestroy } = this.props;
     return (
-      <ul className='todo_list'>
+      <ul className='todo-list'>
         {todos.map(todo =>
           <li key={todo.id} className='checkbox'>
             <label>

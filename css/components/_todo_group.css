@@ -11,10 +11,10 @@
   top: 0;
   right: 0;
 }
-.todo-group.complete .todo-count.badge {
+.todo-group.complete .todo-count {
   display: none;
 }
 
-.todo-count.badge {
+.todo-count {
   background-color: #337ab7;
 }
