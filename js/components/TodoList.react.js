@@ -8,8 +8,8 @@ export default class TodoList extends Component {
     return (
       <div>
         {todos.map(todo =>
-          <div>
-            <TodoItem key={todo.id} todo={todo} onToggle={onToggle} onDestroy={onDestroy} />
+          <div key={todo.id} >
+            <TodoItem todo={todo} onToggle={onToggle} onDestroy={onDestroy} />
             <Divider />
           </div>
         )}

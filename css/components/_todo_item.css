@@ -1,20 +1,19 @@
 .todo-item {
 	position: relative;
-	padding: 15px;
+	padding: 12px;
 }
 
-.todo-item .actions a {
-	position: absolute;
-	top: 15px;
-	right: 15px;
-	padding: 0 3px;
+.todo-item .actions button {
+	position: absolute !important;
+	top: 0;
+	right: 0;
 	z-index: 99;
 }
 
-.todo-item:not(:hover) a {
-	display: none;
+.todo-item:not(:hover) button {
+	display: none !important;
 }
 
-.todo-item:hover a {
-	display: inline-block;
+.todo-item:hover button {
+	display: inline-block !important;
 }

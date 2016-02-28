@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Link from './Link.react';
 import Checkbox from 'material-ui/lib/checkbox';
+import IconButton from 'material-ui/lib/icon-button';
 import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 
 export default class TodoItem extends Component {
@@ -14,9 +14,9 @@ export default class TodoItem extends Component {
           onCheck={() => onToggle(todo)}
         />
         <div className='actions'>
-          <Link action={() => onDestroy(todo)}>
+          <IconButton onClick={() => onDestroy(todo)}>
             <ActionDelete />
-          </Link>
+          </IconButton>
         </div>
       </div>
     );

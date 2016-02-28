@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
 import AppBar from 'material-ui/lib/app-bar';
-import FlatButton from 'material-ui/lib/flat-button';
+import IconButton from 'material-ui/lib/icon-button';
+import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
 
 class TodosPage extends Component {
   render() {
@@ -22,14 +23,16 @@ class TodosPage extends Component {
       const toggle = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
       dispatch(toggle(todo.id));
     };
+    const sweepButton = (
+      <IconButton onClick={onArchive}>
+        <ActionDoneAll />
+      </IconButton>
+    );
     return (
       <div>
         <AppBar
           title='Did it 2'
-          iconElementRight={<FlatButton
-            label='Sweep'
-            onClick={onArchive}
-          />}
+          iconElementRight={sweepButton}
         />
         <div className='page-content'>
           <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={onToggle} />
