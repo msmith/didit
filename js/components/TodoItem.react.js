@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Checkbox from 'material-ui/lib/checkbox';
 import IconButton from 'material-ui/lib/icon-button';
+import NavigationArrowUpward from 'material-ui/lib/svg-icons/navigation/arrow-upward';
+import NavigationArrowDownward from 'material-ui/lib/svg-icons/navigation/arrow-downward';
 import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
-import ActionDateRange from 'material-ui/lib/svg-icons/action/date-range';
 
 export default class TodoItem extends Component {
   render() {
@@ -15,12 +16,15 @@ export default class TodoItem extends Component {
           onCheck={() => onToggle(todo)}
         />
         <div className='actions'>
-          <IconButton onClick={() => onDestroy(todo)}>
-            <ActionDelete />
-          </IconButton>
-          <IconButton onClick={() => onDateChange(todo)}>
-            <ActionDateRange />
-          </IconButton>
+        <IconButton onClick={() => onDateChange(todo, -1)}>
+          <NavigationArrowUpward />
+        </IconButton>
+        <IconButton onClick={() => onDateChange(todo, 1)}>
+          <NavigationArrowDownward />
+        </IconButton>
+        <IconButton onClick={() => onDestroy(todo)}>
+          <ActionDelete />
+        </IconButton>
         </div>
       </div>
     );

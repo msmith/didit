@@ -6,6 +6,7 @@ import AddTodo from '../AddTodo.react';
 import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
+var moment = require('moment');
 
 class TodosPage extends Component {
   render() {
@@ -18,8 +19,8 @@ class TodosPage extends Component {
       const id = new Date().getTime();
       dispatch(addTodoItem(id, text, today));
     };
-    const onDateChange = (todo) => {
-      const newDate = new Date(2016, 2, Math.round(30 * Math.random()));
+    const onDateChange = (todo, change) => {
+      const newDate = moment(todo.addedAt).add(change, 'days');
       dispatch(moveTodoItem(todo.id, newDate));
     }
     const onToggle = (todo) => {
