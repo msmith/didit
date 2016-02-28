@@ -151,5 +151,30 @@ describe('defaultReducer', () => {
     });
   });
 
+  // Test that it handles archiving todos correctly
+  it('should handle the ARCHIVE_TODOS action', () => {
+    const mon = new Date(2016, 1, 2);
+    const tue = new Date(2016, 1, 3);
+    const wed = new Date(2016, 1, 4);
+    const initialTodos = [
+      { id: 1, addedAt: mon },
+      { id: 2, addedAt: mon, completedAt: mon },
+      { id: 3, addedAt: tue, completedAt: wed },
+      { id: 4, addedAt: tue },
+      { id: 5, addedAt: wed }
+    ];
+
+    expect(
+      homeReducer({todos: initialTodos}, {
+        type: constants.ARCHIVE_TODOS
+      })
+    ).toEqual({
+      todos: [
+        { id: 1, addedAt: mon },
+        { id: 4, addedAt: tue },
+        { id: 5, addedAt: wed }
+      ]
+    });
+  });
 
 });

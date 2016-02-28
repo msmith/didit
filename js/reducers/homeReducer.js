@@ -13,8 +13,9 @@
  * add it in the rootReducer.js.
  */
 
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, REMOVE_TODO } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, REMOVE_TODO, ARCHIVE_TODOS } from '../constants/AppConstants';
 import { assignToEmpty, modifyItemInList } from '../utils/assign';
+var lodash = require('lodash');
 
 const initialState = {
   todos: []
@@ -74,6 +75,11 @@ function homeReducer(state = initialState, action) {
           todos: ts
         });
       }
+    case ARCHIVE_TODOS:
+      const incompleteTodos = lodash.reject(state.todos, 'completedAt')
+      return assignToEmpty(state, {
+        todos: incompleteTodos
+      });
     default:
       return state;
   }
