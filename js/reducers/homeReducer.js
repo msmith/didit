@@ -30,14 +30,7 @@ const modifyTodoItem = (state, id, newObject) => {
   });
 };
 
-const findIndex = (todos, id) => {
-  for (var index = 0; index < todos.length; index++) {
-    if (todos[index].id === id) {
-      return index;
-    }
-  }
-  return null;
-}
+const removeTodos = (todos, predicate) => lodash.reject(todos, predicate);
 
 function homeReducer(state = initialState, action) {
   Object.freeze(state); // Don't mutate state directly, always use assign()!
@@ -68,22 +61,13 @@ function homeReducer(state = initialState, action) {
         addedAt: action.addedAt
       });
     case REMOVE_TODO:
-      const index = findIndex(state.todos, action.id);
-      if (index == null) {
-        return state;
-      } else {
-        const ts = [
-          ...state.todos.slice(0, index),
-          ...state.todos.slice(index + 1)
-        ];
-        return assignToEmpty(state, {
-          todos: ts
-        });
-      }
-    case ARCHIVE_TODOS:
-      const incompleteTodos = lodash.reject(state.todos, 'completedAt')
       return assignToEmpty(state, {
-        todos: incompleteTodos
+        todos: removeTodos(state.todos, withId(action.id))
+      });
+    case ARCHIVE_TODOS:
+      const incomplete = (t) => t.completedAt;
+      return assignToEmpty(state, {
+        todos: removeTodos(state.todos, incomplete)
       });
     case TOGGLE_DEBUG:
       return assignToEmpty(state, {
