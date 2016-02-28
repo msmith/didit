@@ -15,9 +15,10 @@ class HomePage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
+    const onDestroy = (todo) => dispatch(asyncRemoveTodoItem(todo.id));
     return (
       <div>
-        <TodoGroups todos={todos} onToggle={(todo) => {
+        <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={(todo) => {
           const today = new Date(2016, 2, 7 * Math.random());
           if (todo.completedAt) {
             dispatch(asyncUncompleteTodoItem(todo.id));
