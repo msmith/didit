@@ -16,3 +16,11 @@
 	right: 0;
 	padding: 0 3px;
 }
+
+.todo-list:not(:hover) a {
+	display: none;
+}
+
+.todo-list:hover a {
+	display: inline-block;
+}
