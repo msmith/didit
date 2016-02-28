@@ -5,7 +5,9 @@ export default class AddTodo extends Component {
   render() {
     const { onAdd } = this.props;
     const inputPlaceholder = "What're you doing today?";
-    const textFieldStyle = { 'display': 'block', 'marginLeft': '12px' };
+    const textFieldStyle = {
+      'display': 'block', 'width': '100%'
+    };
     return (
       <TextField
         hintText={inputPlaceholder}
