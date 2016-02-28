@@ -7,14 +7,11 @@
 }
 
 .todo-count {
+  background-color: #337ab7;
   position: absolute;
   top: 0;
   right: 0;
 }
 .todo-group.complete .todo-count {
   display: none;
-}
-
-.todo-count {
-  background-color: #337ab7;
 }
