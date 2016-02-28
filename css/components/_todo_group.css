@@ -11,6 +11,9 @@
   top: 0;
   right: 0;
 }
+.todo-group.complete .todo-count.badge {
+  display: none;
+}
 
 .todo-count.badge {
   background-color: #337ab7;
