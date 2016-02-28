@@ -7,7 +7,7 @@ export default class TodoItem extends Component {
   render() {
     const { todo, onToggle, onDestroy } = this.props;
     return (
-      <li className='checkbox todo-item'>
+      <div className='todo-item'>
         <Checkbox
           defaultChecked={!!todo.completedAt}
           label={todo.text}
@@ -18,7 +18,7 @@ export default class TodoItem extends Component {
             <ActionDelete />
           </Link>
         </div>
-      </li>
+      </div>
     );
   }
 }

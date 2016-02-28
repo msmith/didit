@@ -1,8 +1,9 @@
-.todo-group + .todo-group {
+.todo-group {
   margin-top: 30px;
 }
 
 .todo-group .section-header {
+  color: #777;
   padding: 10px 0 10px 20px;
 }
 

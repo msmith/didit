@@ -1,19 +1,20 @@
 .todo-item {
 	position: relative;
+	padding: 15px;
 }
 
 .todo-item .actions a {
-	background-color: rgba(255, 255, 255, 0.85);
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 15px;
+	right: 15px;
 	padding: 0 3px;
+	z-index: 99;
 }
 
-/*.todo-list:not(:hover) a {
+.todo-item:not(:hover) a {
 	display: none;
 }
 
-.todo-list:hover a {
+.todo-item:hover a {
 	display: inline-block;
-}*/
+}

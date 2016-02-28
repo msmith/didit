@@ -5,7 +5,7 @@ import TodoList from './TodoList.react';
 export default class TodoGroup extends Component {
   render() {
     const { title, todos, onToggle, onDestroy } = this.props;
-    const paperStyle = { padding: 15, rounded: false };
+    const paperStyle = { rounded: false };
     const buttonStyle = { float: 'right' };
     return (
       <div className='todo-group'>

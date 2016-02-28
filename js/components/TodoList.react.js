@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import TodoItem from './TodoItem.react';
+import Divider from 'material-ui/lib/divider';
 
 export default class TodoList extends Component {
   render() {
     const { todos, onToggle, onDestroy } = this.props;
     return (
-      <ul className='todo-list'>
+      <div>
         {todos.map(todo =>
-          <TodoItem key={todo.id} todo={todo} onToggle={onToggle} onDestroy={onDestroy} />
+          <div>
+            <TodoItem key={todo.id} todo={todo} onToggle={onToggle} onDestroy={onDestroy} />
+            <Divider />
+          </div>
         )}
-      </ul>
+      </div>
     );
   }
 }

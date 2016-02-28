@@ -31,8 +31,10 @@ class TodosPage extends Component {
             onClick={onArchive}
           />}
         />
-        <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={onToggle} />
-        <AddTodo onAdd={onAdd} />
+        <div className='page-content'>
+          <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={onToggle} />
+          <AddTodo onAdd={onAdd} />
+        </div>
       </div>);
   }
 }
