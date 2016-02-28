@@ -84,7 +84,6 @@ describe('defaultReducer', () => {
     });
   });
 
-
   // Test that it handles uncompleting a todo correctly
   it('should handle the UNCOMPLETE_TODO action', () => {
     const id = 43;
@@ -132,4 +131,25 @@ describe('defaultReducer', () => {
       todos: []
     });
   });
+
+  // Test that it handles removing a todo correctly
+  it('should handle the REMOVE_TODO action', () => {
+    const id = 42;
+    const text = 'wash the dog';
+    const addedAt = new Date();
+    const initialTodos = [
+      { id, addedAt, text }
+    ]
+
+    expect(
+      homeReducer({todos: initialTodos}, {
+        type: constants.REMOVE_TODO,
+        id
+      })
+    ).toEqual({
+      todos: []
+    });
+  });
+
+
 });

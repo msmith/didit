@@ -1,6 +1,6 @@
 import expect from 'expect';
-import { addTodoItem, completeTodoItem, uncompleteTodoItem } from '../js/actions/AppActions';
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO } from '../js/constants/AppConstants';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, removeTodoItem} from '../js/actions/AppActions';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, REMOVE_TODO } from '../js/constants/AppConstants';
 
 // Test actions from AppActions.js
 describe('AppActions', () => {
@@ -46,6 +46,19 @@ describe('AppActions', () => {
       };
 
       expect(uncompleteTodoItem(id)).toEqual(expectedResult);
+    });
+  });
+
+  // Test removeTodoItem action
+  describe('removeTodoItem', () => {
+    it('should remove item', () => {
+      const id = 3;
+      const expectedResult = {
+        type: REMOVE_TODO,
+        id
+      };
+
+      expect(removeTodoItem(id)).toEqual(expectedResult);
     });
   });
 });

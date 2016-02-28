@@ -3,7 +3,7 @@
  * This is the first thing users see of our App
  */
 
-import { asyncAddTodoItem, asyncCompleteTodoItem, asyncUncompleteTodoItem } from '../../actions/AppActions';
+import { asyncAddTodoItem, asyncCompleteTodoItem, asyncUncompleteTodoItem, asyncRemoveTodoItem } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';

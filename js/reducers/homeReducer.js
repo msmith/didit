@@ -13,7 +13,7 @@
  * add it in the rootReducer.js.
  */
 
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, REMOVE_TODO } from '../constants/AppConstants';
 import { assignToEmpty, modifyItemInList } from '../utils/assign';
 
 const initialState = {
@@ -27,6 +27,15 @@ const modifyTodoItem = (state, id, newObject) => {
     todos: modifyItemInList(state.todos, withId(id), newObject)
   });
 };
+
+const findIndex = (todos, id) => {
+  for (var index = 0; index < todos.length; index++) {
+    if (todos[index].id === id) {
+      return index;
+    }
+  }
+  return null;
+}
 
 function homeReducer(state = initialState, action) {
   Object.freeze(state); // Don't mutate state directly, always use assign()!
@@ -52,6 +61,19 @@ function homeReducer(state = initialState, action) {
       return modifyTodoItem(state, action.id, {
         completedAt: undefined
       });
+    case REMOVE_TODO:
+      const index = findIndex(state.todos, action.id);
+      if (index == null) {
+        return state;
+      } else {
+        const ts = [
+          ...state.todos.slice(0, index),
+          ...state.todos.slice(index + 1)
+        ];
+        return assignToEmpty(state, {
+          todos: ts
+        });
+      }
     default:
       return state;
   }
