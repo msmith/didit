@@ -10,6 +10,7 @@ class TodosPage extends Component {
     const { todos } = this.props.data;
     const onDestroy = (todo) => dispatch(removeTodoItem(todo.id));
     const onAdd = (text) => {
+      const today = new Date(2016, 2, Math.round(5 * Math.random()));
       const id = new Date().getTime();
       dispatch(addTodoItem(id, text, today));
     };
