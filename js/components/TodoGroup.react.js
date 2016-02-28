@@ -6,7 +6,7 @@ export default class TodoGroup extends Component {
   render() {
     const { title, todos, onToggle, onDestroy } = this.props;
     const numComplete = lodash.filter(todos, 'completedAt').length;
-    const numTotal = this.props.todos.length;
+    const numTotal = todos.length;
     var groupClass = 'todo-group panel panel-default';
     if (numComplete === numTotal) {
       groupClass += ' complete';

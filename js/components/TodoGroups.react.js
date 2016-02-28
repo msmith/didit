@@ -10,8 +10,6 @@ export default class TodoGroups extends Component {
     const groupBy = (todo) => moment(todo.addedAt).startOf('day').toISOString();
     const groupedTodos = lodash.groupBy(todos, groupBy);
     const sortedDates = lodash.sortBy(lodash.keys(groupedTodos));
-    const numComplete = _.filter(todos, 'completedAt').length;
-    const numTotal = this.props.todos.length;
     return (
       <div className='todo-groups'>
       {sortedDates.map(date =>
