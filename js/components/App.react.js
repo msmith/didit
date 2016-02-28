@@ -8,13 +8,11 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from './Header.react';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Header/>
         <div className='container'>
           { this.props.children }
         </div>

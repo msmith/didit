@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
+import Paper from 'material-ui/lib/paper';
 import TodoList from './TodoList.react';
-var lodash = require('lodash');
 
 export default class TodoGroup extends Component {
   render() {
     const { title, todos, onToggle, onDestroy } = this.props;
-    const numComplete = lodash.filter(todos, 'completedAt').length;
-    const numTotal = todos.length;
-    var groupClass = 'todo-group';
-    if (numComplete === numTotal) {
-      groupClass += ' complete';
-    }
+    const paperStyle = { padding: 15, rounded: false };
+    const buttonStyle = { float: 'right' };
     return (
-      <div className={groupClass}>
-        <h4>
+      <div className='todo-group'>
+        <div className='section-header'>
           {title}
-          <span className='todo-count badge'>{numComplete} / {numTotal}</span>
-        </h4>
-        <TodoList todos={todos} onToggle={onToggle} onDestroy={onDestroy}/>
+        </div>
+        <Paper style={paperStyle} zDepth={1}>
+          <TodoList todos={todos} onToggle={onToggle} onDestroy={onDestroy}/>
+        </Paper>
       </div>
     );
   }

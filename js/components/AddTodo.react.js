@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+import TextField from 'material-ui/lib/text-field';
 
 export default class AddTodo extends Component {
   render() {
     const { onAdd } = this.props;
     const inputPlaceholder = "What're you doing today?";
+    const textFieldStyle = { display: 'block', width: '100%' };
     return (
-      <form className='add_todo' onSubmit={(e) => {
-        e.preventDefault();
-        if (this.input.value) {
-          onAdd(this.input.value);
-          this.input.value = '';
-        }
-      }}>
-        <input className='form-control' ref={node => {
-          this.input = node;
-        }} placeholder={inputPlaceholder}/>
-      </form>
+      <TextField
+        hintText={inputPlaceholder}
+        onEnterKeyDown={e => {
+          const input = e.target;
+          if (input.value) {
+            onAdd(input.value);
+            input.value = '';
+          }
+        }}
+        style={textFieldStyle}
+      />
     );
   }
 }

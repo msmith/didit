@@ -2,16 +2,10 @@
   margin-top: 30px;
 }
 
-.todo-group h4 {
-  position: relative;
+.todo-group .section-header {
+  padding: 10px 0 10px 20px;
 }
 
-.todo-count {
-  background-color: #337ab7;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.todo-group.complete .todo-count {
-  display: none;
+.todo-group .title {
+  position: relative;
 }

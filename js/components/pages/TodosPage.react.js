@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
-import Link from '../Link.react';
+import AppBar from 'material-ui/lib/app-bar';
+import FlatButton from 'material-ui/lib/flat-button';
 
 class TodosPage extends Component {
   render() {
@@ -23,7 +24,13 @@ class TodosPage extends Component {
     };
     return (
       <div>
-        <Link action={onArchive}>Archive</Link>
+        <AppBar
+          title='Did it 2'
+          iconElementRight={<FlatButton
+            label='Sweep'
+            onClick={onArchive}
+          />}
+        />
         <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={onToggle} />
         <AddTodo onAdd={onAdd} />
       </div>);
