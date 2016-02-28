@@ -1,5 +1,5 @@
-.todo-group {
-  padding: 0 15px;
+.todo-group + .todo-group {
+  margin-top: 30px;
 }
 
 .todo-group h4 {
