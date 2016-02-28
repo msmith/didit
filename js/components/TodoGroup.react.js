@@ -12,7 +12,7 @@ export default class TodoGroup extends Component {
       groupClass += ' complete';
     }
     return (
-      <div key={title} className={groupClass}>
+      <div className={groupClass}>
         <h4>
           {title}
           <span className='todo-count badge'>{numComplete} / {numTotal}</span>
