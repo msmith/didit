@@ -132,6 +132,33 @@ describe('defaultReducer', () => {
     });
   });
 
+  // Test that it handles moving a todo correctly
+  it('should handle the MOVE_TODO action', () => {
+    const id = 42;
+    const text = 'wash the dog';
+    const addedAt = new Date(2001, 1, 2);
+    const initialTodos = [
+      { id, addedAt, text }
+    ]
+    const newAddedAt = new Date();
+
+    expect(
+      homeReducer({todos: initialTodos}, {
+        type: constants.MOVE_TODO,
+        id,
+        addedAt: newAddedAt
+      })
+    ).toEqual({
+      todos: [
+        {
+          id,
+          addedAt: newAddedAt,
+          text
+        }
+      ]
+    });
+  });
+
   // Test that it handles removing a todo correctly
   it('should handle the REMOVE_TODO action', () => {
     const id = 42;

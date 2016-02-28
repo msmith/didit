@@ -3,10 +3,13 @@
 	padding: 12px;
 }
 
-.todo-item .actions button {
+.todo-item .actions {
 	position: absolute !important;
 	top: 0;
 	right: 0;
+}
+
+.todo-item .actions button {
 	z-index: 99;
 }
 

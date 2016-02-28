@@ -5,7 +5,7 @@ var moment = require('moment');
 
 export default class TodoGroups extends Component {
   render() {
-    const { todos, onToggle, onDestroy } = this.props;
+    const { todos, onToggle, onDestroy, onDateChange } = this.props;
     const formatTitle = (date) => moment(date).format('ddd, MMM D');
     const groupBy = (todo) => moment(todo.addedAt).startOf('day').toISOString();
     const groupedTodos = lodash.groupBy(todos, groupBy);
@@ -18,6 +18,7 @@ export default class TodoGroups extends Component {
           todos={groupedTodos[date]}
           onToggle={onToggle}
           onDestroy={onDestroy}
+          onDateChange={onDateChange}
           key={date}
         />
       )}

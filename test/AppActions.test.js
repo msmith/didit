@@ -1,6 +1,6 @@
 import expect from 'expect';
-import { addTodoItem, completeTodoItem, uncompleteTodoItem, removeTodoItem, archiveTodoItems} from '../js/actions/AppActions';
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, REMOVE_TODO, ARCHIVE_TODOS } from '../js/constants/AppConstants';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems} from '../js/actions/AppActions';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS } from '../js/constants/AppConstants';
 
 // Test actions from AppActions.js
 describe('AppActions', () => {
@@ -36,6 +36,20 @@ describe('AppActions', () => {
     });
   });
 
+    // Test moveTodoItem action
+    describe('moveTodoItem', () => {
+      it('should change item addedAt', () => {
+        const id = 3;
+        const addedAt = new Date();
+        const expectedResult = {
+          type: MOVE_TODO,
+          id,
+          addedAt
+        };
+
+        expect(moveTodoItem(id, addedAt)).toEqual(expectedResult);
+      });
+    });
   // Test uncompleteTodoItem action
   describe('uncompleteTodoItem', () => {
     it('should mark item as not completed', () => {

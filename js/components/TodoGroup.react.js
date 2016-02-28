@@ -4,7 +4,7 @@ import TodoList from './TodoList.react';
 
 export default class TodoGroup extends Component {
   render() {
-    const { title, todos, onToggle, onDestroy } = this.props;
+    const { title, todos, onToggle, onDestroy, onDateChange } = this.props;
     const paperStyle = { rounded: false };
     const buttonStyle = { float: 'right' };
     return (
@@ -13,7 +13,12 @@ export default class TodoGroup extends Component {
           {title}
         </div>
         <Paper style={paperStyle} zDepth={1}>
-          <TodoList todos={todos} onToggle={onToggle} onDestroy={onDestroy}/>
+          <TodoList
+            todos={todos}
+            onToggle={onToggle}
+            onDestroy={onDestroy}
+            onDateChange={onDateChange}
+          />
         </Paper>
       </div>
     );

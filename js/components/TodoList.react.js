@@ -4,12 +4,17 @@ import Divider from 'material-ui/lib/divider';
 
 export default class TodoList extends Component {
   render() {
-    const { todos, onToggle, onDestroy } = this.props;
+    const { todos, onToggle, onDestroy, onDateChange } = this.props;
     return (
       <div>
         {todos.map(todo =>
           <div key={todo.id} >
-            <TodoItem todo={todo} onToggle={onToggle} onDestroy={onDestroy} />
+            <TodoItem
+              todo={todo}
+              onToggle={onToggle}
+              onDestroy={onDestroy}
+              onDateChange={onDateChange}
+            />
             <Divider />
           </div>
         )}
