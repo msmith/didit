@@ -1,3 +1,7 @@
+.todo-group {
+  padding: 0 15px;
+}
+
 .todo-group h4 {
   position: relative;
 }

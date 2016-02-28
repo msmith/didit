@@ -13,12 +13,13 @@ export default class TodoGroups extends Component {
     const numComplete = _.filter(todos, 'completedAt').length;
     const numTotal = this.props.todos.length;
     return (
-      <div>
+      <div className='todo-groups'>
       {sortedDates.map(date =>
         <TodoGroup
           title={formatTitle(date)}
           todos={groupedTodos[date]}
           onToggle={onToggle}
+          key={date}
         />
       )}
       </div>
