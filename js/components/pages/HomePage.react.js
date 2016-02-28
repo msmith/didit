@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
-import Header from '../Header.react';
 
 let nextTodoId = 3;
 
@@ -19,23 +18,20 @@ class HomePage extends Component {
     const onDestroy = (todo) => dispatch(removeTodoItem(todo.id));
     return (
       <div>
-        <Header/>
-        <div className='container'>
-          <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={(todo) => {
-            // const today = new Date(2016, 2, 7 * Math.random());
-            const today = new Date();
-            if (todo.completedAt) {
-              dispatch(uncompleteTodoItem(todo.id));
-            } else {
-              dispatch(completeTodoItem(todo.id, today));
-            }
-          }} />
-          <AddTodo onAdd={(text) => {
-            // const today = new Date(2016, 2, 7 * Math.random());
-            const today = new Date();
-            dispatch(addTodoItem(nextTodoId++, text, today));
-          }} />
-        </div>
+        <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={(todo) => {
+          // const today = new Date(2016, 2, 7 * Math.random());
+          const today = new Date();
+          if (todo.completedAt) {
+            dispatch(uncompleteTodoItem(todo.id));
+          } else {
+            dispatch(completeTodoItem(todo.id, today));
+          }
+        }} />
+        <AddTodo onAdd={(text) => {
+          // const today = new Date(2016, 2, 7 * Math.random());
+          const today = new Date();
+          dispatch(addTodoItem(nextTodoId++, text, today));
+        }} />
       </div>);
   }
 }
