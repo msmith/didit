@@ -22,7 +22,8 @@ class HomePage extends Component {
         <Header/>
         <div className='container'>
           <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={(todo) => {
-            const today = new Date(2016, 2, 7 * Math.random());
+            // const today = new Date(2016, 2, 7 * Math.random());
+            const today = new Date();
             if (todo.completedAt) {
               dispatch(uncompleteTodoItem(todo.id));
             } else {
@@ -30,7 +31,8 @@ class HomePage extends Component {
             }
           }} />
           <AddTodo onAdd={(text) => {
-            const today = new Date(2016, 2, 7 * Math.random());
+            // const today = new Date(2016, 2, 7 * Math.random());
+            const today = new Date();
             dispatch(addTodoItem(nextTodoId++, text, today));
           }} />
         </div>
