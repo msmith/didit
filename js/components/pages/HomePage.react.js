@@ -3,7 +3,7 @@
  * This is the first thing users see of our App
  */
 
-import { asyncAddTodoItem, asyncCompleteTodoItem, asyncUncompleteTodoItem, asyncRemoveTodoItem } from '../../actions/AppActions';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, removeTodoItem } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
@@ -16,7 +16,7 @@ class HomePage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
-    const onDestroy = (todo) => dispatch(asyncRemoveTodoItem(todo.id));
+    const onDestroy = (todo) => dispatch(removeTodoItem(todo.id));
     return (
       <div>
         <Header/>
@@ -24,14 +24,14 @@ class HomePage extends Component {
           <TodoGroups todos={todos} onDestroy={onDestroy} onToggle={(todo) => {
             const today = new Date(2016, 2, 7 * Math.random());
             if (todo.completedAt) {
-              dispatch(asyncUncompleteTodoItem(todo.id));
+              dispatch(uncompleteTodoItem(todo.id));
             } else {
-              dispatch(asyncCompleteTodoItem(todo.id, today));
+              dispatch(completeTodoItem(todo.id, today));
             }
           }} />
           <AddTodo onAdd={(text) => {
             const today = new Date(2016, 2, 7 * Math.random());
-            dispatch(asyncAddTodoItem(nextTodoId++, text, today));
+            dispatch(addTodoItem(nextTodoId++, text, today));
           }} />
         </div>
       </div>);
