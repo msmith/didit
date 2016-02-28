@@ -19,7 +19,7 @@ export default class TodoList extends Component {
             </label>
             <div className='actions'>
               <Link action={() => onDestroy(todo)}>
-                <FaIcon icon='fw trash'/>
+                <FaIcon icon='trash'/>
               </Link>
             </div>
           </li>
