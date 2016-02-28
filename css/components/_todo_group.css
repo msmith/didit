@@ -1,0 +1,13 @@
+.todo-group h4 {
+  position: relative;
+}
+
+.todo-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.todo-count.badge {
+  background-color: #337ab7;
+}
