@@ -11,14 +11,11 @@ class TodosPage extends Component {
     const onDestroy = (todo) => dispatch(removeTodoItem(todo.id));
     const onAdd = (text) => {
       const id = new Date().getTime();
-      dispatch(addTodoItem(id, text));
+      dispatch(addTodoItem(id, text, today));
     };
     const onToggle = (todo) => {
-      if (todo.completedAt) {
-        dispatch(uncompleteTodoItem(todo.id));
-      } else {
-        dispatch(completeTodoItem(todo.id));
-      }
+      const toggle = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
+      dispatch(toggle(todo.id));
     };
     return (
       <div>
