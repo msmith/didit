@@ -14,7 +14,7 @@ class TodosPage extends Component {
   componentDidMount() {
     document.addEventListener('keydown', (e) => {
       switch(e.code) {
-        case 'KeyD':
+        case 'Backquote':
           this.props.dispatch(toggleDebug())
           break;
       }
