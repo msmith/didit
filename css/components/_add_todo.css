@@ -2,12 +2,13 @@
   margin-top: 30px;
 }
 
-@media (max-width: 680px) {
+.add-todo input {
+  width: 100%;
+}
+
+@media (max-width: 750px) {
   .add-todo {
-    margin: 0 15px;
-    width: auto !important;
-  }
-  .add-todo input {
-    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
