@@ -11,6 +11,16 @@ import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
 var moment = require('moment');
 
 class TodosPage extends Component {
+  componentDidMount() {
+    document.addEventListener('keydown', (e) => {
+      switch(e.code) {
+        case 'KeyD':
+          this.props.dispatch(toggleDebug())
+          break;
+      }
+    });
+  }
+
   render() {
     const dispatch = this.props.dispatch;
     const { todos, debug } = this.props.data;
@@ -29,7 +39,6 @@ class TodosPage extends Component {
       const toggle = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
       dispatch(toggle(todo.id));
     };
-    const onDebugToggle = () => dispatch(toggleDebug())
     const sweepButton = (
       <IconButton onClick={onArchive}>
         <ActionDoneAll />
@@ -39,7 +48,6 @@ class TodosPage extends Component {
       <div>
         <AppBar
           title='Did it 2'
-          iconElementLeft={<IconButton onClick={onDebugToggle}/>}
           iconElementRight={sweepButton}
         />
         <div className='page-content'>
