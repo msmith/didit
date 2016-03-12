@@ -47,7 +47,7 @@ class TodosPage extends Component {
     return (
       <div>
         <AppBar
-          title='Did it 2'
+          title='Did it'
           iconElementRight={sweepButton}
         />
         <div className='page-content'>
