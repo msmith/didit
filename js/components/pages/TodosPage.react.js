@@ -8,7 +8,7 @@ import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
-var moment = require('moment');
+const moment = require('moment');
 
 class TodosPage extends Component {
   componentDidMount() {

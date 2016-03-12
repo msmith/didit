@@ -15,7 +15,7 @@
 
 import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG } from '../constants/AppConstants';
 import { assignToEmpty, modifyItemInList } from '../utils/assign';
-var lodash = require('lodash');
+const lodash = require('lodash');
 
 const initialState = {
   todos: [],

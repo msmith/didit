@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodoGroup from './TodoGroup.react';
-var lodash = require('lodash');
-var moment = require('moment');
+const lodash = require('lodash');
+const moment = require('moment');
 
 export default class TodoGroups extends Component {
   render() {
