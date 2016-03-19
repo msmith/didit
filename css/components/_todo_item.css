@@ -20,3 +20,8 @@
 .todo-item:hover button {
 	display: inline-block !important;
 }
+
+.todo-item .text {
+	height: 24px;
+	padding-left: 4px;
+}

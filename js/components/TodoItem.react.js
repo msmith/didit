@@ -16,7 +16,7 @@ export default class TodoItem extends Component {
           label={todo.text}
           onCheck={() => onToggle(todo)}
         />
-        : <span>{todo.text}</span>
+        : <span className='text'>{todo.text}</span>
         }
         <div className='actions'>
         { onDateChange &&
