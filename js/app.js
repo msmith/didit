@@ -45,6 +45,7 @@ openSansObserver.check().then(() => {
 });
 
 // Import the pages
+import TodayPage from './components/pages/TodayPage.react';
 import TodosPage from './components/pages/TodosPage.react';
 import NotFoundPage from './components/pages/NotFound.react';
 import App from './components/App.react';
@@ -80,6 +81,7 @@ ReactDOM.render(
     <Router history={createHistory()}>
       <Route component={App}>
         <Route path="/" component={TodosPage} />
+        <Route path="/today" component={TodayPage} />
         <Route path="*" component={NotFoundPage} />
       </Route>
     </Router>

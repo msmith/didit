@@ -2,6 +2,7 @@ var CACHE_NAME = 'react-boilerplate-cache-v1';
 // The files we want to cache
 var urlsToCache = [
   '/',
+  '/today',
   '/css/main.css',
   '/js/bundle.js'
 ];
