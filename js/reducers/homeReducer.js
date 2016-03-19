@@ -65,9 +65,16 @@ function homeReducer(state = initialState, action) {
         todos: removeTodos(state.todos, withId(action.id))
       });
     case ARCHIVE_TODOS:
-      const incomplete = (t) => t.completedAt;
+      var newTodos = state.todos;
+      for (var t of newTodos) {
+        if (t.completedAt && !t.archivedAt) {
+          newTodos = modifyItemInList(newTodos, withId(t.id), {
+            archivedAt: action.archivedAt
+          })
+        }
+      }
       return assignToEmpty(state, {
-        todos: removeTodos(state.todos, incomplete)
+        todos: newTodos
       });
     case TOGGLE_DEBUG:
       return assignToEmpty(state, {

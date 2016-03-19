@@ -79,11 +79,13 @@ describe('AppActions', () => {
   // Test archiveTodoItems action
   describe('archiveTodoItems', () => {
     it('should archive items', () => {
+      const archivedAt = new Date();
       const expectedResult = {
-        type: ARCHIVE_TODOS
+        type: ARCHIVE_TODOS,
+        archivedAt
       };
 
-      expect(archiveTodoItems()).toEqual(expectedResult);
+      expect(archiveTodoItems(archivedAt)).toEqual(expectedResult);
     });
   });
 

@@ -73,8 +73,8 @@ export function removeTodoItem(id) {
   return { type: REMOVE_TODO, id };
 }
 
-export function archiveTodoItems() {
-  return { type: ARCHIVE_TODOS };
+export function archiveTodoItems(archivedAt = new Date()) {
+  return { type: ARCHIVE_TODOS, archivedAt };
 }
 
 export function toggleDebug() {
