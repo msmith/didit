@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
-import AppBar from 'material-ui/lib/app-bar';
+import MainAppBar from '../MainAppBar.react';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
 const lodash = require('lodash');
 const moment = require('moment');
@@ -17,9 +17,7 @@ class TodayPage extends Component {
     );
     return (
       <div>
-        <AppBar
-          title='Did it'
-        />
+        <MainAppBar />
         <div className='page-content'>
           <h2>Completed</h2>
           <TodoGroups todos={completedTodos} />

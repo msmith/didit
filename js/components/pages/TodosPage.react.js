@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
 import StateDump from '../StateDump.react';
-import AppBar from 'material-ui/lib/app-bar';
+import MainAppBar from '../MainAppBar.react';
 import IconButton from 'material-ui/lib/icon-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
@@ -46,8 +46,7 @@ class TodosPage extends Component {
     );
     return (
       <div>
-        <AppBar
-          title='Did it'
+        <MainAppBar
           iconElementRight={sweepButton}
         />
         <div className='page-content'>
