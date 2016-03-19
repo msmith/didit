@@ -4,39 +4,28 @@ import TodoGroups from '../TodoGroups.react';
 import AppBar from 'material-ui/lib/app-bar';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
 const lodash = require('lodash');
+const moment = require('moment');
 
 class TodayPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
-    const { todos, debug } = this.props.data;
-    const onDestroy = null;
-    const sweepButton = null;
-    const onTodoToggle = null;
-    const onDateChange = null;
+    const { todos } = this.props.data;
     const activeTodos = lodash.reject(todos, (t) => t.completedAt);
-    const completedTodos = lodash.filter(todos, (t) => t.completedAt);
+    const yesterday = moment().subtract(1, 'days').startOf('day');
+    const completedTodos = lodash.filter(todos,
+      (t) => t.completedAt && moment(t.completedAt) > yesterday
+    );
     return (
       <div>
         <AppBar
           title='Did it'
-          iconElementRight={sweepButton}
         />
         <div className='page-content'>
-          <h1>Completed</h1>
-          <TodoGroups
-            todos={completedTodos}
-            onDestroy={onDestroy}
-            onToggle={onTodoToggle}
-            onDateChange={onDateChange}
-          />
+          <h2>Completed</h2>
+          <TodoGroups todos={completedTodos} />
 
-          <h1>To Do</h1>
-          <TodoGroups
-            todos={activeTodos}
-            onDestroy={onDestroy}
-            onToggle={onTodoToggle}
-            onDateChange={onDateChange}
-          />
+          <h2>To Do</h2>
+          <TodoGroups todos={activeTodos} />
         </div>
       </div>);
   }
