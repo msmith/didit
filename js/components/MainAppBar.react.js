@@ -40,12 +40,16 @@ export default class MainAppBar extends Component {
           open={this.state.open}
           onRequestChange={open => this.setState({open})}
         >
-          <MenuItem onTouchTap={handleClose}>
-            <Link to={'/'}>To Do </Link>
-          </MenuItem>
-          <MenuItem onTouchTap={handleClose}>
-            <Link to={'/today'}>Standup</Link>
-          </MenuItem>
+          <Link to={'/'} className='menu-link'>
+            <MenuItem onTouchTap={handleClose}>
+              To Do
+            </MenuItem>
+          </Link>
+          <Link to={'/today'} className='menu-link'>
+            <MenuItem onTouchTap={handleClose}>
+              Standup
+            </MenuItem>
+          </Link>
         </LeftNav>
       </div>
     )
