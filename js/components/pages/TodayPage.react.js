@@ -11,7 +11,8 @@ class TodayPage extends Component {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
     const activeTodos = lodash.reject(todos, (t) => t.completedAt);
-    const yesterday = moment().subtract(1, 'days').startOf('day');
+    const daysBack = (moment().day() == 1) ? 3 : 1;
+    const yesterday = moment().subtract(daysBack, 'days').startOf('day');
     const completedTodos = lodash.filter(todos,
       (t) => t.completedAt && moment(t.completedAt) > yesterday
     );
