@@ -13,7 +13,7 @@
  * add it in the rootReducer.js.
  */
 
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG, CHANGE_TAB } from '../constants/AppConstants';
 import { assignToEmpty, modifyItemInList } from '../utils/assign';
 const lodash = require('lodash');
 
@@ -79,6 +79,10 @@ function homeReducer(state = initialState, action) {
     case TOGGLE_DEBUG:
       return assignToEmpty(state, {
         debug: !state.debug
+      });
+    case CHANGE_TAB:
+      return assignToEmpty(state, {
+        tab: action.tab
       });
     default:
       return state;

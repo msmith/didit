@@ -1,6 +1,6 @@
 import expect from 'expect';
-import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems} from '../js/actions/AppActions';
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS } from '../js/constants/AppConstants';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems, changeTab} from '../js/actions/AppActions';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS, CHANGE_TAB } from '../js/constants/AppConstants';
 
 // Test actions from AppActions.js
 describe('AppActions', () => {
@@ -86,6 +86,19 @@ describe('AppActions', () => {
       };
 
       expect(archiveTodoItems(archivedAt)).toEqual(expectedResult);
+    });
+  });
+
+  // Test changeTab action
+  describe('changeTab', () => {
+    it('should change tab items', () => {
+      const tab = 'x';
+      const expectedResult = {
+        type: CHANGE_TAB,
+        tab
+      };
+
+      expect(changeTab(tab)).toEqual(expectedResult);
     });
   });
 
