@@ -13,6 +13,13 @@ import MyTheme from './theme';
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 @ThemeDecorator(ThemeManager.getMuiTheme(MyTheme))
 class App extends Component {
   render() {
