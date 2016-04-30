@@ -10,21 +10,21 @@ class CompletedPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
-    const activeTodos = lodash.reject(todos, (t) => t.completedAt);
-    const daysBack = (moment().day() == 1) ? 3 : 1;
-    const yesterday = moment().subtract(daysBack, 'days').startOf('day');
-    const completedTodos = lodash.filter(todos,
-      (t) => t.completedAt && moment(t.completedAt) > yesterday
-    );
+    const groupByCompletedAt = (todo) => {
+      if (todo.completedAt) {
+        return moment(todo.completedAt).startOf('day').toISOString();
+      } else {
+        return undefined;
+      }
+    };
     return (
       <div>
         <MainAppBar />
         <div className='page-content'>
-          <h2>Completed</h2>
-          <TodoGroups todos={completedTodos} />
-
-          <h2>To Do</h2>
-          <TodoGroups todos={activeTodos} />
+          <TodoGroups
+          todos={todos}
+          groupBy={groupByCompletedAt}
+          />
         </div>
       </div>);
   }

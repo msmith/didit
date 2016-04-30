@@ -44,6 +44,7 @@ class TodosPage extends Component {
         <ActionDoneAll />
       </IconButton>
     );
+    const groupByAddedAt = (todo) => moment(todo.addedAt).startOf('day').toISOString();
     return (
       <div>
         <MainAppBar
@@ -55,6 +56,7 @@ class TodosPage extends Component {
             onDestroy={onDestroy}
             onToggle={onTodoToggle}
             onDateChange={onDateChange}
+            groupBy={groupByAddedAt}
           />
           <AddTodo onAdd={onAdd} />
           {debug ? <StateDump data={this.props.data} /> : '' }
