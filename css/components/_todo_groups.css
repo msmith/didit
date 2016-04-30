@@ -2,5 +2,6 @@
   .page-content {
     width: 750px;
     margin: auto;
+    padding-top: 50px;
   }
 }
