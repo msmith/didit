@@ -9,6 +9,11 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
+import NavigationArrowUpward from 'material-ui/lib/svg-icons/navigation/arrow-upward';
+import NavigationArrowDownward from 'material-ui/lib/svg-icons/navigation/arrow-downward';
+import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
+import ContentCreate from 'material-ui/lib/svg-icons/content/create';
+
 const moment = require('moment');
 
 export default class TodoGroup extends Component {
@@ -35,17 +40,33 @@ export default class TodoGroup extends Component {
           }
 
           const iconButtonElement = (
-            <IconButton touch={true}>
+            <IconButton>
               <MoreVertIcon />
             </IconButton>
           );
 
           const rightIconMenu = (
             <IconMenu iconButtonElement={iconButtonElement}>
-              <MenuItem>-1 day</MenuItem>
-              <MenuItem>+1 day</MenuItem>
-              <MenuItem>Edit</MenuItem>
-              <MenuItem>Delete</MenuItem>
+              <MenuItem
+                leftIcon={<ContentCreate />}
+                onTouchTap={() => 1}>
+                Edit
+              </MenuItem>
+              <MenuItem
+                leftIcon={<NavigationArrowUpward />}
+                onTouchTap={() => onDateChange(todo, -1)}>
+                -1 day
+              </MenuItem>
+              <MenuItem
+                leftIcon={<NavigationArrowDownward />}
+                onTouchTap={() => onDateChange(todo, 1)}>
+                +1 day
+              </MenuItem>
+              <MenuItem
+                leftIcon={<ActionDelete />}
+                onTouchTap={() => onDestroy(todo)}>
+                Delete
+              </MenuItem>
             </IconMenu>
           );
 
