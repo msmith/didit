@@ -21,7 +21,7 @@ export default class TodoGroup extends Component {
         {todos.map(todo => {
           var secondaryText;
           if (todo.completedAt) {
-            secondaryText = formatDate(todo.completedAt);
+            secondaryText = 'Completed ' + formatDate(todo.completedAt);
           } else {
             secondaryText = 'Added ' + moment(todo.addedAt).fromNow();
           }
