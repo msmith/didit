@@ -45,9 +45,9 @@ export default class MainAppBar extends Component {
               To Do
             </MenuItem>
           </Link>
-          <Link to={'/today'} className='menu-link'>
+          <Link to={'/completed'} className='menu-link'>
             <MenuItem onTouchTap={handleClose}>
-              Standup
+              Completed
             </MenuItem>
           </Link>
         </LeftNav>

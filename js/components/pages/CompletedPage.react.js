@@ -6,7 +6,7 @@ import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
 const lodash = require('lodash');
 const moment = require('moment');
 
-class TodayPage extends Component {
+class CompletedPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
@@ -40,4 +40,4 @@ function select(state) {
 }
 
 // Wrap the component to inject dispatch and state into it
-export default connect(select)(TodayPage);
+export default connect(select)(CompletedPage);
