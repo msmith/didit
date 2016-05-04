@@ -6,7 +6,7 @@ const moment = require('moment');
 
 export default class TodoGroups extends Component {
   render() {
-    const { todos, secondaryText, onToggle, onDestroy, onDateChange, groupBy } = this.props;
+    const { todos, groupBy, ...other } = this.props;
     const formatTitle = (date) => {
       if (date === "undefined") {
         return 'Incomplete';
@@ -22,12 +22,9 @@ export default class TodoGroups extends Component {
       {sortedDates.map(date =>
         <div key={date}>
           <TodoList
+            {...other}
             title={formatTitle(date)}
-            secondaryText={secondaryText}
             todos={groupedTodos[date]}
-            onToggle={onToggle}
-            onDestroy={onDestroy}
-            onDateChange={onDateChange}
           />
           <Divider />
         </div>
