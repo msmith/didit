@@ -44,30 +44,33 @@ export default class TodoList extends Component {
             </IconButton>
           );
 
-          const rightIconMenu = (
-            <IconMenu iconButtonElement={iconButtonElement}>
-              <MenuItem
-                leftIcon={<ContentCreate />}
-                onTouchTap={() => 1}>
-                Edit
-              </MenuItem>
-              <MenuItem
-                leftIcon={<NavigationArrowUpward />}
-                onTouchTap={() => onDateChange(todo, -1)}>
-                -1 day
-              </MenuItem>
-              <MenuItem
-                leftIcon={<NavigationArrowDownward />}
-                onTouchTap={() => onDateChange(todo, 1)}>
-                +1 day
-              </MenuItem>
-              <MenuItem
-                leftIcon={<ActionDelete />}
-                onTouchTap={() => onDestroy(todo)}>
-                Delete
-              </MenuItem>
-            </IconMenu>
-          );
+          var rightIconMenu;
+          if (onToggle || onDestroy || onDateChange) {
+            rightIconMenu = (
+              <IconMenu iconButtonElement={iconButtonElement}>
+                <MenuItem
+                  leftIcon={<ContentCreate />}
+                  onTouchTap={() => 1}>
+                  Edit
+                </MenuItem>
+                <MenuItem
+                  leftIcon={<NavigationArrowUpward />}
+                  onTouchTap={() => onDateChange(todo, -1)}>
+                  -1 day
+                </MenuItem>
+                <MenuItem
+                  leftIcon={<NavigationArrowDownward />}
+                  onTouchTap={() => onDateChange(todo, 1)}>
+                  +1 day
+                </MenuItem>
+                <MenuItem
+                  leftIcon={<ActionDelete />}
+                  onTouchTap={() => onDestroy(todo)}>
+                  Delete
+                </MenuItem>
+              </IconMenu>
+            );
+          }
 
           return (
             <ListItem
