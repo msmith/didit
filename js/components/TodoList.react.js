@@ -16,7 +16,7 @@ import ContentCreate from 'material-ui/lib/svg-icons/content/create';
 
 const moment = require('moment');
 
-export default class TodoGroup extends Component {
+export default class TodoList extends Component {
   render() {
     const { title, todos, onToggle, onDestroy, onDateChange } = this.props;
     const formatDate = (date) => moment(date).format('ddd, MMM D');

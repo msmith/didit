@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodoGroup from './TodoGroup.react';
+import TodoList from './TodoList.react';
 const lodash = require('lodash');
 const moment = require('moment');
 
@@ -19,7 +19,7 @@ export default class TodoGroups extends Component {
     return (
       <div className='todo-groups'>
       {sortedDates.map(date =>
-        <TodoGroup
+        <TodoList
           title={formatTitle(date)}
           todos={groupedTodos[date]}
           onToggle={onToggle}
