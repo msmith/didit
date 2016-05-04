@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Checkbox from 'material-ui/lib/checkbox';
-import Divider from 'material-ui/lib/divider';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 
@@ -80,7 +79,6 @@ export default class TodoList extends Component {
             />);
         })}
         </List>
-        <Divider />
       </div>
     );
   }

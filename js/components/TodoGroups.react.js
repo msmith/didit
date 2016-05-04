@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList.react';
+import Divider from 'material-ui/lib/divider';
 const lodash = require('lodash');
 const moment = require('moment');
 
@@ -19,14 +20,16 @@ export default class TodoGroups extends Component {
     return (
       <div className='todo-groups'>
       {sortedDates.map(date =>
-        <TodoList
-          title={formatTitle(date)}
-          todos={groupedTodos[date]}
-          onToggle={onToggle}
-          onDestroy={onDestroy}
-          onDateChange={onDateChange}
-          key={date}
-        />
+        <div key={date}>
+          <TodoList
+            title={formatTitle(date)}
+            todos={groupedTodos[date]}
+            onToggle={onToggle}
+            onDestroy={onDestroy}
+            onDateChange={onDateChange}
+          />
+          <Divider />
+        </div>
       )}
       </div>
     );
