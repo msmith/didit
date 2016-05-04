@@ -49,11 +49,6 @@ export default class TodoList extends Component {
             rightIconMenu = (
               <IconMenu iconButtonElement={iconButtonElement}>
                 <MenuItem
-                  leftIcon={<ContentCreate />}
-                  onTouchTap={() => 1}>
-                  Edit
-                </MenuItem>
-                <MenuItem
                   leftIcon={<NavigationArrowUpward />}
                   onTouchTap={() => onDateChange(todo, -1)}>
                   -1 day
