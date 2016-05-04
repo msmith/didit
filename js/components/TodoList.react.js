@@ -13,23 +13,13 @@ import NavigationArrowDownward from 'material-ui/lib/svg-icons/navigation/arrow-
 import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 import ContentCreate from 'material-ui/lib/svg-icons/content/create';
 
-const moment = require('moment');
-
 export default class TodoList extends Component {
   render() {
-    const { title, todos, onToggle, onDestroy, onDateChange } = this.props;
-    const formatDate = (date) => moment(date).format('ddd, MMM D');
+    const { title, todos, secondaryText, onToggle, onDestroy, onDateChange } = this.props;
     return (
       <div>
         <List subheader={title}>
         {todos.map(todo => {
-          var secondaryText;
-          if (todo.completedAt) {
-            secondaryText = 'Completed ' + formatDate(todo.completedAt);
-          } else {
-            secondaryText = 'Added ' + moment(todo.addedAt).fromNow();
-          }
-
           var checkbox;
           if (onToggle) {
             checkbox = <Checkbox
@@ -71,7 +61,7 @@ export default class TodoList extends Component {
             <ListItem
               key={todo.id}
               primaryText={todo.text}
-              secondaryText={secondaryText}
+              secondaryText={secondaryText(todo)}
               leftCheckbox={checkbox}
               rightIconButton={rightIconMenu}
             />);

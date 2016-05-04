@@ -45,6 +45,14 @@ class TodosPage extends Component {
       </IconButton>
     );
     const groupByAddedAt = (todo) => moment(todo.addedAt).startOf('day').toISOString();
+
+    const formatDate = (date) => moment(date).format('ddd, MMM D');
+    const secondaryText = (todo) => {
+      if (todo.completedAt) {
+        return 'Completed ' + formatDate(todo.completedAt);
+      }
+    }
+
     return (
       <div>
         <MainAppBar
@@ -53,6 +61,7 @@ class TodosPage extends Component {
         <div className='page-content'>
           <TodoGroups
             todos={todos}
+            secondaryText={secondaryText}
             onDestroy={onDestroy}
             onToggle={onTodoToggle}
             onDateChange={onDateChange}

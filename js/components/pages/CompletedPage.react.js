@@ -17,12 +17,17 @@ class CompletedPage extends Component {
         return undefined;
       }
     };
+    const secondaryText = (todo) => {
+      return 'Added ' + moment(todo.addedAt).fromNow();
+    }
+
     return (
       <div>
         <MainAppBar />
         <div className='page-content'>
           <TodoGroups
           todos={todos}
+          secondaryText={secondaryText}
           groupBy={groupByCompletedAt}
           />
         </div>
