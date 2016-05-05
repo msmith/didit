@@ -20,6 +20,7 @@
   "devDependencies": {
     "appcache-webpack-plugin": "^1.2.0",
     "autoprefixer": "^6.0.2",
+    "aws-sdk": "^2.3.8",
     "babel": "^6.0.0",
     "babel-core": "^6.0.0",
     "babel-eslint": "^4.1.2",
@@ -50,6 +51,7 @@
     "react-transform-hmr": "^1.0.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
+    "walk": "^2.3.9",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.11.0"
   },
@@ -64,6 +66,7 @@
     "test:watch": "npm test -- --watch",
     "start": "cross-env NODE_ENV=development node server.dev.js",
     "build": "npm run test && cross-env NODE_ENV=production webpack --config webpack.prod.config.js --progress --colors -p",
+    "deploy": "node deploy.js",
     "serve": "cross-env NODE_ENV=production node server.prod.js"
   },
   "author": "Michael Smith",
