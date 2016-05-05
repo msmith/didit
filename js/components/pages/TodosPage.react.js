@@ -72,34 +72,25 @@ class TodosPage extends Component {
       </IconButton>
     );
 
-    var rightIconMenu;
-    if (onDateChange || onDestroy) {
-      rightIconMenu = (todo) => (
-        <IconMenu iconButtonElement={iconButtonElement}>
-          { onDateChange &&
-            <MenuItem
-              leftIcon={<NavigationArrowUpward />}
-              onTouchTap={() => onDateChange(todo, -1)}>
-              -1 day
-            </MenuItem>
-          }
-          { onDateChange &&
-            <MenuItem
-              leftIcon={<NavigationArrowDownward />}
-              onTouchTap={() => onDateChange(todo, 1)}>
-              +1 day
-            </MenuItem>
-          }
-          { onDestroy &&
-            <MenuItem
-              leftIcon={<ActionDelete />}
-              onTouchTap={() => onDestroy(todo)}>
-              Delete
-            </MenuItem>
-          }
-        </IconMenu>
-      );
-    }
+    const rightIconMenu = (todo) => (
+      <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem
+          leftIcon={<NavigationArrowUpward />}
+          onTouchTap={() => onDateChange(todo, -1)}>
+          -1 day
+        </MenuItem>
+        <MenuItem
+          leftIcon={<NavigationArrowDownward />}
+          onTouchTap={() => onDateChange(todo, 1)}>
+          +1 day
+        </MenuItem>
+        <MenuItem
+          leftIcon={<ActionDelete />}
+          onTouchTap={() => onDestroy(todo)}>
+          Delete
+        </MenuItem>
+      </IconMenu>
+    );
 
     return (
       <div>
