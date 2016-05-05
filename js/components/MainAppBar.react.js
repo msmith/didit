@@ -19,7 +19,7 @@ export default class MainAppBar extends Component {
 
     const handleClose = () => this.setState({open: false});
 
-    const { iconElementRight } = this.props;
+    const { title, iconElementRight } = this.props;
     const iconElementLeft = <IconButton
       onClick={handleToggle}
     >
@@ -29,7 +29,7 @@ export default class MainAppBar extends Component {
     return (
       <div>
         <AppBar
-          title='Did it'
+          title={title}
           iconElementLeft={iconElementLeft}
           iconElementRight={iconElementRight}
           onLeftIconButtonTouchTap={this.handleToggle}
@@ -42,7 +42,7 @@ export default class MainAppBar extends Component {
         >
           <Link to={'/'} className='menu-link'>
             <MenuItem onTouchTap={handleClose}>
-              To Do
+              To do
             </MenuItem>
           </Link>
           <Link to={'/completed'} className='menu-link'>

@@ -56,6 +56,7 @@ class TodosPage extends Component {
     return (
       <div>
         <MainAppBar
+          title='To do'
           iconElementRight={sweepButton}
         />
         <div className='page-content'>

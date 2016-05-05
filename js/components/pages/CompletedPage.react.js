@@ -23,7 +23,7 @@ class CompletedPage extends Component {
 
     return (
       <div>
-        <MainAppBar />
+        <MainAppBar title='Completed'/>
         <div className='page-content'>
           <TodoGroups
           todos={todos}
