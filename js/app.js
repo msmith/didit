@@ -45,6 +45,7 @@ openSansObserver.check().then(() => {
 });
 
 // Import the pages
+import ArchivePage from './components/pages/ArchivePage.react';
 import CompletedPage from './components/pages/CompletedPage.react';
 import TodosPage from './components/pages/TodosPage.react';
 import NotFoundPage from './components/pages/NotFound.react';
@@ -82,6 +83,7 @@ ReactDOM.render(
       <Route component={App}>
         <Route path="/" component={TodosPage} />
         <Route path="/completed" component={CompletedPage} />
+        <Route path="/archives" component={ArchivePage} />
         <Route path="*" component={NotFoundPage} />
       </Route>
     </Router>

@@ -50,6 +50,11 @@ export default class MainAppBar extends Component {
               Completed
             </MenuItem>
           </Link>
+          <Link to={'/archives'} className='menu-link'>
+            <MenuItem onTouchTap={handleClose}>
+              Archives
+            </MenuItem>
+          </Link>
         </LeftNav>
       </div>
     )

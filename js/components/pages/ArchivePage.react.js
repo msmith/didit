@@ -8,7 +8,7 @@ import Folder from 'material-ui/lib/svg-icons/file/folder';
 const lodash = require('lodash');
 const moment = require('moment');
 
-class CompletedPage extends Component {
+class ArchivePage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
@@ -26,14 +26,18 @@ class CompletedPage extends Component {
         return moment(groupKey).format('ddd, MMM D');
       }
     };
+    const formatDate = (date) => moment(date).format('ddd, MMM D');
     const secondaryText = (todo) => {
-      return 'Added ' + moment(todo.addedAt).fromNow();
+      if (todo.completedAt) {
+        return 'Completed ' + formatDate(todo.completedAt);
+      }
     }
-    const visibleTodos = lodash.reject(todos, (t) => t.archivedAt);
+
+    const visibleTodos = lodash.filter(todos, (t) => t.archivedAt);
 
     return (
       <div>
-        <MainAppBar title='Completed'/>
+        <MainAppBar title='Archived'/>
         <div className='page-content'>
           <TodoGroups
           todos={visibleTodos}
@@ -56,4 +60,4 @@ function select(state) {
 }
 
 // Wrap the component to inject dispatch and state into it
-export default connect(select)(CompletedPage);
+export default connect(select)(ArchivePage);
