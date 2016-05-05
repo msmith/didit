@@ -38,21 +38,27 @@ export default class TodoList extends Component {
           if (onDateChange || onDestroy) {
             rightIconMenu = (
               <IconMenu iconButtonElement={iconButtonElement}>
-                <MenuItem
-                  leftIcon={<NavigationArrowUpward />}
-                  onTouchTap={() => onDateChange(todo, -1)}>
-                  -1 day
-                </MenuItem>
-                <MenuItem
-                  leftIcon={<NavigationArrowDownward />}
-                  onTouchTap={() => onDateChange(todo, 1)}>
-                  +1 day
-                </MenuItem>
-                <MenuItem
-                  leftIcon={<ActionDelete />}
-                  onTouchTap={() => onDestroy(todo)}>
-                  Delete
-                </MenuItem>
+                { onDateChange &&
+                  <MenuItem
+                    leftIcon={<NavigationArrowUpward />}
+                    onTouchTap={() => onDateChange(todo, -1)}>
+                    -1 day
+                  </MenuItem>
+                }
+                { onDateChange &&
+                  <MenuItem
+                    leftIcon={<NavigationArrowDownward />}
+                    onTouchTap={() => onDateChange(todo, 1)}>
+                    +1 day
+                  </MenuItem>
+                }
+                { onDestroy &&
+                  <MenuItem
+                    leftIcon={<ActionDelete />}
+                    onTouchTap={() => onDestroy(todo)}>
+                    Delete
+                  </MenuItem>
+                }
               </IconMenu>
             );
           }
