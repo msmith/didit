@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import MainAppBar from '../MainAppBar.react';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
+import Folder from 'material-ui/lib/svg-icons/file/folder';
+
 
 const moment = require('moment');
 
@@ -21,6 +23,8 @@ class CompletedPage extends Component {
       return 'Added ' + moment(todo.addedAt).fromNow();
     }
 
+    const rightIcon = (todo) => todo.archivedAt ? <Folder /> : null;
+
     return (
       <div>
         <MainAppBar title='Completed'/>
@@ -29,6 +33,7 @@ class CompletedPage extends Component {
           todos={todos}
           secondaryText={secondaryText}
           groupBy={groupByCompletedAt}
+          itemRightIcon={rightIcon}
           />
         </div>
       </div>);

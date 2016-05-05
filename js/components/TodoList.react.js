@@ -15,7 +15,7 @@ import ContentCreate from 'material-ui/lib/svg-icons/content/create';
 
 export default class TodoList extends Component {
   render() {
-    const { title, todos, secondaryText, onToggle, onDestroy, onDateChange } = this.props;
+    const { title, todos, secondaryText, onToggle, onDestroy, onDateChange, itemRightIcon } = this.props;
     return (
       <div>
         <List subheader={title}>
@@ -35,7 +35,7 @@ export default class TodoList extends Component {
           );
 
           var rightIconMenu;
-          if (onToggle || onDestroy || onDateChange) {
+          if (onDateChange || onDestroy) {
             rightIconMenu = (
               <IconMenu iconButtonElement={iconButtonElement}>
                 <MenuItem
@@ -64,6 +64,7 @@ export default class TodoList extends Component {
               secondaryText={secondaryText(todo)}
               leftCheckbox={checkbox}
               rightIconButton={rightIconMenu}
+              rightIcon={itemRightIcon && itemRightIcon(todo)}
             />);
         })}
         </List>
