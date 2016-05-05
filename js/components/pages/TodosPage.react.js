@@ -9,6 +9,15 @@ import IconButton from 'material-ui/lib/icon-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
 
+import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
+import IconMenu from 'material-ui/lib/menus/icon-menu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+
+import NavigationArrowUpward from 'material-ui/lib/svg-icons/navigation/arrow-upward';
+import NavigationArrowDownward from 'material-ui/lib/svg-icons/navigation/arrow-downward';
+import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
+import ContentCreate from 'material-ui/lib/svg-icons/content/create';
+
 const lodash = require('lodash');
 const moment = require('moment');
 
@@ -56,6 +65,41 @@ class TodosPage extends Component {
     }
     const visibleTodos = lodash.reject(todos, (t) => t.archivedAt);
 
+    const iconButtonElement = (
+      <IconButton>
+        <MoreVertIcon />
+      </IconButton>
+    );
+
+    var rightIconMenu;
+    if (onDateChange || onDestroy) {
+      rightIconMenu = (todo) => (
+        <IconMenu iconButtonElement={iconButtonElement}>
+          { onDateChange &&
+            <MenuItem
+              leftIcon={<NavigationArrowUpward />}
+              onTouchTap={() => onDateChange(todo, -1)}>
+              -1 day
+            </MenuItem>
+          }
+          { onDateChange &&
+            <MenuItem
+              leftIcon={<NavigationArrowDownward />}
+              onTouchTap={() => onDateChange(todo, 1)}>
+              +1 day
+            </MenuItem>
+          }
+          { onDestroy &&
+            <MenuItem
+              leftIcon={<ActionDelete />}
+              onTouchTap={() => onDestroy(todo)}>
+              Delete
+            </MenuItem>
+          }
+        </IconMenu>
+      );
+    }
+
     return (
       <div>
         <MainAppBar
@@ -70,6 +114,7 @@ class TodosPage extends Component {
             onToggle={onTodoToggle}
             onDateChange={onDateChange}
             groupBy={groupByAddedAt}
+            itemRightIconButton={rightIconMenu}
           />
           <AddTodo onAdd={onAdd} />
           {debug ? <StateDump data={this.props.data} /> : '' }
