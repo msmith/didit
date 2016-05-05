@@ -17,7 +17,7 @@ export default class TodoGroups extends Component {
     const groupedTodos = lodash.groupBy(todos, groupBy);
     const sortedDates = lodash.sortBy(lodash.keys(groupedTodos));
     return (
-      <div className='todo-groups'>
+      <div>
       {sortedDates.map(date =>
         <div key={date}>
           <TodoList
