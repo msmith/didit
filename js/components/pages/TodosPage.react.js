@@ -8,6 +8,8 @@ import MainAppBar from '../MainAppBar.react';
 import IconButton from 'material-ui/lib/icon-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
+
+const lodash = require('lodash');
 const moment = require('moment');
 
 class TodosPage extends Component {
@@ -52,6 +54,7 @@ class TodosPage extends Component {
         return 'Completed ' + formatDate(todo.completedAt);
       }
     }
+    const visibleTodos = lodash.reject(todos, (t) => t.archivedAt);
 
     return (
       <div>
@@ -61,7 +64,7 @@ class TodosPage extends Component {
         />
         <div className='page-content'>
           <TodoGroups
-            todos={todos}
+            todos={visibleTodos}
             secondaryText={secondaryText}
             onDestroy={onDestroy}
             onToggle={onTodoToggle}

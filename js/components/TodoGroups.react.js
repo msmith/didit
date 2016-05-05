@@ -14,8 +14,7 @@ export default class TodoGroups extends Component {
         return moment(date).format('ddd, MMM D');
       }
     };
-    const visibleTodos = lodash.reject(todos, (t) => t.archivedAt);
-    const groupedTodos = lodash.groupBy(visibleTodos, groupBy);
+    const groupedTodos = lodash.groupBy(todos, groupBy);
     const sortedDates = lodash.sortBy(lodash.keys(groupedTodos));
     return (
       <div className='todo-groups'>
