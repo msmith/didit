@@ -56,6 +56,7 @@ class TodosPage extends Component {
       </IconButton>
     );
     const groupByAddedAt = (todo) => moment(todo.addedAt).startOf('day').toISOString();
+    const formatTitle = (groupKey) => moment(groupKey).format('ddd, MMM D');
 
     const formatDate = (date) => moment(date).format('ddd, MMM D');
     const secondaryText = (todo) => {
@@ -114,6 +115,7 @@ class TodosPage extends Component {
             onToggle={onTodoToggle}
             onDateChange={onDateChange}
             groupBy={groupByAddedAt}
+            title={formatTitle}
             itemRightIconButton={rightIconMenu}
           />
           <AddTodo onAdd={onAdd} />

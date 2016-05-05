@@ -19,6 +19,13 @@ class CompletedPage extends Component {
         return undefined;
       }
     };
+    const formatTitle = (groupKey) => {
+      if (groupKey === "undefined") {
+        return 'Incomplete';
+      } else {
+        return moment(groupKey).format('ddd, MMM D');
+      }
+    };
     const secondaryText = (todo) => {
       return 'Added ' + moment(todo.addedAt).fromNow();
     }
@@ -33,6 +40,7 @@ class CompletedPage extends Component {
           todos={todos}
           secondaryText={secondaryText}
           groupBy={groupByCompletedAt}
+          title={formatTitle}
           itemRightIcon={rightIcon}
           />
         </div>
