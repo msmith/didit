@@ -11,8 +11,7 @@ import { connect } from 'react-redux';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import {blue500, blue700} from 'material-ui/styles/colors';
+import { blue500, blue700 } from 'material-ui/styles/colors';
 
 // Needed for onTouchTap
 // Check this repo:
@@ -21,10 +20,10 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
-    palette: {
-      primary1Color: blue500,
-      primary2Color: blue700,
-    }
+  palette: {
+    primary1Color: blue500,
+    primary2Color: blue700,
+  }
 });
 
 class App extends Component {

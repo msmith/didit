@@ -30,7 +30,7 @@ import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router';
 import { compose, createStore, applyMiddleware } from 'redux';
 // import thunk from 'redux-thunk';
-import persistState from 'redux-localstorage'
+import persistState from 'redux-localstorage';
 import FontFaceObserver from 'fontfaceobserver';
 import createHistory from 'history/lib/createBrowserHistory';
 
@@ -62,10 +62,10 @@ import rootReducer from './reducers/rootReducer';
 // Use redux-localstorage to persist state
 const createPersistentStore = compose(
   persistState(/*paths, config*/)
-)(createStore)
+)(createStore);
 
 // const store = createStoreWithMiddleware(rootReducer);
-const store = createPersistentStore(rootReducer)
+const store = createPersistentStore(rootReducer);
 
 // Make reducers hot reloadable, see http://stackoverflow.com/questions/34243684/make-redux-reducers-and-other-non-components-hot-loadable
 if (module.hot) {

@@ -1,16 +1,16 @@
-var AWS = require('aws-sdk');
-var fs = require('fs');
-var path = require('path');
-var walk = require('walk');
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const path = require('path');
+const walk = require('walk');
 
 //
 // Build file list
 //
 
-var files = ['favicon.png'];
+const files = ['favicon.png'];
 
 // Walker options
-var walker = walk.walk('./build', { followLinks: false });
+const walker = walk.walk('./build', { followLinks: false });
 
 walker.on('file', function(root, stat, next) {
   if (!stat.name.startsWith('.')) {
@@ -25,31 +25,31 @@ walker.on('end', function() {
   // Upload to S3
   //
 
-  var s3 = new AWS.S3();
-  var bucket = 'todo.sticknet.net';
+  const s3 = new AWS.S3();
+  const bucket = 'todo.sticknet.net';
 
   files.forEach(function(filename) {
-    var readableStream = fs.createReadStream(filename);
-    var objectKey = filename.replace(/^\.\/build\//, "");
+    const readableStream = fs.createReadStream(filename);
+    const objectKey = filename.replace(/^\.\/build\//, '');
     var contentType;
     switch (path.extname(filename)) {
       case '.css':
-        contentType = 'text/css'
+        contentType = 'text/css';
         break;
       case '.html':
-        contentType = 'text/html'
+        contentType = 'text/html';
         break;
       case '.js':
-        contentType = 'text/javascript'
+        contentType = 'text/javascript';
         break;
       case '.png':
-        contentType = 'image/png'
+        contentType = 'image/png';
         break;
       default:
-        contentType = 'application/octet-stream'
+        contentType = 'application/octet-stream';
         break;
     }
-    var params = {
+    const params = {
       Bucket: bucket,
       Key: objectKey,
       Body: readableStream,
@@ -57,10 +57,11 @@ walker.on('end', function() {
       ContentType: contentType
     };
     s3.putObject(params, function(err, data) {
-      if (err)
-        console.log(err)
-      else
-        console.log("Uploaded " + objectKey);
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Uploaded ' + objectKey);
+      }
     });
   });
 });

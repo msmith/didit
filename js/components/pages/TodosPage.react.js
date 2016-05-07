@@ -10,7 +10,6 @@ import StateDump from '../StateDump.react';
 import TodoGroups from '../TodoGroups.react';
 
 // Material-UI components
-import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -18,13 +17,12 @@ import MenuItem from 'material-ui/MenuItem';
 // Material-UI icons
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
-import ContentCreate from 'material-ui/svg-icons/content/create';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-downward';
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // Helpers
-import { formatDate, toDate } from '../../utils/dates'
+import { formatDate } from '../../utils/dates'
 import { unarchivedTodos, addedAtDate } from '../../utils/todos'
 
 const MS_PER_DAY = 24*60*60*1000;

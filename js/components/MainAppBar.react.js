@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 // Material-UI components
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
-import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
 

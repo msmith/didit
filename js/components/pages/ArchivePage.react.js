@@ -5,16 +5,12 @@ import { connect } from 'react-redux';
 import MainAppBar from '../MainAppBar.react';
 import TodoGroups from '../TodoGroups.react';
 
-// Material-UI icons
-import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
-
 // Helpers
-import { formatDate, toDate } from '../../utils/dates'
+import { formatDate } from '../../utils/dates'
 import { archivedTodos, completedAtDate } from '../../utils/todos'
 
 class ArchivePage extends Component {
   render() {
-    const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
     const formatTitle = (groupKey) => {
       if (groupKey === "undefined") {

@@ -36,20 +36,21 @@ describe('AppActions', () => {
     });
   });
 
-    // Test moveTodoItem action
-    describe('moveTodoItem', () => {
-      it('should change item addedAt', () => {
-        const id = 3;
-        const addedAt = new Date();
-        const expectedResult = {
-          type: MOVE_TODO,
-          id,
-          addedAt
-        };
+  // Test moveTodoItem action
+  describe('moveTodoItem', () => {
+    it('should change item addedAt', () => {
+      const id = 3;
+      const addedAt = new Date();
+      const expectedResult = {
+        type: MOVE_TODO,
+        id,
+        addedAt
+      };
 
-        expect(moveTodoItem(id, addedAt)).toEqual(expectedResult);
-      });
+      expect(moveTodoItem(id, addedAt)).toEqual(expectedResult);
     });
+  });
+
   // Test uncompleteTodoItem action
   describe('uncompleteTodoItem', () => {
     it('should mark item as not completed', () => {
@@ -101,5 +102,4 @@ describe('AppActions', () => {
       expect(changeTab(tab)).toEqual(expectedResult);
     });
   });
-
 });

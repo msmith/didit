@@ -140,7 +140,7 @@ describe('defaultReducer', () => {
     const addedAt = new Date(2001, 1, 2);
     const initialTodos = [
       { id, addedAt, text }
-    ]
+    ];
     const newAddedAt = new Date();
 
     expect(
@@ -167,7 +167,7 @@ describe('defaultReducer', () => {
     const addedAt = new Date();
     const initialTodos = [
       { id, addedAt, text }
-    ]
+    ];
 
     expect(
       homeReducer({todos: initialTodos}, {
@@ -242,5 +242,4 @@ describe('defaultReducer', () => {
       tab: 'a'
     });
   });
-
 });

@@ -14,7 +14,7 @@ export default class AddTodo extends Component {
       <TextField
         hintText={inputPlaceholder}
         onKeyDown={e => {
-          if (e.keyCode == 13) {
+          if (e.keyCode === 13) {
             const input = e.target;
             if (input.value) {
               onAdd(input.value);

@@ -7,7 +7,7 @@ import Subheader from 'material-ui/Subheader';
 
 export default class TodoList extends Component {
   render() {
-    const { title, todos, secondaryText, onToggle, onDestroy, onDateChange, itemRightIcon, itemRightIconButton } = this.props;
+    const { title, todos, secondaryText, onToggle, itemRightIcon, itemRightIconButton } = this.props;
     return (
       <div>
         <List>
@@ -15,10 +15,10 @@ export default class TodoList extends Component {
         {todos.map(todo => {
           var checkbox;
           if (onToggle) {
-            checkbox = <Checkbox
+            checkbox = (<Checkbox
               defaultChecked={!!todo.completedAt}
               onCheck={() => onToggle(todo)}
-            />;
+            />);
           }
 
           return (

@@ -1,4 +1,4 @@
-import { toDate } from './dates'
+import { toDate } from './dates';
 
 const lodash = require('lodash');
 
