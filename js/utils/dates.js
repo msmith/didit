@@ -6,7 +6,7 @@ const formatDate = (date) => dateFormat(date, 'ddd, mmm d');
 const toDate = (date) => {
   if (date) {
     var d = new Date(date); // ensure it's a Date type
-    return [d.getFullYear(), d.getMonth(), d.getDate()];
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
   }
 }
 

@@ -10,13 +10,12 @@ import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 
 // Helpers
 import { formatDate , toDate } from '../../utils/dates'
-import { unarchivedTodos } from '../../utils/todos'
+import { unarchivedTodos, completedAtDate } from '../../utils/todos'
 
 class CompletedPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
-    const completedAtDate = (todo) => toDate(todo.completedAt);
     const formatTitle = (groupKey) => {
       if (groupKey === "undefined") {
         return 'Incomplete';

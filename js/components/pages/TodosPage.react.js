@@ -25,7 +25,7 @@ import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward
 
 // Helpers
 import { formatDate, toDate } from '../../utils/dates'
-import { unarchivedTodos } from '../../utils/todos'
+import { unarchivedTodos, addedAtDate } from '../../utils/todos'
 
 const MS_PER_DAY = 24*60*60*1000;
 
@@ -63,7 +63,6 @@ class TodosPage extends Component {
         <ActionDoneAll />
       </IconButton>
     );
-    const addedAtDate = (todo) => toDate(todo.addedAt);
 
     const secondaryText = (todo) => {
       if (todo.completedAt) {
