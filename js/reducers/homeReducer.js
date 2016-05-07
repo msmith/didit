@@ -15,7 +15,6 @@
 
 import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG, CHANGE_TAB } from '../constants/AppConstants';
 import { assignToEmpty, modifyItemInList } from '../utils/assign';
-const lodash = require('lodash');
 
 const initialState = {
   todos: [],
@@ -30,7 +29,7 @@ const modifyTodoItem = (state, id, newObject) => {
   });
 };
 
-const removeTodos = (todos, predicate) => lodash.reject(todos, predicate);
+const removeTodos = (todos, filterFn) => todos.filter(() => !filterFn);
 
 function homeReducer(state = initialState, action) {
   Object.freeze(state); // Don't mutate state directly, always use assign()!
