@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList.react';
 import Divider from 'material-ui/lib/divider';
+import Paper from 'material-ui/lib/paper';
+
 
 const lodash = require('lodash');
 
@@ -10,7 +12,7 @@ export default class TodoGroups extends Component {
     const groupedTodos = lodash.groupBy(todos, groupBy);
     const sortedDates = lodash.sortBy(lodash.keys(groupedTodos));
     return (
-      <div>
+      <Paper>
       {sortedDates.map(groupKey =>
         <div key={groupKey}>
           <TodoList
@@ -21,7 +23,7 @@ export default class TodoGroups extends Component {
           <Divider />
         </div>
       )}
-      </div>
+      </Paper>
     );
   }
 }
