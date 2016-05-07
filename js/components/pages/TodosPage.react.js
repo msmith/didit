@@ -49,8 +49,8 @@ class TodosPage extends Component {
       dispatch(moveTodoItem(todo.id, newDate));
     }
     const onTodoToggle = (todo) => {
-      const toggle = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
-      dispatch(toggle(todo.id));
+      const fn = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
+      dispatch(fn(todo.id));
     };
     const sweepButton = (
       <IconButton onClick={onArchive}>
@@ -65,11 +65,7 @@ class TodosPage extends Component {
       }
     }
 
-    const iconButtonElement = (
-      <IconButton>
-        <MoreVertIcon />
-      </IconButton>
-    );
+    const iconButtonElement = (<IconButton><MoreVertIcon /></IconButton>);
 
     const rightIconMenu = (todo) => (
       <IconMenu iconButtonElement={iconButtonElement}>
@@ -82,7 +78,7 @@ class TodosPage extends Component {
           leftIcon={<NavigationArrowDownward />}
           onTouchTap={() => onDateChange(todo, 1)} />
         <MenuItem
-        primaryText='Delete'
+          primaryText='Delete'
           leftIcon={<ActionDelete />}
           onTouchTap={() => onDestroy(todo)} />
       </IconMenu>
