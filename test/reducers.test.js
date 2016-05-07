@@ -166,16 +166,19 @@ describe('defaultReducer', () => {
     const text = 'wash the dog';
     const addedAt = new Date();
     const initialTodos = [
-      { id, addedAt, text }
+      { id, addedAt, text },
+      { id: 1, addedAt: new Date(), text: 'remove me' }
     ];
 
     expect(
       homeReducer({todos: initialTodos}, {
         type: constants.REMOVE_TODO,
-        id
+        id: 1
       })
     ).toEqual({
-      todos: []
+      todos: [
+        { id, addedAt, text }
+      ]
     });
   });
 
