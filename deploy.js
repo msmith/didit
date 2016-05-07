@@ -1,5 +1,6 @@
 var AWS = require('aws-sdk');
 var fs = require('fs');
+var path = require('path');
 var walk = require('walk');
 
 //
@@ -30,11 +31,27 @@ walker.on('end', function() {
   files.forEach(function(filename) {
     var readableStream = fs.createReadStream(filename);
     var objectKey = filename.replace(/^\.\/build\//, "");
+    var contentType;
+    switch (path.extname(filename)) {
+      case '.css':
+        contentType = 'text/css'
+        break;
+      case '.js':
+        contentType = 'text/javascript'
+        break;
+      case '.html':
+        contentType = 'text/html'
+        break;
+      default:
+        contentType = 'application/octet-stream'
+        break;
+    }
     var params = {
       Bucket: bucket,
       Key: objectKey,
       Body: readableStream,
-      ACL: 'public-read'
+      ACL: 'public-read',
+      ContentType: contentType
     };
     s3.putObject(params, function(err, data) {
       if (err)
