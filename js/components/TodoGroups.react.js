@@ -16,16 +16,16 @@ export default class TodoGroups extends Component {
     const sortedDates = lodash.sortBy(lodash.keys(groupedTodos));
     return (
       <Paper>
-      {sortedDates.map(groupKey =>
-        <div key={groupKey}>
-          <TodoList
-            {...other}
-            title={title(groupKey)}
-            todos={groupedTodos[groupKey]}
-          />
-          <Divider />
-        </div>
-      )}
+        {sortedDates.map(groupKey =>
+          <div key={groupKey}>
+            <TodoList
+              {...other}
+              title={title(groupKey)}
+              todos={groupedTodos[groupKey]}
+            />
+            <Divider />
+          </div>
+        )}
       </Paper>
     );
   }
