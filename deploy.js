@@ -7,7 +7,7 @@ var walk = require('walk');
 // Build file list
 //
 
-var files = [];
+var files = ['favicon.png'];
 
 // Walker options
 var walker = walk.walk('./build', { followLinks: false });
@@ -36,11 +36,14 @@ walker.on('end', function() {
       case '.css':
         contentType = 'text/css'
         break;
+      case '.html':
+        contentType = 'text/html'
+        break;
       case '.js':
         contentType = 'text/javascript'
         break;
-      case '.html':
-        contentType = 'text/html'
+      case '.png':
+        contentType = 'image/png'
         break;
       default:
         contentType = 'application/octet-stream'
