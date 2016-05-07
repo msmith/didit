@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+
+// Components
 import TodoList from './TodoList.react';
+
+// Material-UI components
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 

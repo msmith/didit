@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
+// Material-UI components
+import { List, ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
-import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 
 export default class TodoList extends Component {

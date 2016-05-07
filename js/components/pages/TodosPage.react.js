@@ -1,23 +1,29 @@
-import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems, toggleDebug } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TodoGroups from '../TodoGroups.react';
-import AddTodo from '../AddTodo.react';
-import StateDump from '../StateDump.react';
-import MainAppBar from '../MainAppBar.react';
-import IconButton from 'material-ui/IconButton';
-import FlatButton from 'material-ui/FlatButton';
-import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems, toggleDebug } from '../../actions/AppActions';
+
+// Components
+import AddTodo from '../AddTodo.react';
+import MainAppBar from '../MainAppBar.react';
+import StateDump from '../StateDump.react';
+import TodoGroups from '../TodoGroups.react';
+
+// Material-UI components
+import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
-import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-downward';
+// Material-UI icons
 import ActionDelete from 'material-ui/svg-icons/action/delete';
+import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 import ContentCreate from 'material-ui/svg-icons/content/create';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-downward';
+import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
+// Helpers
 import { formatDate, toDate } from '../../utils/dates'
 import { unarchivedTodos } from '../../utils/todos'
 

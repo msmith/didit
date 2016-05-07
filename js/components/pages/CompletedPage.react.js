@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TodoGroups from '../TodoGroups.react';
-import MainAppBar from '../MainAppBar.react';
-import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
-import Folder from 'material-ui/svg-icons/file/folder';
 
-import { formatDate , toDate} from '../../utils/dates'
-import { unarchivedTodos} from '../../utils/todos'
+// Components
+import MainAppBar from '../MainAppBar.react';
+import TodoGroups from '../TodoGroups.react';
+
+// Material-UI icons
+import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
+
+// Helpers
+import { formatDate , toDate } from '../../utils/dates'
+import { unarchivedTodos } from '../../utils/todos'
 
 class CompletedPage extends Component {
   render() {

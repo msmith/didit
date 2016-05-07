@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TodoGroups from '../TodoGroups.react';
-import MainAppBar from '../MainAppBar.react';
-import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
-import Folder from 'material-ui/svg-icons/file/folder';
 
+// Components
+import MainAppBar from '../MainAppBar.react';
+import TodoGroups from '../TodoGroups.react';
+
+// Material-UI icons
+import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
+
+// Helpers
 import { formatDate, toDate } from '../../utils/dates'
 import { archivedTodos } from '../../utils/todos'
 

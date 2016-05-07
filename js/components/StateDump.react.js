@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+// Material-UI components
 import Paper from 'material-ui/Paper';
 
 export default class StateDump extends Component {

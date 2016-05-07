@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+
+// Material-UI components
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
+import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
 
-import IconButton from 'material-ui/IconButton';
-import FlatButton from 'material-ui/FlatButton';
+// Material-UI icons
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
-import { Link } from 'react-router';
 
 export default class MainAppBar extends Component {
   constructor(props) {
