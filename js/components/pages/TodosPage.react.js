@@ -18,8 +18,9 @@ import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-down
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentCreate from 'material-ui/svg-icons/content/create';
 
+import { formatDate, toDate } from '../../utils/dates'
+
 const lodash = require('lodash');
-const dateFormat = require('dateformat');
 const MS_PER_DAY = 24*60*60*1000;
 
 class TodosPage extends Component {
@@ -56,12 +57,8 @@ class TodosPage extends Component {
         <ActionDoneAll />
       </IconButton>
     );
-    const addedAtDate = (todo) => {
-      var d = new Date(todo.addedAt);
-      return [d.getFullYear(), d.getMonth(), d.getDate()];
-    };
+    const addedAtDate = (todo) => toDate(todo.addedAt);
 
-    const formatDate = (date) => dateFormat(date, 'ddd, mmm d');
     const secondaryText = (todo) => {
       if (todo.completedAt) {
         return 'Completed ' + formatDate(todo.completedAt);

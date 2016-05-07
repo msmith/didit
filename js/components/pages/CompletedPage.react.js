@@ -5,20 +5,15 @@ import MainAppBar from '../MainAppBar.react';
 import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 import Folder from 'material-ui/svg-icons/file/folder';
 
-const dateFormat = require('dateformat');
+import { formatDate , toDate} from '../../utils/dates'
+
 const lodash = require('lodash');
 
 class CompletedPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
-    const formatDate = (date) => dateFormat(date, 'ddd, mmm d');
-    const completedAtDate = (todo) => {
-      if (todo.completedAt) {
-        var d = new Date(todo.completedAt);
-        return [d.getFullYear(), d.getMonth(), d.getDate()];
-      }
-    };
+    const completedAtDate = (todo) => toDate(todo.completedAt);
     const formatTitle = (groupKey) => {
       if (groupKey === "undefined") {
         return 'Incomplete';
