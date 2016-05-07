@@ -19,8 +19,8 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentCreate from 'material-ui/svg-icons/content/create';
 
 import { formatDate, toDate } from '../../utils/dates'
+import { unarchivedTodos } from '../../utils/todos'
 
-const lodash = require('lodash');
 const MS_PER_DAY = 24*60*60*1000;
 
 class TodosPage extends Component {
@@ -64,7 +64,6 @@ class TodosPage extends Component {
         return 'Completed ' + formatDate(todo.completedAt);
       }
     }
-    const visibleTodos = lodash.reject(todos, (t) => t.archivedAt);
 
     const iconButtonElement = (
       <IconButton>
@@ -97,7 +96,7 @@ class TodosPage extends Component {
         />
         <div className='page-content'>
           <TodoGroups
-            todos={visibleTodos}
+            todos={unarchivedTodos(todos)}
             secondaryText={secondaryText}
             onDestroy={onDestroy}
             onToggle={onTodoToggle}

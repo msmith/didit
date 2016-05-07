@@ -6,8 +6,7 @@ import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 import Folder from 'material-ui/svg-icons/file/folder';
 
 import { formatDate, toDate } from '../../utils/dates'
-
-const lodash = require('lodash');
+import { archivedTodos } from '../../utils/todos'
 
 class ArchivePage extends Component {
   render() {
@@ -27,14 +26,12 @@ class ArchivePage extends Component {
       }
     }
 
-    const visibleTodos = lodash.filter(todos, (t) => t.archivedAt);
-
     return (
       <div>
         <MainAppBar title='Archived'/>
         <div className='page-content'>
           <TodoGroups
-          todos={visibleTodos}
+          todos={archivedTodos(todos)}
           secondaryText={secondaryText}
           groupBy={completedAtDate}
           title={formatTitle}
