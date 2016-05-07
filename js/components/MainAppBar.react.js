@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import AppBar from 'material-ui/lib/app-bar';
-import LeftNav from 'material-ui/lib/left-nav';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 
-import IconButton from 'material-ui/lib/icon-button';
-import FlatButton from 'material-ui/lib/flat-button';
-import NavigationMenu from 'material-ui/lib/svg-icons/navigation/menu';
+import IconButton from 'material-ui/IconButton';
+import FlatButton from 'material-ui/FlatButton';
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import { Link } from 'react-router';
 
 export default class MainAppBar extends Component {
@@ -34,7 +34,7 @@ export default class MainAppBar extends Component {
           iconElementRight={iconElementRight}
           onLeftIconButtonTouchTap={this.handleToggle}
         />
-        <LeftNav
+        <Drawer
           docked={false}
           width={200}
           open={this.state.open}
@@ -55,7 +55,7 @@ export default class MainAppBar extends Component {
               Archives
             </MenuItem>
           </Link>
-        </LeftNav>
+        </Drawer>
       </div>
     )
   }

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoGroups from '../TodoGroups.react';
 import MainAppBar from '../MainAppBar.react';
-import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
-import Folder from 'material-ui/lib/svg-icons/file/folder';
+import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
+import Folder from 'material-ui/svg-icons/file/folder';
 
 const lodash = require('lodash');
 const moment = require('moment');

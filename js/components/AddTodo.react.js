@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/lib/text-field';
+import TextField from 'material-ui/TextField';
 
 export default class AddTodo extends Component {
   render() {
@@ -11,11 +11,13 @@ export default class AddTodo extends Component {
     return (
       <TextField
         hintText={inputPlaceholder}
-        onEnterKeyDown={e => {
-          const input = e.target;
-          if (input.value) {
-            onAdd(input.value);
-            input.value = '';
+        onKeyDown={e => {
+          if (e.keyCode == 13) {
+            const input = e.target;
+            if (input.value) {
+              onAdd(input.value);
+              input.value = '';
+            }
           }
         }}
         className = 'add-todo'

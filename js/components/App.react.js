@@ -9,24 +9,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import MyTheme from './theme';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import {blue500, blue700} from 'material-ui/styles/colors';
 
 // Needed for onTouchTap
-// Can go away when react 1.0 release
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-@ThemeDecorator(ThemeManager.getMuiTheme(MyTheme))
+const muiTheme = getMuiTheme({
+    palette: {
+      primary1Color: blue500,
+      primary2Color: blue700,
+    }
+});
+
 class App extends Component {
   render() {
     return (
-      <div>
+      <MuiThemeProvider muiTheme={muiTheme}>
         { this.props.children }
-      </div>
+      </MuiThemeProvider>
     );
   }
 }

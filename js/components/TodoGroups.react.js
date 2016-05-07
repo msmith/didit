@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList.react';
-import Divider from 'material-ui/lib/divider';
-import Paper from 'material-ui/lib/paper';
-
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
 
 const lodash = require('lodash');
 

@@ -5,18 +5,18 @@ import TodoGroups from '../TodoGroups.react';
 import AddTodo from '../AddTodo.react';
 import StateDump from '../StateDump.react';
 import MainAppBar from '../MainAppBar.react';
-import IconButton from 'material-ui/lib/icon-button';
-import FlatButton from 'material-ui/lib/flat-button';
-import ActionDoneAll from 'material-ui/lib/svg-icons/action/done-all';
+import IconButton from 'material-ui/IconButton';
+import FlatButton from 'material-ui/FlatButton';
+import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
 
-import NavigationArrowUpward from 'material-ui/lib/svg-icons/navigation/arrow-upward';
-import NavigationArrowDownward from 'material-ui/lib/svg-icons/navigation/arrow-downward';
-import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
-import ContentCreate from 'material-ui/lib/svg-icons/content/create';
+import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
+import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-downward';
+import ActionDelete from 'material-ui/svg-icons/action/delete';
+import ContentCreate from 'material-ui/svg-icons/content/create';
 
 const lodash = require('lodash');
 const moment = require('moment');
@@ -75,20 +75,17 @@ class TodosPage extends Component {
     const rightIconMenu = (todo) => (
       <IconMenu iconButtonElement={iconButtonElement}>
         <MenuItem
+          primaryText='-1 day'
           leftIcon={<NavigationArrowUpward />}
-          onTouchTap={() => onDateChange(todo, -1)}>
-          -1 day
-        </MenuItem>
+          onTouchTap={() => onDateChange(todo, -1)} />
         <MenuItem
+          primaryText='+1 day'
           leftIcon={<NavigationArrowDownward />}
-          onTouchTap={() => onDateChange(todo, 1)}>
-          +1 day
-        </MenuItem>
+          onTouchTap={() => onDateChange(todo, 1)} />
         <MenuItem
+        primaryText='Delete'
           leftIcon={<ActionDelete />}
-          onTouchTap={() => onDestroy(todo)}>
-          Delete
-        </MenuItem>
+          onTouchTap={() => onDestroy(todo)} />
       </IconMenu>
     );
 
