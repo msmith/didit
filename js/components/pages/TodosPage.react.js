@@ -19,7 +19,8 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ContentCreate from 'material-ui/svg-icons/content/create';
 
 const lodash = require('lodash');
-const moment = require('moment');
+const dateFormat = require('dateformat');
+const MS_PER_DAY = 24*60*60*1000;
 
 class TodosPage extends Component {
   componentDidMount() {
@@ -43,7 +44,7 @@ class TodosPage extends Component {
       dispatch(addTodoItem(id, text, today));
     };
     const onDateChange = (todo, change) => {
-      const newDate = moment(todo.addedAt).add(change, 'days');
+      const newDate = new Date(new Date(todo.addedAt).getTime() + change * MS_PER_DAY);
       dispatch(moveTodoItem(todo.id, newDate));
     }
     const onTodoToggle = (todo) => {
@@ -55,10 +56,12 @@ class TodosPage extends Component {
         <ActionDoneAll />
       </IconButton>
     );
-    const groupByAddedAt = (todo) => moment(todo.addedAt).startOf('day').toISOString();
-    const formatTitle = (groupKey) => moment(groupKey).format('ddd, MMM D');
+    const addedAtDate = (todo) => {
+      var d = new Date(todo.addedAt);
+      return [d.getFullYear(), d.getMonth(), d.getDate()];
+    };
 
-    const formatDate = (date) => moment(date).format('ddd, MMM D');
+    const formatDate = (date) => dateFormat(date, 'ddd, mmm d');
     const secondaryText = (todo) => {
       if (todo.completedAt) {
         return 'Completed ' + formatDate(todo.completedAt);
@@ -102,8 +105,8 @@ class TodosPage extends Component {
             onDestroy={onDestroy}
             onToggle={onTodoToggle}
             onDateChange={onDateChange}
-            groupBy={groupByAddedAt}
-            title={formatTitle}
+            groupBy={addedAtDate}
+            title={formatDate}
             itemRightIconButton={rightIconMenu}
           />
           <AddTodo onAdd={onAdd} />

@@ -5,29 +5,29 @@ import MainAppBar from '../MainAppBar.react';
 import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 import Folder from 'material-ui/svg-icons/file/folder';
 
+const dateFormat = require('dateformat');
 const lodash = require('lodash');
-const moment = require('moment');
 
 class CompletedPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
-    const groupByCompletedAt = (todo) => {
+    const formatDate = (date) => dateFormat(date, 'ddd, mmm d');
+    const completedAtDate = (todo) => {
       if (todo.completedAt) {
-        return moment(todo.completedAt).startOf('day').toISOString();
-      } else {
-        return undefined;
+        var d = new Date(todo.completedAt);
+        return [d.getFullYear(), d.getMonth(), d.getDate()];
       }
     };
     const formatTitle = (groupKey) => {
       if (groupKey === "undefined") {
         return 'Incomplete';
       } else {
-        return moment(groupKey).format('ddd, MMM D');
+        return formatDate(groupKey);
       }
     };
     const secondaryText = (todo) => {
-      return 'Added ' + moment(todo.addedAt).fromNow();
+      return 'Added ' + formatDate(todo.addedAt);
     }
     const visibleTodos = lodash.reject(todos, (t) => t.archivedAt);
 
@@ -38,7 +38,7 @@ class CompletedPage extends Component {
           <TodoGroups
           todos={visibleTodos}
           secondaryText={secondaryText}
-          groupBy={groupByCompletedAt}
+          groupBy={completedAtDate}
           title={formatTitle}
           />
         </div>

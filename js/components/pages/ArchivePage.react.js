@@ -6,27 +6,26 @@ import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
 import Folder from 'material-ui/svg-icons/file/folder';
 
 const lodash = require('lodash');
-const moment = require('moment');
+const dateFormat = require('dateformat');
 
 class ArchivePage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
-    const groupByCompletedAt = (todo) => {
+    const completedAtDate = (todo) => {
       if (todo.completedAt) {
-        return moment(todo.completedAt).startOf('day').toISOString();
-      } else {
-        return undefined;
+        var d = new Date(todo.completedAt);
+        return [d.getFullYear(), d.getMonth(), d.getDate()];
       }
     };
     const formatTitle = (groupKey) => {
       if (groupKey === "undefined") {
         return 'Incomplete';
       } else {
-        return moment(groupKey).format('ddd, MMM D');
+        return formatDate(groupKey);
       }
     };
-    const formatDate = (date) => moment(date).format('ddd, MMM D');
+    const formatDate = (date) => dateFormat(date, 'ddd, mmm d');
     const secondaryText = (todo) => {
       if (todo.completedAt) {
         return 'Completed ' + formatDate(todo.completedAt);
@@ -42,7 +41,7 @@ class ArchivePage extends Component {
           <TodoGroups
           todos={visibleTodos}
           secondaryText={secondaryText}
-          groupBy={groupByCompletedAt}
+          groupBy={completedAtDate}
           title={formatTitle}
           />
         </div>
