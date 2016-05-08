@@ -8,6 +8,8 @@ import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
 
 // Material-UI icons
+import Check from 'material-ui/svg-icons/navigation/check';
+import List from 'material-ui/svg-icons/action/list';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
 export default class MainAppBar extends Component {
@@ -28,7 +30,7 @@ export default class MainAppBar extends Component {
     const iconElementLeft = (
       <IconButton onClick={handleToggle}>
         <NavigationMenu />
-        </IconButton>
+      </IconButton>
     );
 
     return (
@@ -48,11 +50,13 @@ export default class MainAppBar extends Component {
           <Link to={'/'} className="menu-link">
             <MenuItem
               primaryText="To do"
+              leftIcon={<List />}
               onTouchTap={handleClose} />
           </Link>
           <Link to={'/completed'} className="menu-link">
             <MenuItem
               primaryText="Completed"
+              leftIcon={<Check />}
               onTouchTap={handleClose} />
           </Link>
         </Drawer>
