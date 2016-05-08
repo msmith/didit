@@ -102,7 +102,7 @@ class TodosPage extends Component {
             itemRightIconButton={rightIconMenu}
           />
           <AddTodo onAdd={onAdd} />
-          {debug ? <StateDump data={this.props.data} /> : '' }
+          {debug && <StateDump data={this.props.data} /> }
         </div>
       </div>);
   }
