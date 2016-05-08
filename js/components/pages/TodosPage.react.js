@@ -22,7 +22,7 @@ import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-down
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // Helpers
-import { MS_PER_DAY, formatDate, simpleFormatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
+import { addDays, formatDate, simpleFormatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
 
 class TodosPage extends Component {
   componentDidMount() {
@@ -47,7 +47,7 @@ class TodosPage extends Component {
       dispatch(addTodoItem(id, text, today));
     };
     const onDateChange = (todo, change) => {
-      const newDate = new Date(new Date(todo.addedAt).getTime() + change * MS_PER_DAY);
+      const newDate = addDays(todo.addedAt, change);
       dispatch(updateTodoItem(todo.id, newDate));
     };
     const onTodoToggle = (todo) => {
@@ -73,8 +73,8 @@ class TodosPage extends Component {
     const iconButtonElement = (<IconButton><MoreVertIcon /></IconButton>);
 
     const rightIconMenu = (todo) => {
-      const upDate = new Date(new Date(todo.addedAt).getTime() - MS_PER_DAY);
-      const downDate = new Date(new Date(todo.addedAt).getTime() + MS_PER_DAY);
+      const upDate = addDays(todo.addedAt, -1);
+      const downDate = addDays(todo.addedAt, 1);
       return (
         <IconMenu iconButtonElement={iconButtonElement}>
           <MenuItem

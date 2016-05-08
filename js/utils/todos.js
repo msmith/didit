@@ -2,6 +2,9 @@ const dateFormat = require('dateformat');
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
+// Add or subtract X days from the given date
+const addDays = (date, days) => new Date(new Date(date).getTime() + days * MS_PER_DAY);
+
 const simpleFormatDate = (date) => {
   if (date) {
     return dateFormat(date, 'ddd, mmm d');
@@ -23,7 +26,7 @@ const formatDate = (date) => {
   }
 };
 
-// extract only the date part
+// Extract only the date part
 const toDate = (date) => {
   if (date) {
     const d = new Date(date); // ensure it's a Date type
@@ -38,4 +41,17 @@ const completedTodos = (todos) => todos.filter((t) => t.completedAt);
 const addedAtDate = (todo) => toDate(todo.addedAt);
 const completedAtDate = (todo) => toDate(todo.completedAt);
 
-export { MS_PER_DAY, formatDate, simpleFormatDate, archivedTodos, unarchivedTodos, completedTodos, addedAtDate, completedAtDate };
+export {
+  MS_PER_DAY,
+  addDays,
+
+  formatDate,
+  simpleFormatDate,
+
+  archivedTodos,
+  unarchivedTodos,
+  completedTodos,
+
+  addedAtDate,
+  completedAtDate
+};
