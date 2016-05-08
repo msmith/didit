@@ -6,8 +6,7 @@ import MainAppBar from '../MainAppBar.react';
 import TodoGroups from '../TodoGroups.react';
 
 // Helpers
-import { formatDate } from '../../utils/dates';
-import { archivedTodos, completedAtDate } from '../../utils/todos';
+import { formatDate, archivedTodos, completedAtDate } from '../../utils/todos';
 
 class ArchivePage extends Component {
   render() {

@@ -22,8 +22,7 @@ import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-down
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // Helpers
-import { formatDate } from '../../utils/dates';
-import { unarchivedTodos, addedAtDate } from '../../utils/todos';
+import { formatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 

@@ -19,7 +19,7 @@ export default class TodoGroups extends Component {
             <TodoList
               {...other}
               title={title(groupKey)}
-              todos={todos.filter((t) => (groupBy(t) == groupKey.toString()))}
+              todos={todos.filter((t) => (groupBy(t) == groupKey))}
             />
             <Divider />
           </div>
