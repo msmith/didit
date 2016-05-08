@@ -94,11 +94,9 @@ class TodosPage extends Component {
           <TodoGroups
             todos={unarchivedTodos(todos)}
             secondaryText={secondaryText}
-            onDestroy={onDestroy}
-            onToggle={onTodoToggle}
-            onDateChange={onDateChange}
             groupBy={addedAtDate}
             title={formatDate}
+            onToggle={onTodoToggle}
             itemRightIconButton={rightIconMenu}
           />
           <AddTodo onAdd={onAdd} />
