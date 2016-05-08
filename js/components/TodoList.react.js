@@ -13,13 +13,12 @@ export default class TodoList extends Component {
         <List>
           <Subheader>{title}</Subheader>
           {todos.map(todo => {
-            let checkbox;
-            if (onToggle) {
-              checkbox = (<Checkbox
+            const checkbox = (
+              <Checkbox
                 defaultChecked={!!todo.completedAt}
-                onCheck={() => onToggle(todo)}
+                disabled={todo.archivedAt}
+                onCheck={() => onToggle && onToggle(todo)}
               />);
-            }
 
             return (
               <ListItem
@@ -27,6 +26,7 @@ export default class TodoList extends Component {
                 primaryText={todo.text}
                 secondaryText={secondaryText(todo)}
                 leftCheckbox={checkbox}
+                disabled
                 rightIconButton={itemRightIconButton && itemRightIconButton(todo)}
                 rightIcon={itemRightIcon && itemRightIcon(todo)}
               />);
