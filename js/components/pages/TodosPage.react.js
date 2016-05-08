@@ -22,7 +22,7 @@ import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-down
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // Helpers
-import { MS_PER_DAY, formatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
+import { MS_PER_DAY, formatDate, simpleFormatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
 
 class TodosPage extends Component {
   componentDidMount() {
@@ -72,22 +72,26 @@ class TodosPage extends Component {
 
     const iconButtonElement = (<IconButton><MoreVertIcon /></IconButton>);
 
-    const rightIconMenu = (todo) => (
-      <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem
-          primaryText="-1 day"
-          leftIcon={<NavigationArrowUpward />}
-          onTouchTap={() => onDateChange(todo, -1)} />
-        <MenuItem
-          primaryText="+1 day"
-          leftIcon={<NavigationArrowDownward />}
-          onTouchTap={() => onDateChange(todo, 1)} />
-        <MenuItem
-          primaryText="Delete"
-          leftIcon={<ActionDelete />}
-          onTouchTap={() => onDestroy(todo)} />
-      </IconMenu>
-    );
+    const rightIconMenu = (todo) => {
+      const upDate = new Date(new Date(todo.addedAt).getTime() - MS_PER_DAY);
+      const downDate = new Date(new Date(todo.addedAt).getTime() + MS_PER_DAY);
+      return (
+        <IconMenu iconButtonElement={iconButtonElement}>
+          <MenuItem
+            primaryText={simpleFormatDate(upDate)}
+            leftIcon={<NavigationArrowUpward />}
+            onTouchTap={() => onDateChange(todo, -1)} />
+          <MenuItem
+            primaryText={simpleFormatDate(downDate)}
+            leftIcon={<NavigationArrowDownward />}
+            onTouchTap={() => onDateChange(todo, 1)} />
+          <MenuItem
+            primaryText="Delete"
+            leftIcon={<ActionDelete />}
+            onTouchTap={() => onDestroy(todo)} />
+        </IconMenu>
+      );
+    };
 
     return (
       <div>
