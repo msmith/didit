@@ -24,6 +24,12 @@ import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward
 // Helpers
 import { addDays, formatDate, simpleFormatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
 
+const secondaryText = (todo) => {
+  if (todo.completedAt) {
+    return 'Completed ' + formatDate(todo.completedAt);
+  }
+};
+
 class TodosPage extends Component {
   componentDidMount() {
     document.addEventListener('keydown', (e) => {
@@ -63,12 +69,6 @@ class TodosPage extends Component {
         <Archive />
       </IconButton>
     );
-
-    const secondaryText = (todo) => {
-      if (todo.completedAt) {
-        return 'Completed ' + formatDate(todo.completedAt);
-      }
-    };
 
     const iconButtonElement = (<IconButton><MoreVertIcon /></IconButton>);
 

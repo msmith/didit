@@ -10,13 +10,12 @@ import TodoGroups from '../TodoGroups.react';
 // Helpers
 import { formatDate, completedTodos, completedAtDate } from '../../utils/todos';
 
+const secondaryText = (todo) => 'Added ' + formatDate(todo.addedAt);
+
 class CompletedPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos } = this.props.data;
-    const secondaryText = (todo) => {
-      return 'Added ' + formatDate(todo.addedAt);
-    };
 
     const onTodoToggle = (todo) => {
       const fn = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
