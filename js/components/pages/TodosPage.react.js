@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addTodoItem, completeTodoItem, uncompleteTodoItem, moveTodoItem, removeTodoItem, archiveTodoItems, toggleDebug } from '../../actions/AppActions';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, updateTodoItem, removeTodoItem, archiveTodoItems, toggleDebug } from '../../actions/AppActions';
 
 // Components
 import AddTodo from '../AddTodo.react';
@@ -48,7 +48,7 @@ class TodosPage extends Component {
     };
     const onDateChange = (todo, change) => {
       const newDate = new Date(new Date(todo.addedAt).getTime() + change * MS_PER_DAY);
-      dispatch(moveTodoItem(todo.id, newDate));
+      dispatch(updateTodoItem(todo.id, newDate));
     };
     const onTodoToggle = (todo) => {
       const fn = todo.completedAt ? uncompleteTodoItem : completeTodoItem;

@@ -13,7 +13,7 @@
  * add it in the rootReducer.js.
  */
 
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, MOVE_TODO, REMOVE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, UPDATE_TODO, REMOVE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG } from '../constants/AppConstants';
 import { assignToEmpty, modifyItemInList } from '../utils/assign';
 
 const initialState = {
@@ -55,7 +55,7 @@ function homeReducer(state = initialState, action) {
       return modifyTodoItem(state, action.id, {
         completedAt: undefined
       });
-    case MOVE_TODO:
+    case UPDATE_TODO:
       return modifyTodoItem(state, action.id, {
         addedAt: action.addedAt
       });

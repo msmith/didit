@@ -133,8 +133,8 @@ describe('defaultReducer', () => {
     });
   });
 
-  // Test that it handles moving a todo correctly
-  it('should handle the MOVE_TODO action', () => {
+  // Test that it handles updating a todo correctly
+  it('should handle the UPDATE_TODO action', () => {
     const id = 42;
     const text = 'wash the dog';
     const addedAt = new Date(2001, 1, 2);
@@ -145,7 +145,7 @@ describe('defaultReducer', () => {
 
     expect(
       homeReducer({todos: initialTodos}, {
-        type: constants.MOVE_TODO,
+        type: constants.UPDATE_TODO,
         id,
         addedAt: newAddedAt
       })

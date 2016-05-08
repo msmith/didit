@@ -9,7 +9,7 @@
 export const ADD_TODO = 'ADD_TODO';
 export const COMPLETE_TODO = 'COMPLETE_TODO';
 export const UNCOMPLETE_TODO = 'UNCOMPLETE_TODO';
-export const MOVE_TODO = 'MOVE_TODO';
+export const UPDATE_TODO = 'UPDATE_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const ARCHIVE_TODOS = 'ARCHIVE_TODOS';
 export const TOGGLE_DEBUG = 'TOGGLE_DEBUG';
