@@ -3,6 +3,24 @@ const fs = require('fs');
 const path = require('path');
 const walk = require('walk');
 
+const s3 = new AWS.S3();
+const bucket = 'todo.sticknet.net';
+
+const mimeType = (filename) => {
+  switch (path.extname(filename)) {
+    case '.css':
+      return 'text/css';
+    case '.html':
+      return 'text/html';
+    case '.js':
+      return 'text/javascript';
+    case '.png':
+      return 'image/png';
+    default:
+      return 'application/octet-stream';
+  }
+};
+
 //
 // Build file list
 //
@@ -25,30 +43,10 @@ walker.on('end', () => {
   // Upload to S3
   //
 
-  const s3 = new AWS.S3();
-  const bucket = 'todo.sticknet.net';
-
   files.forEach((filename) => {
     const readableStream = fs.createReadStream(filename);
     const objectKey = filename.replace(/^\.\/build\//, '');
-    let contentType;
-    switch (path.extname(filename)) {
-      case '.css':
-        contentType = 'text/css';
-        break;
-      case '.html':
-        contentType = 'text/html';
-        break;
-      case '.js':
-        contentType = 'text/javascript';
-        break;
-      case '.png':
-        contentType = 'image/png';
-        break;
-      default:
-        contentType = 'application/octet-stream';
-        break;
-    }
+    const contentType = mimeType(filename);
     const params = {
       Bucket: bucket,
       Key: objectKey,
