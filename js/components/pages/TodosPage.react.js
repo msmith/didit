@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addTodoItem, completeTodoItem, uncompleteTodoItem, updateTodoItem, removeTodoItem, archiveTodoItems, toggleDebug } from '../../actions/AppActions';
+import { addTodoItem, completeTodoItem, uncompleteTodoItem, updateTodoItem, deleteTodoItem, archiveTodoItems, toggleDebug } from '../../actions/AppActions';
 
 // Components
 import AddTodo from '../AddTodo.react';
@@ -40,7 +40,7 @@ class TodosPage extends Component {
     const visibleTodos = unarchivedTodos(todos);
 
     const onArchive = () => dispatch(archiveTodoItems());
-    const onDestroy = (todo) => dispatch(removeTodoItem(todo.id));
+    const onDestroy = (todo) => dispatch(deleteTodoItem(todo.id));
     const onAdd = (text) => {
       const today = new Date();
       const id = new Date().getTime();

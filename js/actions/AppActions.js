@@ -27,7 +27,7 @@
 // It makes more sense to have the asnyc actions before the non-async ones
 /* eslint-disable no-use-before-define */
 
-import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, UPDATE_TODO, REMOVE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG } from '../constants/AppConstants';
+import { ADD_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, UPDATE_TODO, DELETE_TODO, ARCHIVE_TODOS, TOGGLE_DEBUG } from '../constants/AppConstants';
 
 export function asyncAddTodoItem(id, text, addedAt) {
   return (dispatch) => {
@@ -47,9 +47,9 @@ export function asyncUncompleteTodoItem(id) {
   };
 }
 
-export function asyncRemoveTodoItem(id) {
+export function asyncDeleteTodoItem(id) {
   return (dispatch) => {
-    return dispatch(removeTodoItem(id));
+    return dispatch(deleteTodoItem(id));
   };
 }
 
@@ -69,8 +69,8 @@ export function updateTodoItem(id, addedAt) {
   return { type: UPDATE_TODO, id, addedAt };
 }
 
-export function removeTodoItem(id) {
-  return { type: REMOVE_TODO, id };
+export function deleteTodoItem(id) {
+  return { type: DELETE_TODO, id };
 }
 
 export function archiveTodoItems(archivedAt = new Date()) {

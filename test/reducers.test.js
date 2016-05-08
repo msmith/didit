@@ -161,7 +161,7 @@ describe('defaultReducer', () => {
   });
 
   // Test that it handles removing a todo correctly
-  it('should handle the REMOVE_TODO action', () => {
+  it('should handle the DELETE_TODO action', () => {
     const id = 42;
     const text = 'wash the dog';
     const addedAt = new Date();
@@ -172,7 +172,7 @@ describe('defaultReducer', () => {
 
     expect(
       homeReducer({todos: initialTodos}, {
-        type: constants.REMOVE_TODO,
+        type: constants.DELETE_TODO,
         id: 1
       })
     ).toEqual({
