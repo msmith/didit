@@ -9,9 +9,10 @@ import Paper from 'material-ui/Paper';
 
 export default class TodoGroups extends Component {
   render() {
-    const { todos, groupBy, title, ...other } = this.props;
+    const { todos, groupBy, title, reverseOrder, ...other } = this.props;
     const uniqueDates = new Set(todos.map((t) => groupBy(t)));
-    const sortedDates = Array.from(uniqueDates).sort();
+    const dateArray = Array.from(uniqueDates).sort();
+    const sortedDates = reverseOrder ? dateArray.reverse() : dateArray;
     return (
       <Paper>
         {sortedDates.map(groupKey =>

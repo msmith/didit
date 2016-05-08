@@ -33,6 +33,7 @@ class CompletedPage extends Component {
           groupBy={completedAtDate}
           title={formatDate}
           onToggle={onTodoToggle}
+          reverseOrder
           />
         </div>
       </div>);
