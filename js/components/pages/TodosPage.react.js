@@ -22,9 +22,7 @@ import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-down
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // Helpers
-import { formatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
-
-const MS_PER_DAY = 24 * 60 * 60 * 1000;
+import { MS_PER_DAY, formatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
 
 class TodosPage extends Component {
   componentDidMount() {

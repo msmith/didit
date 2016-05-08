@@ -1,8 +1,19 @@
 const dateFormat = require('dateformat');
 
-const formatDate = (date, fallback) => {
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+const formatDate = (date, fallback = 'Undefined') => {
   if (date) {
-    return dateFormat(date, 'ddd, mmm d');
+    const now = new Date().getTime();
+    const ms = now - new Date(date).getTime();
+    const text = dateFormat(date, 'ddd, mmm d');
+
+    if (ms > 0 && ms < MS_PER_DAY) {
+      return text + ' (Today)';
+    } else if (ms > 0 && ms < (2 * MS_PER_DAY)) {
+      return text + ' (Yesterday)';
+    }
+    return text;
   }
   return fallback;
 };
@@ -22,4 +33,4 @@ const completedTodos = (todos) => todos.filter((t) => t.completedAt);
 const addedAtDate = (todo) => toDate(todo.addedAt);
 const completedAtDate = (todo) => toDate(todo.completedAt);
 
-export { formatDate, archivedTodos, unarchivedTodos, completedTodos, addedAtDate, completedAtDate };
+export { MS_PER_DAY, formatDate, archivedTodos, unarchivedTodos, completedTodos, addedAtDate, completedAtDate };
