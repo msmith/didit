@@ -22,7 +22,7 @@ import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-down
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // Helpers
-import { addDays, formatDate, simpleFormatDate, unarchivedTodos, addedAtDate } from '../../utils/todos';
+import { addDays, formatDate, simpleFormatDate, unarchivedTodos, groupForDate } from '../../utils/todos';
 
 const secondaryText = (todo) => {
   if (todo.completedAt) {
@@ -58,6 +58,8 @@ class TodosPage extends Component {
       const fn = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
       dispatch(fn(todo.id));
     };
+
+    const sortByAddedAt = (a, b) => new Date(a.addedAt).getTime() - new Date(b.addedAt).getTime();
 
     const sweepButton = (
       <IconButton
@@ -101,8 +103,8 @@ class TodosPage extends Component {
           <TodoGroups
             todos={todos}
             secondaryText={secondaryText}
-            groupBy={addedAtDate}
-            title={formatDate}
+            groupBy={t => groupForDate(t.addedAt)}
+            sortComparator={sortByAddedAt}
             onToggle={onTodoToggle}
             itemRightIconButton={rightIconMenu}
           />

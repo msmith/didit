@@ -8,9 +8,10 @@ import MainAppBar from '../MainAppBar.react';
 import TodoGroups from '../TodoGroups.react';
 
 // Helpers
-import { formatDate, completedTodos, completedAtDate } from '../../utils/todos';
+import { formatDate, completedTodos, groupForDate } from '../../utils/todos';
 
 const secondaryText = (todo) => 'Added ' + formatDate(todo.addedAt);
+const sortbyCompletedAtReverse = (a, b) => new Date(a.completedAt).getTime() - new Date(b.completedAt).getTime();
 
 class CompletedPage extends Component {
   render() {
@@ -29,10 +30,9 @@ class CompletedPage extends Component {
           <TodoGroups
           todos={todos}
           secondaryText={secondaryText}
-          groupBy={completedAtDate}
-          title={formatDate}
+          groupBy={t => groupForDate(t.completedAt)}
+          sortComparator={sortbyCompletedAtReverse}
           onToggle={onTodoToggle}
-          reverseOrder
           />
         </div>
       </div>);

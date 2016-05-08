@@ -26,20 +26,36 @@ const formatDate = (date) => {
   }
 };
 
-// Extract only the date part
-const toDate = (date) => {
-  if (date) {
-    const d = new Date(date); // ensure it's a Date type
-    return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+const groupForDate = (dateOrTime, fallback = 'Incomplete') => {
+  if (dateOrTime) {
+    const now = new Date();
+    const date = new Date(dateOrTime);
+    const ms = now.getTime() - new Date(date).getTime();
+
+    if (ms < 0) {
+      return simpleFormatDate(date);
+    } else if (ms < MS_PER_DAY) {
+      return 'Today';
+    } else if (ms < (2 * MS_PER_DAY)) {
+      return 'Yesterday';
+    }
+
+    if (date.getYear() === now.getYear()) {
+      if (date.getMonth() === now.getMonth()) {
+        return 'This month';
+      }
+
+      return dateFormat(date, 'mmmm');
+    }
+
+    return dateFormat(date, 'mmmm yyyy');
   }
+  return fallback;
 };
 
 const archivedTodos = (todos) => todos.filter((t) => t.archivedAt);
 const unarchivedTodos = (todos) => todos.filter((t) => !t.archivedAt);
 const completedTodos = (todos) => todos.filter((t) => t.completedAt);
-
-const addedAtDate = (todo) => toDate(todo.addedAt);
-const completedAtDate = (todo) => toDate(todo.completedAt);
 
 export {
   MS_PER_DAY,
@@ -48,10 +64,9 @@ export {
   formatDate,
   simpleFormatDate,
 
+  groupForDate,
+
   archivedTodos,
   unarchivedTodos,
   completedTodos,
-
-  addedAtDate,
-  completedAtDate
 };
