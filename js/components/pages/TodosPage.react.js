@@ -36,6 +36,9 @@ class TodosPage extends Component {
   render() {
     const dispatch = this.props.dispatch;
     const { todos, debug } = this.props.data;
+
+    const visibleTodos = unarchivedTodos(todos);
+
     const onArchive = () => dispatch(archiveTodoItems());
     const onDestroy = (todo) => dispatch(removeTodoItem(todo.id));
     const onAdd = (text) => {
@@ -51,8 +54,12 @@ class TodosPage extends Component {
       const fn = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
       dispatch(fn(todo.id));
     };
+
     const sweepButton = (
-      <IconButton onClick={onArchive}>
+      <IconButton
+        onClick={onArchive}
+        disabled={!visibleTodos.some((todo) => todo.completedAt)}
+      >
         <ActionDoneAll />
       </IconButton>
     );
@@ -90,7 +97,7 @@ class TodosPage extends Component {
         />
         <div className="page-content">
           <TodoGroups
-            todos={unarchivedTodos(todos)}
+            todos={visibleTodos}
             secondaryText={secondaryText}
             groupBy={addedAtDate}
             title={formatDate}
