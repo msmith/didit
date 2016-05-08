@@ -4,13 +4,11 @@ import { Link } from 'react-router';
 // Material-UI components
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
-import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
 
 // Material-UI icons
 import Check from 'material-ui/svg-icons/navigation/check';
 import List from 'material-ui/svg-icons/action/list';
-import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
 export default class MainAppBar extends Component {
   constructor(props) {
@@ -19,7 +17,7 @@ export default class MainAppBar extends Component {
   }
 
   render() {
-    const handleToggle = () => this.setState({open: !this.state.open});
+    const handleOpen = () => this.setState({open: !this.state.open});
 
     const handleClose = (e) => {
       e.preventDefault();
@@ -27,19 +25,14 @@ export default class MainAppBar extends Component {
     };
 
     const { title, iconElementRight } = this.props;
-    const iconElementLeft = (
-      <IconButton onClick={handleToggle}>
-        <NavigationMenu />
-      </IconButton>
-    );
 
     return (
       <div>
         <AppBar
           title={title}
-          iconElementLeft={iconElementLeft}
           iconElementRight={iconElementRight}
-          onLeftIconButtonTouchTap={this.handleToggle}
+          onLeftIconButtonTouchTap={handleOpen}
+          showMenuIconButton
         />
         <Drawer
           docked={false}
