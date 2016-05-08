@@ -17,14 +17,9 @@ export default class MainAppBar extends Component {
   }
 
   render() {
-    const handleOpen = () => this.setState({open: !this.state.open});
-
-    const handleClose = (e) => {
-      e.preventDefault();
-      this.setState({open: false});
-    };
-
     const { title, iconElementRight } = this.props;
+
+    const handleOpen = () => this.setState({open: !this.state.open});
 
     return (
       <div>
@@ -43,14 +38,12 @@ export default class MainAppBar extends Component {
           <Link to={'/'} className="menu-link">
             <MenuItem
               primaryText="To do"
-              leftIcon={<List />}
-              onTouchTap={handleClose} />
+              leftIcon={<List />} />
           </Link>
           <Link to={'/completed'} className="menu-link">
             <MenuItem
               primaryText="Completed"
-              leftIcon={<Check />}
-              onTouchTap={handleClose} />
+              leftIcon={<Check />} />
           </Link>
         </Drawer>
       </div>
