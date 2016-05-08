@@ -16,7 +16,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 // Material-UI icons
 import ActionDelete from 'material-ui/svg-icons/action/delete';
-import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
+import Archive from 'material-ui/svg-icons/content/archive';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-downward';
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
@@ -60,7 +60,7 @@ class TodosPage extends Component {
         onClick={onArchive}
         disabled={!visibleTodos.some((todo) => todo.completedAt)}
       >
-        <ActionDoneAll />
+        <Archive />
       </IconButton>
     );
 
