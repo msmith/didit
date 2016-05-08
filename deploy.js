@@ -12,7 +12,7 @@ const files = ['favicon.png'];
 // Walker options
 const walker = walk.walk('./build', { followLinks: false });
 
-walker.on('file', function(root, stat, next) {
+walker.on('file', (root, stat, next) => {
   if (!stat.name.startsWith('.')) {
     // Add this file to the list of files
     files.push(root + '/' + stat.name);
@@ -20,7 +20,7 @@ walker.on('file', function(root, stat, next) {
   next();
 });
 
-walker.on('end', function() {
+walker.on('end', () => {
   //
   // Upload to S3
   //
@@ -28,7 +28,7 @@ walker.on('end', function() {
   const s3 = new AWS.S3();
   const bucket = 'todo.sticknet.net';
 
-  files.forEach(function(filename) {
+  files.forEach((filename) => {
     const readableStream = fs.createReadStream(filename);
     const objectKey = filename.replace(/^\.\/build\//, '');
     let contentType;
@@ -56,7 +56,7 @@ walker.on('end', function() {
       ACL: 'public-read',
       ContentType: contentType
     };
-    s3.putObject(params, function(err) {
+    s3.putObject(params, (err) => {
       if (err) {
         console.log(err);
       } else {
