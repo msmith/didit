@@ -61,7 +61,7 @@ class TodosPage extends Component {
 
     const sortByAddedAt = (a, b) => new Date(a.addedAt).getTime() - new Date(b.addedAt).getTime();
 
-    const sweepButton = (
+    const archiveAllButton = (
       <IconButton
         onClick={onArchive}
         disabled={!todos.some((todo) => todo.completedAt)}
@@ -97,7 +97,7 @@ class TodosPage extends Component {
       <div>
         <MainAppBar
           title="To do"
-          iconElementRight={sweepButton}
+          iconElementRight={archiveAllButton}
         />
         <div className="page-content">
           <TodoGroups
