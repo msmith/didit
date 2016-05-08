@@ -233,16 +233,4 @@ describe('defaultReducer', () => {
       debug: true
     });
   });
-
-  // Test that it handles toggling debug mode correctly
-  it('should handle the CHANGE_TAB action to change the active tab', () => {
-    const tab = 'a';
-    expect(
-      homeReducer({tab: 'z'}, {
-        type: constants.CHANGE_TAB, tab
-      })
-    ).toEqual({
-      tab: 'a'
-    });
-  });
 });
