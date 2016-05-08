@@ -27,7 +27,7 @@ class CompletedPage extends Component {
         <MainAppBar title="Completed" />
         <div className="page-content">
           <TodoGroups
-          todos={completedTodos(todos)}
+          todos={todos}
           secondaryText={secondaryText}
           groupBy={completedAtDate}
           title={formatDate}
@@ -44,9 +44,12 @@ class CompletedPage extends Component {
 // Which props do we want to inject, given the global state?
 function select(state) {
   return {
-    data: state
+    data: {
+      todos: completedTodos(state.todos)
+    }
   };
 }
+
 
 // Wrap the component to inject dispatch and state into it
 export default connect(select)(CompletedPage);

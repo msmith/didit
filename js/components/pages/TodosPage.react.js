@@ -43,8 +43,6 @@ class TodosPage extends Component {
     const dispatch = this.props.dispatch;
     const { todos, debug } = this.props.data;
 
-    const visibleTodos = unarchivedTodos(todos);
-
     const onArchive = () => dispatch(archiveTodoItems());
     const onDestroy = (todo) => dispatch(deleteTodoItem(todo.id));
     const onAdd = (text) => {
@@ -64,7 +62,7 @@ class TodosPage extends Component {
     const sweepButton = (
       <IconButton
         onClick={onArchive}
-        disabled={!visibleTodos.some((todo) => todo.completedAt)}
+        disabled={!todos.some((todo) => todo.completedAt)}
       >
         <Archive />
       </IconButton>
@@ -101,7 +99,7 @@ class TodosPage extends Component {
         />
         <div className="page-content">
           <TodoGroups
-            todos={visibleTodos}
+            todos={todos}
             secondaryText={secondaryText}
             groupBy={addedAtDate}
             title={formatDate}
@@ -120,7 +118,9 @@ class TodosPage extends Component {
 // Which props do we want to inject, given the global state?
 function select(state) {
   return {
-    data: state
+    data: {
+      todos: unarchivedTodos(state.todos)
+    }
   };
 }
 
