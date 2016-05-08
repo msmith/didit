@@ -1,6 +1,11 @@
 const dateFormat = require('dateformat');
 
-const formatDate = (date) => dateFormat(date, 'ddd, mmm d');
+const formatDate = (date, fallback) => {
+  if (date) {
+    return dateFormat(date, 'ddd, mmm d');
+  }
+  return fallback;
+};
 
 // extract only the date part
 const toDate = (date) => {

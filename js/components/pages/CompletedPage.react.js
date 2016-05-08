@@ -11,12 +11,6 @@ import { formatDate, unarchivedTodos, completedAtDate } from '../../utils/todos'
 class CompletedPage extends Component {
   render() {
     const { todos } = this.props.data;
-    const formatTitle = (groupKey) => {
-      if (groupKey === 'undefined') {
-        return 'Incomplete';
-      }
-      return formatDate(groupKey);
-    };
     const secondaryText = (todo) => {
       return 'Added ' + formatDate(todo.addedAt);
     };
@@ -29,7 +23,7 @@ class CompletedPage extends Component {
           todos={unarchivedTodos(todos)}
           secondaryText={secondaryText}
           groupBy={completedAtDate}
-          title={formatTitle}
+          title={(date) => formatDate(date, 'Incomplete')}
           />
         </div>
       </div>);
