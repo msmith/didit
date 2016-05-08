@@ -55,11 +55,6 @@ export default class MainAppBar extends Component {
               primaryText="Completed"
               onTouchTap={handleClose} />
           </Link>
-          <Link to={'/archives'} className="menu-link">
-            <MenuItem
-              primaryText="Archived"
-              onTouchTap={handleClose} />
-          </Link>
         </Drawer>
       </div>
     );

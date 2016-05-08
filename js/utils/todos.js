@@ -17,8 +17,9 @@ const toDate = (date) => {
 
 const archivedTodos = (todos) => todos.filter((t) => t.archivedAt);
 const unarchivedTodos = (todos) => todos.filter((t) => !t.archivedAt);
+const completedTodos = (todos) => todos.filter((t) => t.completedAt);
 
 const addedAtDate = (todo) => toDate(todo.addedAt);
 const completedAtDate = (todo) => toDate(todo.completedAt);
 
-export { formatDate, archivedTodos, unarchivedTodos, addedAtDate, completedAtDate };
+export { formatDate, archivedTodos, unarchivedTodos, completedTodos, addedAtDate, completedAtDate };

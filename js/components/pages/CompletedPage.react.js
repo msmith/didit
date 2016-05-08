@@ -6,7 +6,7 @@ import MainAppBar from '../MainAppBar.react';
 import TodoGroups from '../TodoGroups.react';
 
 // Helpers
-import { formatDate, unarchivedTodos, completedAtDate } from '../../utils/todos';
+import { formatDate, completedTodos, completedAtDate } from '../../utils/todos';
 
 class CompletedPage extends Component {
   render() {
@@ -20,10 +20,10 @@ class CompletedPage extends Component {
         <MainAppBar title="Completed" />
         <div className="page-content">
           <TodoGroups
-          todos={unarchivedTodos(todos)}
+          todos={completedTodos(todos)}
           secondaryText={secondaryText}
           groupBy={completedAtDate}
-          title={(date) => formatDate(date, 'Incomplete')}
+          title={formatDate}
           />
         </div>
       </div>);
