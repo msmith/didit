@@ -16,7 +16,7 @@ export default class TodoList extends Component {
             const checkbox = (
               <Checkbox
                 defaultChecked={!!todo.completedAt}
-                disabled={todo.archivedAt}
+                disabled={!!todo.archivedAt}
                 onCheck={() => onToggle && onToggle(todo)}
               />);
 
