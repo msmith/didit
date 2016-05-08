@@ -13,7 +13,7 @@ export default class TodoList extends Component {
         <List>
         <Subheader>{title}</Subheader>
         {todos.map(todo => {
-          var checkbox;
+          let checkbox;
           if (onToggle) {
             checkbox = (<Checkbox
               defaultChecked={!!todo.completedAt}

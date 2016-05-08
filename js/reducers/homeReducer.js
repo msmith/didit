@@ -64,12 +64,12 @@ function homeReducer(state = initialState, action) {
         todos: removeTodos(state.todos, withId(action.id))
       });
     case ARCHIVE_TODOS:
-      var newTodos = state.todos;
-      for (var t of newTodos) {
+      let newTodos = state.todos;
+      for (const t of newTodos) {
         if (t.completedAt && !t.archivedAt) {
           newTodos = modifyItemInList(newTodos, withId(t.id), {
             archivedAt: action.archivedAt
-          })
+          });
         }
       }
       return assignToEmpty(state, {

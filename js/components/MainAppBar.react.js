@@ -19,14 +19,17 @@ export default class MainAppBar extends Component {
   render() {
     const handleToggle = () => this.setState({open: !this.state.open});
 
-    const handleClose = () => this.setState({open: false});
+    const handleClose = (e) => {
+      e.preventDefault();
+      this.setState({open: false});
+    };
 
     const { title, iconElementRight } = this.props;
-    const iconElementLeft = <IconButton
-      onClick={handleToggle}
-    >
-      <NavigationMenu />
-    </IconButton>
+    const iconElementLeft = (
+      <IconButton onClick={handleToggle}>
+        <NavigationMenu />
+        </IconButton>
+    );
 
     return (
       <div>
@@ -42,23 +45,23 @@ export default class MainAppBar extends Component {
           open={this.state.open}
           onRequestChange={open => this.setState({open})}
         >
-          <Link to={'/'} className='menu-link'>
+          <Link to={'/'} className="menu-link">
             <MenuItem onTouchTap={handleClose}>
               To do
             </MenuItem>
           </Link>
-          <Link to={'/completed'} className='menu-link'>
+          <Link to={'/completed'} className="menu-link">
             <MenuItem onTouchTap={handleClose}>
               Completed
             </MenuItem>
           </Link>
-          <Link to={'/archives'} className='menu-link'>
+          <Link to={'/archives'} className="menu-link">
             <MenuItem onTouchTap={handleClose}>
               Archives
             </MenuItem>
           </Link>
         </Drawer>
       </div>
-    )
+    );
   }
 }

@@ -22,7 +22,7 @@ export default class AddTodo extends Component {
             }
           }
         }}
-        className = 'add-todo'
+        className = "add-todo"
         style={textFieldStyle}
       />
     );

@@ -28,7 +28,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router';
-import { compose, createStore, applyMiddleware } from 'redux';
+import { compose, createStore } from 'redux';
 // import thunk from 'redux-thunk';
 import persistState from 'redux-localstorage';
 import FontFaceObserver from 'fontfaceobserver';
@@ -61,7 +61,7 @@ import rootReducer from './reducers/rootReducer';
 
 // Use redux-localstorage to persist state
 const createPersistentStore = compose(
-  persistState(/*paths, config*/)
+  persistState()
 )(createStore);
 
 // const store = createStoreWithMiddleware(rootReducer);

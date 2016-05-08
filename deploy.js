@@ -31,7 +31,7 @@ walker.on('end', function() {
   files.forEach(function(filename) {
     const readableStream = fs.createReadStream(filename);
     const objectKey = filename.replace(/^\.\/build\//, '');
-    var contentType;
+    let contentType;
     switch (path.extname(filename)) {
       case '.css':
         contentType = 'text/css';
@@ -56,7 +56,7 @@ walker.on('end', function() {
       ACL: 'public-read',
       ContentType: contentType
     };
-    s3.putObject(params, function(err, data) {
+    s3.putObject(params, function(err) {
       if (err) {
         console.log(err);
       } else {

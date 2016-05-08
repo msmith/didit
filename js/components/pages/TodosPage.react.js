@@ -22,18 +22,16 @@ import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-down
 import NavigationArrowUpward from 'material-ui/svg-icons/navigation/arrow-upward';
 
 // Helpers
-import { formatDate } from '../../utils/dates'
-import { unarchivedTodos, addedAtDate } from '../../utils/todos'
+import { formatDate } from '../../utils/dates';
+import { unarchivedTodos, addedAtDate } from '../../utils/todos';
 
-const MS_PER_DAY = 24*60*60*1000;
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 class TodosPage extends Component {
   componentDidMount() {
     document.addEventListener('keydown', (e) => {
-      switch(e.code) {
-        case 'Backquote':
-          this.props.dispatch(toggleDebug())
-          break;
+      if (e.code === 'Backquote') {
+        this.props.dispatch(toggleDebug());
       }
     });
   }
@@ -51,7 +49,7 @@ class TodosPage extends Component {
     const onDateChange = (todo, change) => {
       const newDate = new Date(new Date(todo.addedAt).getTime() + change * MS_PER_DAY);
       dispatch(moveTodoItem(todo.id, newDate));
-    }
+    };
     const onTodoToggle = (todo) => {
       const fn = todo.completedAt ? uncompleteTodoItem : completeTodoItem;
       dispatch(fn(todo.id));
@@ -66,22 +64,22 @@ class TodosPage extends Component {
       if (todo.completedAt) {
         return 'Completed ' + formatDate(todo.completedAt);
       }
-    }
+    };
 
     const iconButtonElement = (<IconButton><MoreVertIcon /></IconButton>);
 
     const rightIconMenu = (todo) => (
       <IconMenu iconButtonElement={iconButtonElement}>
         <MenuItem
-          primaryText='-1 day'
+          primaryText="-1 day"
           leftIcon={<NavigationArrowUpward />}
           onTouchTap={() => onDateChange(todo, -1)} />
         <MenuItem
-          primaryText='+1 day'
+          primaryText="+1 day"
           leftIcon={<NavigationArrowDownward />}
           onTouchTap={() => onDateChange(todo, 1)} />
         <MenuItem
-          primaryText='Delete'
+          primaryText="Delete"
           leftIcon={<ActionDelete />}
           onTouchTap={() => onDestroy(todo)} />
       </IconMenu>
@@ -90,10 +88,10 @@ class TodosPage extends Component {
     return (
       <div>
         <MainAppBar
-          title='To do'
+          title="To do"
           iconElementRight={sweepButton}
         />
-        <div className='page-content'>
+        <div className="page-content">
           <TodoGroups
             todos={unarchivedTodos(todos)}
             secondaryText={secondaryText}

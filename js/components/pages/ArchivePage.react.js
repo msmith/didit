@@ -6,29 +6,29 @@ import MainAppBar from '../MainAppBar.react';
 import TodoGroups from '../TodoGroups.react';
 
 // Helpers
-import { formatDate } from '../../utils/dates'
-import { archivedTodos, completedAtDate } from '../../utils/todos'
+import { formatDate } from '../../utils/dates';
+import { archivedTodos, completedAtDate } from '../../utils/todos';
 
 class ArchivePage extends Component {
   render() {
     const { todos } = this.props.data;
     const formatTitle = (groupKey) => {
-      if (groupKey === "undefined") {
+      if (groupKey === 'undefined') {
         return 'Incomplete';
-      } else {
-        return formatDate(groupKey);
       }
+
+      return formatDate(groupKey);
     };
     const secondaryText = (todo) => {
       if (todo.completedAt) {
         return 'Completed ' + formatDate(todo.completedAt);
       }
-    }
+    };
 
     return (
       <div>
-        <MainAppBar title='Archived'/>
-        <div className='page-content'>
+        <MainAppBar title="Archived"/>
+        <div className="page-content">
           <TodoGroups
           todos={archivedTodos(todos)}
           secondaryText={secondaryText}
