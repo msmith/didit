@@ -17,7 +17,6 @@ export default class TodoItem extends Component {
 
     return (
       <ListItem
-        key={todo.id}
         primaryText={todo.text}
         secondaryText={secondaryText(todo)}
         leftCheckbox={checkbox}
