@@ -12,8 +12,7 @@ import Subheader from 'material-ui/Subheader';
 export default class TodoList extends Component {
   render() {
     const { todos, groupBy, sortComparator, ...todoItemProps } = this.props;
-    const sortedTodos = todos.sort(sortComparator);
-    const groupKeys = sortedTodos.map(t => groupBy(t));
+    const groupKeys = todos.sort(sortComparator).map(t => groupBy(t));
     const uniqueGroupKeys = groupKeys.filter((item, pos, arr) => {
       return pos === 0 || item !== arr[pos - 1];
     });
