@@ -9,30 +9,30 @@ export default class TodoList extends Component {
   render() {
     const { title, todos, secondaryText, onToggle, itemRightIcon, itemRightIconButton } = this.props;
     return (
-      <div>
-        <List>
-          <Subheader>{title}</Subheader>
-          {todos.map(todo => {
-            const checkbox = (
-              <Checkbox
-                defaultChecked={!!todo.completedAt}
-                disabled={!!todo.archivedAt}
-                onCheck={() => onToggle && onToggle(todo)}
-              />);
+      <List>
+        <Subheader>{title}</Subheader>
+        {todos.map(todo => {
+          const checkbox = (
+            <Checkbox
+              defaultChecked={!!todo.completedAt}
+              disabled={!!todo.archivedAt}
+              onCheck={() => onToggle && onToggle(todo)}
+            />
+          );
 
-            return (
-              <ListItem
-                key={todo.id}
-                primaryText={todo.text}
-                secondaryText={secondaryText(todo)}
-                leftCheckbox={checkbox}
-                disabled
-                rightIconButton={itemRightIconButton && itemRightIconButton(todo)}
-                rightIcon={itemRightIcon && itemRightIcon(todo)}
-              />);
-          })}
-        </List>
-      </div>
+          return (
+            <ListItem
+              key={todo.id}
+              primaryText={todo.text}
+              secondaryText={secondaryText(todo)}
+              leftCheckbox={checkbox}
+              disabled
+              rightIconButton={itemRightIconButton && itemRightIconButton(todo)}
+              rightIcon={itemRightIcon && itemRightIcon(todo)}
+            />
+          );
+        })}
+      </List>
     );
   }
 }
