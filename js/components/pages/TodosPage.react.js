@@ -7,7 +7,7 @@ import { addTodoItem, completeTodoItem, uncompleteTodoItem, updateTodoItem, dele
 import AddTodo from '../AddTodo.react';
 import MainAppBar from '../MainAppBar.react';
 import StateDump from '../StateDump.react';
-import TodoGroups from '../TodoGroups.react';
+import TodoList from '../TodoList.react';
 
 // Material-UI components
 import IconButton from 'material-ui/IconButton';
@@ -100,7 +100,7 @@ class TodosPage extends Component {
           iconElementRight={archiveAllButton}
         />
         <div className="page-content">
-          <TodoGroups
+          <TodoList
             todos={todos}
             secondaryText={secondaryText}
             groupBy={t => groupForDate(t.addedAt)}

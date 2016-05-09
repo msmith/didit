@@ -5,7 +5,7 @@ import { completeTodoItem, uncompleteTodoItem } from '../../actions/AppActions';
 
 // Components
 import MainAppBar from '../MainAppBar.react';
-import TodoGroups from '../TodoGroups.react';
+import TodoList from '../TodoList.react';
 
 // Helpers
 import { formatDate, completedTodos, groupForDate } from '../../utils/todos';
@@ -27,7 +27,7 @@ class CompletedPage extends Component {
       <div>
         <MainAppBar title="Completed" />
         <div className="page-content">
-          <TodoGroups
+          <TodoList
           todos={todos}
           secondaryText={secondaryText}
           groupBy={t => groupForDate(t.completedAt)}

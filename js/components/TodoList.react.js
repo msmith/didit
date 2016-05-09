@@ -9,7 +9,7 @@ import List from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import Subheader from 'material-ui/Subheader';
 
-export default class TodoGroups extends Component {
+export default class TodoList extends Component {
   render() {
     const { todos, groupBy, sortComparator, ...other } = this.props;
     const sortedTodos = todos.sort(sortComparator);
