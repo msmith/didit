@@ -76,7 +76,7 @@ class TodosPage extends Component {
       const upDate = addDays(todo.addedAt, -1);
       const downDate = addDays(todo.addedAt, 1);
       return (
-        <IconMenu iconButtonElement={iconButtonElement}>
+        <IconMenu iconButtonElement={iconButtonElement} useLayerForClickAway>
           <MenuItem
             primaryText={simpleFormatDate(upDate)}
             leftIcon={<NavigationArrowUpward />}
