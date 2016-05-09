@@ -11,7 +11,7 @@ import Subheader from 'material-ui/Subheader';
 
 export default class TodoList extends Component {
   render() {
-    const { todos, groupBy, sortComparator, ...other } = this.props;
+    const { todos, groupBy, sortComparator, ...todoItemProps } = this.props;
     const sortedTodos = todos.sort(sortComparator);
     const groupKeys = sortedTodos.map(t => groupBy(t));
     const uniqueGroupKeys = groupKeys.filter((item, pos, arr) => {
@@ -27,7 +27,7 @@ export default class TodoList extends Component {
               <Subheader>{groupKey}</Subheader>
               {todosInGroup(groupKey).map(todo => (
                 <TodoItem
-                  {...other}
+                  {...todoItemProps}
                   key={todo.id}
                   todo={todo}
               />))}
