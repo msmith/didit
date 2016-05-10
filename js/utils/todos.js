@@ -11,10 +11,10 @@ const simpleFormatDate = (date) => {
   }
 };
 
-const formatDate = (date) => {
+const formatDate = (date, now = new Date()) => {
   if (date) {
-    const now = new Date().getTime();
-    const ms = now - new Date(date).getTime();
+    const nowInMs = now.getTime();
+    const ms = nowInMs - new Date(date).getTime();
     const text = simpleFormatDate(date);
 
     if (ms > 0 && ms < MS_PER_DAY) {
@@ -26,9 +26,8 @@ const formatDate = (date) => {
   }
 };
 
-const groupForDate = (dateOrTime, fallback = 'Incomplete') => {
+const groupForDate = (dateOrTime, now = new Date()) => {
   if (dateOrTime) {
-    const now = new Date();
     const date = new Date(dateOrTime);
     const ms = now.getTime() - new Date(date).getTime();
 
@@ -50,7 +49,6 @@ const groupForDate = (dateOrTime, fallback = 'Incomplete') => {
 
     return dateFormat(date, 'mmmm yyyy');
   }
-  return fallback;
 };
 
 const archivedTodos = (todos) => todos.filter((t) => t.archivedAt);
