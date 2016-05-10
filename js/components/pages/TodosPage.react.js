@@ -50,8 +50,7 @@ class TodosPage extends Component {
       const id = new Date().getTime();
       dispatch(addTodoItem(id, text, today));
     };
-    const onDateChange = (todo, change) => {
-      const newDate = addDays(todo.addedAt, change);
+    const changeDate = (todo, newDate) => {
       dispatch(updateTodoItem(todo.id, newDate));
     };
     const onTodoToggle = (todo) => {
@@ -80,11 +79,11 @@ class TodosPage extends Component {
           <MenuItem
             primaryText={simpleFormatDate(upDate)}
             leftIcon={<NavigationArrowUpward />}
-            onTouchTap={() => onDateChange(todo, -1)} />
+            onTouchTap={() => changeDate(todo, upDate)} />
           <MenuItem
             primaryText={simpleFormatDate(downDate)}
             leftIcon={<NavigationArrowDownward />}
-            onTouchTap={() => onDateChange(todo, 1)} />
+            onTouchTap={() => changeDate(todo, downDate)} />
           <MenuItem
             primaryText="Delete"
             leftIcon={<ActionDelete />}
