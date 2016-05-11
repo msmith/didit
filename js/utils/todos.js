@@ -29,14 +29,16 @@ const formatDate = (date, now = new Date()) => {
 const groupForDate = (dateOrTime, now = new Date()) => {
   if (dateOrTime) {
     const date = new Date(dateOrTime);
-    const ms = now.getTime() - new Date(date).getTime();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const startOfTomorrow = new Date(startOfToday.getTime() + MS_PER_DAY);
+    const startOfYesterday = new Date(startOfToday.getTime() - MS_PER_DAY);
 
-    if (ms < 0) {
-      return simpleFormatDate(date);
-    } else if (ms < MS_PER_DAY) {
-      return 'Today';
-    } else if (ms < (2 * MS_PER_DAY)) {
+    if (date >= startOfYesterday && date < startOfToday) {
       return 'Yesterday';
+    } else if (date >= startOfToday && date < startOfTomorrow) {
+      return 'Today';
+    } else if (date >= startOfTomorrow) {
+      return dateFormat(date, 'ddd, mmm d');
     }
 
     if (date.getYear() === now.getYear()) {
