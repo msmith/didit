@@ -58,7 +58,6 @@ const unarchivedTodos = (todos) => todos.filter((t) => !t.archivedAt);
 const completedTodos = (todos) => todos.filter((t) => t.completedAt);
 
 export {
-  MS_PER_DAY,
   addDays,
 
   formatDate,
