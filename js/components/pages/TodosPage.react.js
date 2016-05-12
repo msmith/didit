@@ -120,7 +120,8 @@ class TodosPage extends Component {
 function select(state) {
   return {
     data: {
-      todos: unarchivedTodos(state.todos)
+      todos: unarchivedTodos(state.todos),
+      debug: state.debug
     }
   };
 }
