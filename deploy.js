@@ -2,6 +2,7 @@ const AWS = require('aws-sdk');
 const fs = require('fs');
 const path = require('path');
 const walk = require('walk');
+const exec = require('child_process').exec;
 
 const s3 = new AWS.S3();
 
@@ -44,6 +45,18 @@ const uploadToS3 = (filename) => {
   });
 };
 
+const tag = () => {
+  const tagName = 'deploy-' + new Date().getTime();
+  exec('git tag -a ' + tagName + ' -m "Deploy"',
+    (error, stdout, stderr) => {
+      console.log(`stdout: ${stdout}`);
+      console.log(`stderr: ${stderr}`);
+      if (error !== null) {
+        console.log(`exec error: ${error}`);
+      }
+    });
+};
+
 //
 // Build file list
 //
@@ -61,4 +74,7 @@ walker.on('file', (root, stat, next) => {
   next();
 });
 
-walker.on('end', () => files.forEach(uploadToS3));
+walker.on('end', () => {
+  files.forEach(uploadToS3);
+  tag();
+});
