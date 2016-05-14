@@ -4,7 +4,9 @@ const path = require('path');
 const walk = require('walk');
 
 const s3 = new AWS.S3();
-const bucket = 'todo.sticknet.net';
+
+const BUCKET = 'todo.sticknet.net';
+const BUILD_DIR = './build';
 
 const mimeType = (filename) => {
   switch (path.extname(filename)) {
@@ -21,14 +23,35 @@ const mimeType = (filename) => {
   }
 };
 
+const uploadToS3 = (filename) => {
+  const readableStream = fs.createReadStream(filename);
+  const objectKey = path.basename(filename);
+  console.log(objectKey);
+  const contentType = mimeType(filename);
+  const params = {
+    Bucket: BUCKET,
+    Key: objectKey,
+    Body: readableStream,
+    ACL: 'public-read',
+    ContentType: contentType
+  };
+  s3.putObject(params, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Uploaded ' + objectKey);
+    }
+  });
+};
+
 //
 // Build file list
 //
-
-const files = ['favicon.png'];
+process.chdir(BUILD_DIR);
+const files = ['../favicon.png'];
 
 // Walker options
-const walker = walk.walk('./build', { followLinks: false });
+const walker = walk.walk('.', { followLinks: false });
 
 walker.on('file', (root, stat, next) => {
   if (!stat.name.startsWith('.')) {
@@ -38,28 +61,4 @@ walker.on('file', (root, stat, next) => {
   next();
 });
 
-walker.on('end', () => {
-  //
-  // Upload to S3
-  //
-
-  files.forEach((filename) => {
-    const readableStream = fs.createReadStream(filename);
-    const objectKey = filename.replace(/^\.\/build\//, '');
-    const contentType = mimeType(filename);
-    const params = {
-      Bucket: bucket,
-      Key: objectKey,
-      Body: readableStream,
-      ACL: 'public-read',
-      ContentType: contentType
-    };
-    s3.putObject(params, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('Uploaded ' + objectKey);
-      }
-    });
-  });
-});
+walker.on('end', () => files.forEach(uploadToS3));
