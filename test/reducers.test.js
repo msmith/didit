@@ -1,15 +1,13 @@
 import expect from 'expect';
-import homeReducer from '../js/reducers/homeReducer';
+import todosReducer from '../js/reducers/todosReducer';
+import debugReducer from '../js/reducers/debugReducer';
 import * as constants from '../js/constants/AppConstants';
 
 // Test Reducer
-describe('defaultReducer', () => {
+describe('todosReducer', () => {
   // Test that the initial state is returning correctly
   it('should return the initial state', () => {
-    expect(homeReducer(undefined, {})).toEqual({
-      todos: [],
-      debug: false
-    });
+    expect(todosReducer(undefined, {})).toEqual([]);
   });
 
   // Test that it handles adding a todo correctly
@@ -19,22 +17,20 @@ describe('defaultReducer', () => {
     const addedAt = new Date();
 
     expect(
-      homeReducer({todos: []}, {
+      todosReducer({todos: []}, {
         type: constants.ADD_TODO,
         id,
         text,
         addedAt
       })
-    ).toEqual({
-      todos: [
-        {
-          completedAt: undefined,
-          id,
-          addedAt,
-          text
-        }
-      ]
-    });
+    ).toEqual([
+      {
+        completedAt: undefined,
+        id,
+        addedAt,
+        text
+      }
+    ]);
   });
 
   // Test that it handles completing a todo correctly
@@ -54,21 +50,20 @@ describe('defaultReducer', () => {
     ];
 
     expect(
-      homeReducer({todos: initialTodos}, {
+      todosReducer(initialTodos, {
         type: constants.COMPLETE_TODO,
         id,
         completedAt
       })
-    ).toEqual({
-      todos: [
-        {
-          id,
-          text,
-          addedAt,
-          completedAt
-        }
-      ]
-    });
+    ).toEqual([
+      {
+        id,
+        text,
+        addedAt,
+        completedAt
+      }
+    ]
+  );
   });
 
   // Test that it handles completing a todo correctly
@@ -76,13 +71,11 @@ describe('defaultReducer', () => {
     const id = 42;
 
     expect(
-      homeReducer({todos: []}, {
+      todosReducer([], {
         type: constants.COMPLETE_TODO,
         id
       })
-    ).toEqual({
-      todos: []
-    });
+    ).toEqual([]);
   });
 
   // Test that it handles uncompleting a todo correctly
@@ -102,21 +95,19 @@ describe('defaultReducer', () => {
     ];
 
     expect(
-      homeReducer({todos: initialTodos}, {
+      todosReducer(initialTodos, {
         type: constants.UNCOMPLETE_TODO,
         id,
         completedAt
       })
-    ).toEqual({
-      todos: [
-        {
-          id,
-          text,
-          addedAt,
-          completedAt: undefined
-        }
-      ]
-    });
+    ).toEqual([
+      {
+        id,
+        text,
+        addedAt,
+        completedAt: undefined
+      }
+    ]);
   });
 
   // Test that it handles uncompleting a todo correctly
@@ -124,13 +115,11 @@ describe('defaultReducer', () => {
     const id = 43;
 
     expect(
-      homeReducer({todos: []}, {
+      todosReducer([], {
         type: constants.UNCOMPLETE_TODO,
         id
       })
-    ).toEqual({
-      todos: []
-    });
+    ).toEqual([]);
   });
 
   // Test that it handles updating a todo correctly
@@ -144,20 +133,18 @@ describe('defaultReducer', () => {
     const newAddedAt = new Date();
 
     expect(
-      homeReducer({todos: initialTodos}, {
+      todosReducer(initialTodos, {
         type: constants.UPDATE_TODO,
         id,
         addedAt: newAddedAt
       })
-    ).toEqual({
-      todos: [
-        {
-          id,
-          addedAt: newAddedAt,
-          text
-        }
-      ]
-    });
+    ).toEqual([
+      {
+        id,
+        addedAt: newAddedAt,
+        text
+      }
+    ]);
   });
 
   // Test that it handles removing a todo correctly
@@ -171,15 +158,13 @@ describe('defaultReducer', () => {
     ];
 
     expect(
-      homeReducer({todos: initialTodos}, {
+      todosReducer(initialTodos, {
         type: constants.DELETE_TODO,
         id: 1
       })
-    ).toEqual({
-      todos: [
-        { id, addedAt, text }
-      ]
-    });
+    ).toEqual([
+      { id, addedAt, text }
+    ]);
   });
 
   // Test that it handles archiving todos correctly
@@ -197,40 +182,41 @@ describe('defaultReducer', () => {
     ];
 
     expect(
-      homeReducer({todos: initialTodos}, {
+      todosReducer(initialTodos, {
         type: constants.ARCHIVE_TODOS,
         archivedAt
       })
-    ).toEqual({
-      todos: [
-        { id: 1, addedAt: mon },
-        { id: 2, addedAt: mon, completedAt: mon, archivedAt },
-        { id: 3, addedAt: tue, completedAt: wed, archivedAt },
-        { id: 4, addedAt: tue },
-        { id: 5, addedAt: wed }
-      ]
-    });
+    ).toEqual([
+      { id: 1, addedAt: mon },
+      { id: 2, addedAt: mon, completedAt: mon, archivedAt },
+      { id: 3, addedAt: tue, completedAt: wed, archivedAt },
+      { id: 4, addedAt: tue },
+      { id: 5, addedAt: wed }
+    ]);
+  });
+});
+
+describe('debugReducer', () => {
+  // Test that the initial state is returning correctly
+  it('should return the initial state', () => {
+    expect(debugReducer(undefined, {})).toEqual(false);
   });
 
   // Test that it handles toggling debug mode correctly
   it('should handle the TOGGLE_DEBUG action to disable debug mode', () => {
     expect(
-      homeReducer({debug: true}, {
+      debugReducer(true, {
         type: constants.TOGGLE_DEBUG
       })
-    ).toEqual({
-      debug: false
-    });
+    ).toEqual(false);
   });
 
   // Test that it handles toggling debug mode correctly
   it('should handle the TOGGLE_DEBUG action to enable debug mode', () => {
     expect(
-      homeReducer({debug: false}, {
+      debugReducer(false, {
         type: constants.TOGGLE_DEBUG
       })
-    ).toEqual({
-      debug: true
-    });
+    ).toEqual(true);
   });
 });
